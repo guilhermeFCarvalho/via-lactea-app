@@ -1,9 +1,3 @@
-# NativeBase TypeScript Expo Template
+# Via Lactea APP
 
-The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
-
-## Usage
-
-```sh
-expo init my-app --template @native-base/expo-template-typescript
-```
+Utilizar [documentação do native base para desenvolver]{https://docs.nativebase.io/}
