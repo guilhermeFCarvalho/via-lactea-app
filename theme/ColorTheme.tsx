@@ -1,16 +1,20 @@
 import React from 'react';
 
 import { NativeBaseProvider, extendTheme } from 'native-base';
+export const viaLacteaTheme = extendTheme({
+    colors: {
+        viaLacteaPrimary: {
 
-
-    export const viaLacteaTheme = extendTheme({
-        colors:{
-            viaLacteaPrimary: {
-                "50": "#cac4f7",
-                "100": "#a79eed",
-                "200": "#8376e5",
-                "300": "#7365d9",
-                "400": "#6456cc"
-            }
+            "50": "#ff7a32",
+            "100": "#fe5900",
+            "200": "#cc4900",
+            "300": "#a83f07",
+            "400": "#85360b"
+        },
+        viaLacteaSecondary: {
+            "delete": "#EC4899",
+            "edit": "#06B6D4"
         }
-    })
+    }
+
+})
