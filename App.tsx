@@ -20,7 +20,7 @@ export default function App() {
     //esse provider possibilita que o tema seja usado no app
     <NativeBaseProvider theme={viaLacteaTheme}>
     
-      <Box bg = "viaLacteaPrimary.100" p="4"
+      <Box bg = "viaLacteaSecondary.pink" p="4"
       />
 
     </NativeBaseProvider>

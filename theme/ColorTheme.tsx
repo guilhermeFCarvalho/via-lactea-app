@@ -4,16 +4,15 @@ import { NativeBaseProvider, extendTheme } from 'native-base';
 export const viaLacteaTheme = extendTheme({
     colors: {
         viaLacteaPrimary: {
-
-            "50": "#ff7a32",
-            "100": "#fe5900",
-            "200": "#cc4900",
-            "300": "#a83f07",
-            "400": "#85360b"
+            "lightOrange": "#ff7a32",
+            "orange": "#fe5900",
+            "darkOrange": "#cc4900",
         },
         viaLacteaSecondary: {
-            "delete": "#EC4899",
-            "edit": "#06B6D4"
+            "lightGray": "#A3A3A3",
+            "pink": "#EC4899",
+            "blue": "#06B6D4"
+            
         }
     }
 
