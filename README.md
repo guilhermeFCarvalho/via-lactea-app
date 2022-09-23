@@ -2,7 +2,7 @@
 
 Utilizar [documentação do native base](https://docs.nativebase.io/) como apoio para o desenvolvimento
 
-
+Para usar o tema do projeto utilize essa tag no TSX -> ´<NativeBaseProvider theme={viaLacteaTheme}>´
 
 
 # Como rodar o projeto:
@@ -13,3 +13,5 @@ Utilizar [documentação do native base](https://docs.nativebase.io/) como apoio
 4.  Rode o comando `expo install`
 5.  Rode o comando `expo start`
 6.  pronto :P
+
+
