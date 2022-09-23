@@ -2,7 +2,7 @@
 
 Utilizar [documentação do native base](https://docs.nativebase.io/) como apoio para o desenvolvimento
 
-Para usar o tema do projeto utilize essa tag no TSX -> ´<NativeBaseProvider theme={viaLacteaTheme}>´
+Para usar o tema do projeto utilize essa tag no TSX -> `<NativeBaseProvider theme={viaLacteaTheme}>`
 
 
 # Como rodar o projeto:
