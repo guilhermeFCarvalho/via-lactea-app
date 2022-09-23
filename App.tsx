@@ -14,14 +14,13 @@ import {
 } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
 import {viaLacteaTheme} from "./theme/ColorTheme"
+import Endereco from "./screens/Endereco";
 
 export default function App() {
   return (
-    //esse provider possibilita que o tema seja usado no app
     <NativeBaseProvider theme={viaLacteaTheme}>
     
-      <Box bg = "viaLacteaSecondary.pink" p="4"
-      />
+      <Endereco/>
 
     </NativeBaseProvider>
   );
