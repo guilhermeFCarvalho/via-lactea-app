@@ -8,13 +8,17 @@ const validate = () => {
 }
 
 interface EnderecoComponentProps {
-    parentObject: Object;
+    onSubmit: any;
 
 }
 
 const EnderecoComponent: FunctionComponent<EnderecoComponentProps> = (props) => {
     const [endereco, setEndereco] = React.useState({});
-    
+
+    const handleSubmit = () => {
+        props.onSubmit(endereco);
+    }
+
     return (
         <NativeBaseProvider theme={viaLacteaTheme}>
             <FormControl isRequired>
@@ -25,7 +29,7 @@ const EnderecoComponent: FunctionComponent<EnderecoComponentProps> = (props) => 
                 </Stack>
                 <InputComponent placeholder={'Maringá'} label={'Cidade'} onChangeText={(value: any) => { setEndereco({ ...endereco, cidade: value }) }} />
             </FormControl>
-            <Button mt={"4%"} onPress={()=>{console.log({...props.parentObject, endereco})}}> Salvar</Button>
+            <Button mt={"4%"} onPress={handleSubmit}> Salvar</Button>
         </NativeBaseProvider>
 
     );

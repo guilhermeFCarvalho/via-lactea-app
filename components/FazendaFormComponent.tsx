@@ -10,19 +10,16 @@ const validate = () => {
 
 
 export default function FazendaForm() {
-    const [endereco, setEndereco] = React.useState({});
     const [fazenda, setFazenda] = React.useState({});
 
-    
 
     return (
         <NativeBaseProvider theme={viaLacteaTheme}>
             <Center h="100%" p="8%" justifyContent={'space-between'}>
                 <FormControl isRequired>
                     <InputComponent placeholder={'Fazenda São Jorge'} label={'Nome da Fazenda'} onChangeText={(value: any) => { setFazenda({ ...fazenda, nome: value }) }} />
-                    <EnderecoForm parentObject={fazenda}></EnderecoForm>
+                    <EnderecoForm onSubmit={(endereco: Object) => { setFazenda({ ...fazenda, endereco }) }}></EnderecoForm>
                 </FormControl>
-                
             </Center>
         </NativeBaseProvider>
     )
