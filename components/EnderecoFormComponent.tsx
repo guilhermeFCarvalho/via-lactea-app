@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Box, Center, FormControl, Input, NativeBaseProvider, Stack, Button } from 'native-base';
 import { viaLacteaTheme } from '../theme/ColorTheme';
-import InputComponent from '../components/InputComponent';
+import InputComponent from './InputComponent';
 
 const validate = () => {
     //todo
