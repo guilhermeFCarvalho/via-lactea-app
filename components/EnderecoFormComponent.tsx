@@ -22,7 +22,7 @@ export default function EnderecoForm() {
                     </Stack>
                     <InputComponent placeholder={'Maringá'} label={'Cidade'} onChangeText={(value: any) => { setEndereco({ ...endereco, cidade: value }) }} />
                 </FormControl>
-                <Button onPress={()=>{console.log(endereco)}}>Salvar</Button>
+                <Button onPress={()=>{validate}}>Salvar</Button>
             </Center>
         </NativeBaseProvider>
     )
