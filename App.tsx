@@ -5,11 +5,12 @@ import {
 import NativeBaseIcon from "./components/NativeBaseIcon";
 import {viaLacteaTheme} from "./theme/ColorTheme"
 import Endereco from "./components/EnderecoFormComponent";
+import FazendaForm from "./components/FazendaFormComponent";
 
 export default function App() {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <Endereco></Endereco>
+      <FazendaForm></FazendaForm>
 
     </NativeBaseProvider>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Text, Box, Center, FormControl, Input, NativeBaseProvider, Stack, Button } from 'native-base';
 import { viaLacteaTheme } from '../theme/ColorTheme';
 import InputComponent from './InputComponent';
@@ -12,16 +12,17 @@ interface EnderecoComponentProps {
 
 }
 
-const EnderecoComponent: FunctionComponent<EnderecoComponentProps> = (props) => {
+const EnderecoFormComponent: FunctionComponent<EnderecoComponentProps> = (props) => {
     const [endereco, setEndereco] = React.useState({});
 
     const handleSubmit = () => {
         props.onSubmit(endereco);
+        console.log("chamou handle submit")
     }
 
     return (
         <NativeBaseProvider theme={viaLacteaTheme}>
-            <Center p="8%" justifyContent={'space-between'}>
+            <Center px="8%" justifyContent={'space-between'}>
                 <FormControl isRequired>
 
                     <FormControl.Label>{"Endereço"}</FormControl.Label>
@@ -46,7 +47,8 @@ const EnderecoComponent: FunctionComponent<EnderecoComponentProps> = (props) => 
 
                 </FormControl>
             </Center>
-            <Button onPress={() => { }}>Salvar</Button>
+            <Button m={"8%"} onPress={()=>{console.log(endereco)}}>Salvar</Button>
         </NativeBaseProvider>
     )
 }
+export default EnderecoFormComponent;

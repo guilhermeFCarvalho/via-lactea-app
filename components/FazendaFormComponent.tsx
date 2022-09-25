@@ -2,7 +2,8 @@ import React from 'react';
 import { Text, Box, Center, FormControl, Input, NativeBaseProvider, Stack, Button } from 'native-base';
 import { viaLacteaTheme } from '../theme/ColorTheme';
 import InputComponent from './InputComponent';
-import EnderecoForm from './EnderecoFormComponent';
+import EnderecoFormComponent from './EnderecoFormComponent';
+
 
 const validate = () => {
     //todo
@@ -15,12 +16,13 @@ export default function FazendaForm() {
 
     return (
         <NativeBaseProvider theme={viaLacteaTheme}>
-            <Center h="100%" p="8%" justifyContent={'space-between'}>
+            <Center px="8%" pt="8%" justifyContent={'space-between'}>
                 <FormControl isRequired>
-                    <InputComponent placeholder={'Fazenda São Jorge'} label={'Nome da Fazenda'} onChangeText={(value: any) => { setFazenda({ ...fazenda, nome: value }) }} />
-                    <EnderecoForm onSubmit={(endereco: Object) => { setFazenda({ ...fazenda, endereco }) }}></EnderecoForm>
+                    <FormControl.Label>Nome da Fazenda</FormControl.Label>
+                    <Input placeholder='Fazenda São Jorge' onChangeText={(value: any) => { setFazenda({ ...fazenda, nome: value }) }}></Input>
                 </FormControl>
             </Center>
+            <EnderecoFormComponent onSubmit={(endereco: Object) => { setFazenda({ ...fazenda, endereco }) }}></EnderecoFormComponent>
         </NativeBaseProvider>
     )
 }
