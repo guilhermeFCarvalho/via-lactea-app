@@ -1,6 +1,6 @@
 import React from 'react';
-import { NativeBaseProvider, extendTheme } from 'native-base';
 
+import { NativeBaseProvider, extendTheme } from 'native-base';
 export const viaLacteaTheme = extendTheme({
     colors: {
         viaLacteaPrimary: {
