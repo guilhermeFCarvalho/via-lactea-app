@@ -7,9 +7,17 @@ const validate = () => {
     //todo
 }
 
+interface EnderecoComponentProps {
+    onSubmit: any;
 
-export default function EnderecoForm() {
+}
+
+const EnderecoComponent: FunctionComponent<EnderecoComponentProps> = (props) => {
     const [endereco, setEndereco] = React.useState({});
+
+    const handleSubmit = () => {
+        props.onSubmit(endereco);
+    }
 
     return (
         <NativeBaseProvider theme={viaLacteaTheme}>
