@@ -22,7 +22,7 @@ export default function FazendaForm() {
                     <Input placeholder='Fazenda São Jorge' onChangeText={(value: any) => { setFazenda({ ...fazenda, nome: value }) }}></Input>
                 </FormControl>
             </Center>
-            <EnderecoFormComponent onSubmit={(endereco: Object) => { setFazenda({ ...fazenda, endereco }) }}></EnderecoFormComponent>
+            <EnderecoFormComponent onSubmit={(endereco: Object) =>  {setFazenda({...fazenda, endereco})}} ></EnderecoFormComponent>
         </NativeBaseProvider>
     )
 }

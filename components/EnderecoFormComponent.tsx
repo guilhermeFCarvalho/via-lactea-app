@@ -17,7 +17,6 @@ const EnderecoFormComponent: FunctionComponent<EnderecoComponentProps> = (props)
 
     const handleSubmit = () => {
         props.onSubmit(endereco);
-        console.log("chamou handle submit")
     }
 
     return (
@@ -47,7 +46,7 @@ const EnderecoFormComponent: FunctionComponent<EnderecoComponentProps> = (props)
 
                 </FormControl>
             </Center>
-            <Button m={"8%"} onPress={()=>{console.log(endereco)}}>Salvar</Button>
+            <Button m={"8%"} onPress={handleSubmit}>Salvar</Button>
         </NativeBaseProvider>
     )
 }
