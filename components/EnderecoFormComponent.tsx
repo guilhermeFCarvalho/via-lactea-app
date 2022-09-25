@@ -13,17 +13,32 @@ export default function EnderecoForm() {
 
     return (
         <NativeBaseProvider theme={viaLacteaTheme}>
-            <Center h="100%" p="8%" justifyContent={'space-between'}>
+            <Center p="8%" justifyContent={'space-between'}>
                 <FormControl isRequired>
-                    <InputComponent placeholder={'Rodovia do Café, 23'} label={'Endereço'} onChangeText={(value: any) => { setEndereco({ ...endereco, rua: value }) }} />
-                    <Stack direction={'row'} justifyContent={'space-between'}>
-                        <InputComponent placeholder={'0000000'} label={'CEP'} onChangeText={(value: any) => { setEndereco({ ...endereco, cep: value }) }} />
-                        <InputComponent placeholder={'AL'} label={'Estado'} onChangeText={(value: any) => { setEndereco({ ...endereco, estado: value }) }} />
+
+                    <FormControl.Label>{"Endereço"}</FormControl.Label>
+                    <Input p={2} placeholder={"Rodovia do Café, 23"} onChangeText={(value: any) => { setEndereco({ ...endereco, rua: value }) }}></Input>
+
+                    <Stack direction={'row'} justifyContent={"space-between"} >
+
+                        <Stack width={"50%"}>
+                            <FormControl.Label>{"CEP"}</FormControl.Label>
+                            <Input p={2} placeholder={"00000-000"} onChangeText={(value: any) => { setEndereco({ ...endereco, cep: value }) }}></Input>
+                        </Stack>
+
+                        <Stack >
+                            <FormControl.Label>{"Estado"}</FormControl.Label>
+                            <Input p={2} placeholder={"AL"} onChangeText={(value: any) => { setEndereco({ ...endereco, estado: value }) }}></Input>
+                        </Stack>
+
                     </Stack>
-                    <InputComponent placeholder={'Maringá'} label={'Cidade'} onChangeText={(value: any) => { setEndereco({ ...endereco, cidade: value }) }} />
+
+                    <FormControl.Label>{"Cidade"}</FormControl.Label>
+                    <Input p={2} placeholder={"Maringá"} onChangeText={(value: any) => { setEndereco({ ...endereco, cidae: value }) }}></Input>
+
                 </FormControl>
-                <Button onPress={()=>{validate}}>Salvar</Button>
             </Center>
+            <Button onPress={() => { }}>Salvar</Button>
         </NativeBaseProvider>
     )
 }

@@ -9,7 +9,7 @@ import Endereco from "./components/EnderecoFormComponent";
 export default function App() {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-    
+      <Endereco></Endereco>
 
     </NativeBaseProvider>
   );
