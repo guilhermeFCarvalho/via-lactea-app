@@ -11,18 +11,27 @@ const validate = () => {
 
 export default function UsuarioForm() {
     const [usuario, setUsuario] = React.useState({});
+    const [senha, setSenha] = React.useState("")
 
     return (
         <NativeBaseProvider theme={viaLacteaTheme}>
-            <Center h="100%" p="8%" justifyContent={'space-between'}>
+            <Center px="8%" pt="8%" justifyContent={'space-between'}>
                 <FormControl isRequired>
-                    <InputComponent placeholder={'Jorge da Silva Dias'} label={'Nome completo'} onChangeText={(value: any) => { setUsuario({ ...usuario, nome: value }) }} />
-                    <InputComponent placeholder={'joge@hmail.com'} label={'E-mail'} onChangeText={(value: any) => { setUsuario({ ...usuario, email: value }) }} />
-                    <PasswordInputComponent label={"Senha"} onChangeText={(value: any) => { setUsuario({ ...usuario, senha: value }) }} />
-                    <PasswordInputComponent label={'Confirmar senha'} onChangeText={(value: any) => { setUsuario({ ...usuario, senha: value }) }} />
+                    <FormControl.Label>Nome completo</FormControl.Label>
+                    <Input placeholder='Jorge da Silva Dias' onChangeText={(value: any) => { setUsuario({ ...usuario, nome: value }) }}></Input>
+
+                    <FormControl.Label>Email</FormControl.Label>
+                    <Input placeholder='jorge@vmail.com' onChangeText={(value: any) => { setUsuario({ ...usuario, email: value }) }}></Input>
+
+                    <FormControl.Label>Senha</FormControl.Label>
+                    <Input onChangeText={(value: any) => { setSenha(value) }}></Input>
+
+                    <FormControl.Label>Confirmar senha</FormControl.Label>
+                    <Input onChangeText={(value: any) => { value == senha ? setUsuario({ ...usuario, senha: value }) : console.error("senha nao bate")  }}></Input>
                 </FormControl>
-                <Button onPress={()=>{console.log(usuario)}}>Salvar</Button>
             </Center>
+            <Button m="8%" onPress={() => { console.log(usuario) }}>Salvar</Button>
+
         </NativeBaseProvider>
     )
 }
