@@ -1,20 +1,26 @@
-import { Stack, FormControl, Input } from 'native-base';
+import { Stack, FormControl, Input, Icon, Pressable, NativeBaseProvider } from 'native-base';
 import React, { FunctionComponent } from 'react';
+import { viaLacteaTheme } from '../theme/ColorTheme';
+
 
 
 interface Props {
-    placeholder: string;
+    placeholder?: string;
     label: string;
-    onChangeText: any
+    onChangeText: any;
+    password?: boolean;
 
 }
 
 const InputComponent: FunctionComponent<Props> = (props) => {
+
     return (
-        <Stack direction="column">
-            <FormControl.Label>{props.label}</FormControl.Label>
-            <Input p={2} placeholder={props.placeholder} onChangeText={props.onChangeText}/>
-        </Stack>);
+        <NativeBaseProvider theme={viaLacteaTheme}>
+            <Stack direction="column">
+                <FormControl.Label>{props.label}</FormControl.Label>
+                <Input p={2} placeholder={props.placeholder} onChangeText={props.onChangeText}></Input>
+            </Stack>
+        </NativeBaseProvider>)
 }
 
 export default InputComponent;
