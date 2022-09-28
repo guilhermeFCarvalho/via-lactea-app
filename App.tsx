@@ -1,19 +1,24 @@
 import React from "react";
-import {
-  NativeBaseProvider,
-} from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
-import {viaLacteaTheme} from "./theme/ColorTheme"
-import Endereco from "./components/EnderecoFormComponent";
-import FazendaFormComponent from "./components/FazendaFormComponent";
-import UsuarioFormComponent from "./components/UsuarioFormComponent";
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
+import Home from "./src/screens/home/Home";
+import FazendaForm from "./src/components/FazendaFormComponent";
+import UsuarioForm from "./src/components/UsuarioFormComponent";
+
 
 export default function App() {
   return (
-    <NativeBaseProvider theme={viaLacteaTheme}>
-      <UsuarioFormComponent></UsuarioFormComponent>
-
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="FazendaForm" component={FazendaForm} />
+        <Stack.Screen name="UsuarioForm" component={UsuarioForm} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
