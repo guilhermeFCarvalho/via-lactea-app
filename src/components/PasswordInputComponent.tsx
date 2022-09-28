@@ -1,7 +1,7 @@
 import { Stack, FormControl, Input, Icon, Pressable, NativeBaseProvider } from 'native-base';
 import React, { FunctionComponent } from 'react';
 import { MaterialIcons } from "@expo/vector-icons";
-import { viaLacteaTheme } from '../theme/ColorTheme';
+import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
 
 interface Props {
