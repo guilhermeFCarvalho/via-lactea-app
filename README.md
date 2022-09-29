@@ -15,6 +15,4 @@ Para usar o tema do projeto utilize essa tag no TSX -> `<NativeBaseProvider them
 5.  Rode o comando `expo start`
 6.  pronto :P
 
-git filter-branch --index-filter 'rm -f Resources\Video\%font%.ttf' -- --all
-
 
