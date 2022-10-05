@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Text, Box, Center, FormControl, Input, NativeBaseProvider, Stack, Button } from 'native-base';
+import { viaLacteaTheme } from '../config/theme/ColorTheme';
 import InputComponent from './InputComponent';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
