@@ -4,15 +4,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
 
-
-
 interface Props {
 }
 
-
-
-
-const PasswordInputComponent: FunctionComponent<Props> = (props) => {
+const Home: FunctionComponent<Props> = (props) => {
 
   const navigation = useNavigation();
 
@@ -29,7 +24,7 @@ const PasswordInputComponent: FunctionComponent<Props> = (props) => {
         </NativeBaseProvider>);
 }
 
-export default PasswordInputComponent;
+export default Home;
 
 
 
