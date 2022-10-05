@@ -11,7 +11,6 @@ import {
 } from 'native-base';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 import InputComponent from './InputComponent';
-import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
 const validate = () => {
   //todo

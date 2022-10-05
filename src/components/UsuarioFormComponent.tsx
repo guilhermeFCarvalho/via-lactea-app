@@ -12,7 +12,6 @@ import {
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 import InputComponent from './InputComponent';
 import PasswordInputComponent from './PasswordInputComponent';
-import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
 const validate = () => {
   //todo
