@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import {
-  Text,
-  Box,
   Center,
   FormControl,
   Input,
@@ -10,7 +8,6 @@ import {
   Button,
 } from 'native-base';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
-import InputComponent from './InputComponent';
 
 const validate = () => {
   //todo

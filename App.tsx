@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-import Home from "./src/screens/home/Home";
-import FazendaForm from "./src/components/FazendaFormComponent";
-import UsuarioForm from "./src/components/UsuarioFormComponent";
-
+import Home from './src/screens/home/Home';
+import FazendaForm from './src/components/FazendaFormComponent';
+import UsuarioForm from './src/components/UsuarioFormComponent';
 
 export default function App() {
   return (
