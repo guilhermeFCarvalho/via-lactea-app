@@ -9,9 +9,9 @@ import {
   Stack,
   Button,
 } from 'native-base';
-import { viaLacteaTheme } from '../config/theme/ColorTheme';
-import InputComponent from './InputComponent';
-import PasswordInputComponent from './PasswordInputComponent';
+import { viaLacteaTheme } from '../../src/config/theme/ColorTheme';
+import InputComponent from '../../src/components/InputComponent';
+import PasswordInputComponent from '../../src/components/PasswordInputComponent';
 
 const validate = () => {
   //todo
@@ -35,7 +35,7 @@ export default function UsuarioForm() {
 
           <FormControl.Label>Email</FormControl.Label>
           <Input
-            placeholder="jorge@vmail.com"
+            placeholder="jorge@email.com"
             onChangeText={(value: any) => {
               setUsuario({ ...usuario, email: value });
             }}

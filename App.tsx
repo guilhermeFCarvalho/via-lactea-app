@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 import Home from "./src/screens/home/Home";
 import FazendaForm from "./src/components/FazendaFormComponent";
-import UsuarioForm from "./src/components/UsuarioFormComponent";
+import UsuarioForm from "./screens/CadastroUsuario/UsuarioFormComponent";
 
 
 export default function App() {
