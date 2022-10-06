@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-  Text,
-  Box,
-  Center,
-  FormControl,
-  Input,
-  NativeBaseProvider,
-  Stack,
-  Button,
-} from 'native-base';
+import { Center, FormControl, Input, NativeBaseProvider } from 'native-base';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
-import InputComponent from './InputComponent';
 import EnderecoFormComponent from './EnderecoFormComponent';
 
 const validate = () => {

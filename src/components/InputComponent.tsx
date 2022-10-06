@@ -1,11 +1,4 @@
-import {
-  Stack,
-  FormControl,
-  Input,
-  Icon,
-  Pressable,
-  NativeBaseProvider,
-} from 'native-base';
+import { Stack, FormControl, Input, NativeBaseProvider } from 'native-base';
 import React, { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
