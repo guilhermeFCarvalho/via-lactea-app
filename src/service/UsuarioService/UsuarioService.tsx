@@ -1,17 +1,14 @@
-
-
 // import api from "../api";
 
 
-// const ReciboDeVendaService = {
+// const UsuarioService = {
 
-//   salvar : function(data:) {
-//     return api.post('/api/recibo-de-venda',data)
+// salvar : function(data:) {
+//      return api.post('/api/pessoa',data)
 //   }
 
 
 
+//  };
 
-// };
-
-// export default ReciboDeVendaService;
+// export default UsuarioService;

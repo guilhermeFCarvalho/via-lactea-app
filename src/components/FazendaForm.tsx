@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Center, FormControl, Input, NativeBaseProvider } from 'native-base';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 import EnderecoFormComponent from './EnderecoFormComponent';
@@ -7,7 +7,15 @@ const validate = () => {
   //todo
 };
 
-export default function FazendaForm() {
+
+interface Props {
+
+  navigation: any,
+  route: any
+  
+}
+ 
+const FazendaForm: FunctionComponent<Props> = (props) => {
   const [fazenda, setFazenda] = React.useState({});
 
   return (
@@ -26,8 +34,12 @@ export default function FazendaForm() {
       <EnderecoFormComponent
         onSubmit={(endereco: object) => {
           setFazenda({ ...fazenda, endereco });
+          
+          
         }}
       ></EnderecoFormComponent>
     </NativeBaseProvider>
   );
-}
+};
+
+export default FazendaForm;
