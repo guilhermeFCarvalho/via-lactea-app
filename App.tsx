@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 import Home from "./src/screens/home/Home";
-import FazendaForm from "./src/components/FazendaForm";
+import FazendaForm from "./src/screens/CadastroFazenda/FazendaForm";
 import UsuarioForm from "./src/screens/CadastroUsuario/UsuarioForm";
 
 

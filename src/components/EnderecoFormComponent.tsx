@@ -36,23 +36,39 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
       <Center px="8%" justifyContent={'space-between'}>
         
           <FormControl isRequired>
-            <FormControl.Label>{'Endereço'}</FormControl.Label>
+            <FormControl.Label>{'Rua/Estrada'}</FormControl.Label>
             <Input
               p={2}
-              placeholder={'Rodovia do Café, 23'}
+              placeholder={'Rodovia do Café'}
               onChangeText={(value: any) => {
                 setEndereco({ ...endereco, rua: value });
               }}
             ></Input>
-
-            <Stack direction={'row'} justifyContent={'space-between'}>
-              <Stack width={'50%'}>
-                <FormControl.Label>{'CEP'}</FormControl.Label>
+            <FormControl.Label>{'Bairro'}</FormControl.Label>
+            <Input
+              p={2}
+              placeholder={'Capivari'}
+              onChangeText={(value: any) => {
+                setEndereco({ ...endereco, bairro: value });
+              }}
+            ></Input>
+            <FormControl.Label>{'CEP'}</FormControl.Label>
                 <Input
                   p={2}
                   placeholder={'00000-000'}
                   onChangeText={(value: any) => {
                     setEndereco({ ...endereco, cep: value });
+                  }}
+                ></Input>
+
+            <Stack direction={'row'} justifyContent={'space-between'}>
+              <Stack width={'50%'}>
+                <FormControl.Label>{'numero'}</FormControl.Label>
+                <Input
+                  p={2}
+                  placeholder={'0000'}
+                  onChangeText={(value: any) => {
+                    setEndereco({ ...endereco, numero: value });
                   }}
                 ></Input>
               </Stack>
@@ -74,7 +90,7 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
               p={2}
               placeholder={'Maringá'}
               onChangeText={(value: any) => {
-                setEndereco({ ...endereco, cidae: value });
+                setEndereco({ ...endereco, cidade: value });
               }}
             ></Input>
           </FormControl>
