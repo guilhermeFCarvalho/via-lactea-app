@@ -66,7 +66,8 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
               salvarUsuario(props.route.params);
             }}
           >
-            Finalizar
+            Finalizar 
+            
           </Button>
         </VStack>
       </ScrollView>
