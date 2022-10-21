@@ -9,6 +9,7 @@ interface Props {}
 export type RootStackParamList = {
   UsuarioForm: { id: string };
   FazendaForm: { id: string };
+  FinalizarCadastro:{id: string}
 };
 
 const Home: FunctionComponent<Props> = (props) => {
@@ -36,6 +37,16 @@ const Home: FunctionComponent<Props> = (props) => {
       >
         {' '}
         Formulario Fazenda{' '}
+      </Button>
+      <Button
+        m="5"
+        bg={'viaLacteaSecondary.blue'}
+        onPress={() =>
+          navigation.navigate('FinalizarCadastro', { id: 'FinalizarCadastro' })
+        }
+      >
+        {' '}
+        Finalizar Cadastro{' '}
       </Button>
     </NativeBaseProvider>
   );

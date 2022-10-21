@@ -8,6 +8,7 @@ const Stack = createNativeStackNavigator();
 import Home from "./src/screens/home/Home";
 import FazendaForm from "./src/screens/CadastroFazenda/FazendaForm";
 import UsuarioForm from "./src/screens/CadastroUsuario/UsuarioForm";
+import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="FazendaForm" component={FazendaForm} />
         <Stack.Screen name="UsuarioForm" component={UsuarioForm} />
+        <Stack.Screen name="FinalizarCadastro" component={FinalizarCadastro} />
       </Stack.Navigator>
     </NavigationContainer>
   );
