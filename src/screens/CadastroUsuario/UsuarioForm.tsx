@@ -6,10 +6,12 @@ import {
   NativeBaseProvider,
   Button,
   ScrollView,
+  Progress,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 
 import EmailValidator from 'email-validator';
+import StepsComponent from '../../components/StepsComponent';
 
 interface Props {
   navigation: any;
@@ -54,6 +56,9 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
+      <Center w={'100%'} h={"10%"}>
+        <Progress value={33} maxW={'80%'} />
+      </Center>
       <ScrollView>
         <Center px="8%" pt="2%" justifyContent={'space-between'}>
           <FormControl isRequired isInvalid={'nome' in erros}>
