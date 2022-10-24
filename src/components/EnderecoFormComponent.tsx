@@ -7,20 +7,20 @@ import {
   Stack,
   Button,
 } from 'native-base';
+
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
 const validate = () => {
   //todo
 };
 
-interface EnderecoComponentProps {
+interface Props {
   onSubmit: any;
 }
 
-const EnderecoFormComponent: FunctionComponent<EnderecoComponentProps> = (
-  props,
-) => {
+const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
   const [endereco, setEndereco] = React.useState({});
+  const [cep, setCep] = React.useState('');
 
   const handleSubmit = () => {
     props.onSubmit(endereco);
@@ -30,23 +30,39 @@ const EnderecoFormComponent: FunctionComponent<EnderecoComponentProps> = (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <Center px="8%" justifyContent={'space-between'}>
         <FormControl isRequired>
-          <FormControl.Label>{'Endereço'}</FormControl.Label>
+          <FormControl.Label>{'Rua/Estrada'}</FormControl.Label>
           <Input
             p={2}
-            placeholder={'Rodovia do Café, 23'}
+            placeholder={'Rodovia do Café'}
             onChangeText={(value: any) => {
               setEndereco({ ...endereco, rua: value });
+            }}
+          ></Input>
+          <FormControl.Label>{'Bairro'}</FormControl.Label>
+          <Input
+            p={2}
+            placeholder={'Capivari'}
+            onChangeText={(value: any) => {
+              setEndereco({ ...endereco, bairro: value });
+            }}
+          ></Input>
+          <FormControl.Label>{'CEP'}</FormControl.Label>
+          <Input
+            p={2}
+            placeholder={'00000-000'}
+            onChangeText={(value: any) => {
+              setEndereco({ ...endereco, cep: value });
             }}
           ></Input>
 
           <Stack direction={'row'} justifyContent={'space-between'}>
             <Stack width={'50%'}>
-              <FormControl.Label>{'CEP'}</FormControl.Label>
+              <FormControl.Label>{'numero'}</FormControl.Label>
               <Input
                 p={2}
-                placeholder={'00000-000'}
+                placeholder={'0000'}
                 onChangeText={(value: any) => {
-                  setEndereco({ ...endereco, cep: value });
+                  setEndereco({ ...endereco, numero: value });
                 }}
               ></Input>
             </Stack>
@@ -68,7 +84,7 @@ const EnderecoFormComponent: FunctionComponent<EnderecoComponentProps> = (
             p={2}
             placeholder={'Maringá'}
             onChangeText={(value: any) => {
-              setEndereco({ ...endereco, cidae: value });
+              setEndereco({ ...endereco, cidade: value });
             }}
           ></Input>
         </FormControl>

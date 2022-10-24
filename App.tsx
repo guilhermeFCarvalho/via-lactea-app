@@ -5,9 +5,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-import Home from './src/screens/home/Home';
-import FazendaForm from './src/components/FazendaFormComponent';
-import UsuarioForm from './src/components/UsuarioFormComponent';
+import Home from "./src/screens/home/Home";
+import FazendaForm from "./src/screens/CadastroFazenda/FazendaForm";
+import UsuarioForm from "./src/screens/CadastroUsuario/UsuarioForm";
+import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
+
 
 export default function App() {
   return (
@@ -16,6 +18,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="FazendaForm" component={FazendaForm} />
         <Stack.Screen name="UsuarioForm" component={UsuarioForm} />
+        <Stack.Screen name="FinalizarCadastro" component={FinalizarCadastro} />
       </Stack.Navigator>
     </NavigationContainer>
   );
