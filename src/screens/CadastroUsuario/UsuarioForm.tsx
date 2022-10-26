@@ -13,6 +13,7 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import EmailValidator from 'email-validator';
 import StepsComponent from '../../components/StepsComponent';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import PasswordInputComponent from '../../components/PasswordInputComponent';
 
 interface Props {}
 
@@ -68,11 +69,10 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
     return true;
   };
   const showProgress = (value) => {
-    if(route.params.id === 'Novo'){
-      return <Progress value={value}></Progress>
+    if (route.params.id === 'Novo') {
+      return <Progress value={value}></Progress>;
     }
-
-  }
+  };
 
   React.useEffect(() => {
     setErros({});
@@ -141,21 +141,20 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
           </FormControl>
 
           <FormControl isRequired isInvalid={'senha' in erros}>
-            <FormControl.Label>Senha</FormControl.Label>
-            <Input
-              type="password"
+            <PasswordInputComponent
               onChangeText={(value: any) => {
                 setSenha(value);
               }}
-            ></Input>
+              label={'Senha'}
+            ></PasswordInputComponent>
             <FormControl.ErrorMessage>{erros.senha}</FormControl.ErrorMessage>
-            <FormControl.Label>Confirmar senha</FormControl.Label>
-            <Input
-              type="password"
+
+            <PasswordInputComponent
               onChangeText={(value: any) => {
                 validatePassword(value);
               }}
-            ></Input>
+              label={'Confirmar Senha'}
+            ></PasswordInputComponent>
             <FormControl.ErrorMessage>{erros.senha}</FormControl.ErrorMessage>
           </FormControl>
         </Center>

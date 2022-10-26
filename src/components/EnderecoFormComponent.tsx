@@ -57,8 +57,8 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
           ></Input>
 
           <Stack direction={'row'} justifyContent={'space-between'}>
-            <Stack width={'50%'}>
-              <FormControl.Label>{'numero'}</FormControl.Label>
+            <Stack width={'40%'}>
+              <FormControl.Label>{'Número'}</FormControl.Label>
               <Input
                 p={2}
                 placeholder={'0000'}
@@ -68,7 +68,7 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
               ></Input>
             </Stack>
 
-            <Stack>
+            <Stack width={'40%'}>
               <FormControl.Label>{'Estado'}</FormControl.Label>
               <Select
                 placeholder="AL"
