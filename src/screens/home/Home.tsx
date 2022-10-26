@@ -48,6 +48,18 @@ const Home: FunctionComponent<Props> = (props) => {
         {' '}
         Finalizar Cadastro{' '}
       </Button>
+
+      <Button
+        m="5"
+        bg={'viaLacteaSecondary.blue'}
+        onPress={() =>
+          navigation.navigate('ReciboDeVendaList', { })
+        }
+      >
+        {' '}
+       Recibo de Venda{' '}
+      </Button>
+      
     </NativeBaseProvider>
   );
 };
