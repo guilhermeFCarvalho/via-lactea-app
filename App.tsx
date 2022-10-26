@@ -11,12 +11,14 @@ import UsuarioForm from "./src/screens/CadastroUsuario/UsuarioForm";
 import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
 import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
+import LoginPage from './src/screens/Login/LoginPage';
 
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="FazendaForm" component={FazendaForm} />
         <Stack.Screen name="UsuarioForm" component={UsuarioForm} />
