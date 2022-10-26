@@ -22,7 +22,7 @@ const Home: FunctionComponent<Props> = (props) => {
         m="5"
         bg={'viaLacteaSecondary.blue'}
         onPress={() =>
-          navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
+          navigation.navigate('UsuarioForm', { id: 'Novo' })
         }
       >
         {' '}
@@ -32,7 +32,7 @@ const Home: FunctionComponent<Props> = (props) => {
         m="5"
         bg={'viaLacteaSecondary.blue'}
         onPress={() =>
-          navigation.navigate('FazendaForm', { id: 'FazendaForm' })
+          navigation.navigate('FazendaForm', { id: 'Novo' })
         }
       >
         {' '}

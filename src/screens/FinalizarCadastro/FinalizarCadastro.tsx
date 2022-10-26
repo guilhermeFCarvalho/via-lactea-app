@@ -1,3 +1,4 @@
+import { useNavigation, useRoute } from '@react-navigation/native';
 import {
   Box,
   Center,
@@ -7,6 +8,7 @@ import {
   HStack,
   ScrollView,
   Button,
+  Progress,
 } from 'native-base';
 import React from 'react';
 import { FunctionComponent } from 'react';
@@ -20,6 +22,10 @@ interface Props {
 }
 
 const FinalizarCadastro: FunctionComponent<Props> = (props) => {
+
+  const navigation =  useNavigation();
+  const route = useRoute();
+
   const salvarUsuario = (userData: object) => {
     UsuarioService.salvar({
       propriedades: [
@@ -29,6 +35,7 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
           fazenda: {
             nomeDaFazenda: userData.fazenda.nome,
             endereco: {
+              endereco: userData.endereco.estado,
               rua: userData.endereco.rua,
               numero: userData.endereco.numero,
               bairro: userData.endereco.bairro,
@@ -48,22 +55,24 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
+        <Progress value={60}></Progress>
         <VStack space={6} p="12%">
           <CardButtonComponent
             title="Cadastrar coletor"
             subtitle="Cadastre os coletores que irão comprar leite da sua fazenda"
-          ></CardButtonComponent>
+            ></CardButtonComponent>
           <CardButtonComponent
             title="Cadastrar animais"
             subtitle="Cadastre os animais que você possui em sua fazenda"
-          ></CardButtonComponent>
+            ></CardButtonComponent>
           <CardButtonComponent
             title="Cadastrar fazenda"
             subtitle="Cadastre outras fazendas que deseja gerenciar no sistema"
+            screen={'FazendaForm'}
           ></CardButtonComponent>
           <Button
             onPress={() => {
-              salvarUsuario(props.route.params);
+              salvarUsuario(route.params);
             }}
           >
             Finalizar 

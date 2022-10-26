@@ -6,8 +6,9 @@ import {
   NativeBaseProvider,
   Stack,
   Button,
+  Select,
 } from 'native-base';
-
+import { estados } from '../utils/Estados';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
 const validate = () => {
@@ -69,13 +70,18 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
 
             <Stack>
               <FormControl.Label>{'Estado'}</FormControl.Label>
-              <Input
-                p={2}
-                placeholder={'AL'}
-                onChangeText={(value: any) => {
+              <Select
+                placeholder="AL"
+                onValueChange={(value: any) => {
                   setEndereco({ ...endereco, estado: value });
                 }}
-              ></Input>
+              >
+                {estados.map((element) => {
+                  return (
+                    <Select.Item label={element.sigla} value={element.sigla} />
+                  );
+                })}
+              </Select>
             </Stack>
           </Stack>
 
