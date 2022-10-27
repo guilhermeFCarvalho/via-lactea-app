@@ -2,19 +2,16 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   NativeBaseProvider,
   Button,
-  Text,
-  Container,
   Box,
   Heading,
-  VStack,
-  HStack,
-  Spacer,
 } from "native-base";
 import { viaLacteaTheme } from "../../config/theme/ColorTheme";
 import { ReciboDeVenda } from "../../types/ReciboDeVenda";
 import ReciboDeVendaCard from "./components/ReciboDeVendaCardComponent";
 import ReciboDeVendaService from "../../service/reciboDeVendaService/ReciboDeVendaServices";
 import { useNavigation } from "@react-navigation/native";
+
+
 
 const validate = () => {
   //todo
@@ -37,16 +34,19 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
 
   const navigation = useNavigation();
 
+
+
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <Button
         mt={"4%"}
-        onPress={() => navigation.navigate("ReciboDeVendaForm", {})}
+        onPress={() => {
+          navigation.navigate("ReciboDeVendaForm", {})
+        }}
       >
         {" "}
         Adicionar Recibo{" "}
       </Button>
-
       <Heading fontSize="xl" p="4" pb="3">
         Recibos
       </Heading>
@@ -57,7 +57,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
             <Box >
               <ReciboDeVendaCard recibo={item}> </ReciboDeVendaCard>
             </Box>
-          </>
+|          </>
         );
       })}
     </NativeBaseProvider>

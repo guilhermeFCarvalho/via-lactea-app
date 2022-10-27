@@ -7,10 +7,10 @@ import {
   Container,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
-
 import { useNavigation } from '@react-navigation/core';
 import { Login } from '../../types/Login';
 import axios from 'axios';
+import AuthService from '../../service/AuthService/AuthService';
 
 const validate = () => {
   //todo
@@ -25,13 +25,12 @@ const LoginPage: FunctionComponent<Props> = (props) => {
   const handleClick = () => setShow(!show);
 
   function handleLogin() {
-    axios.post(`http://localhost:8080/api/auth/signin`, login).then((response) => console.log(response));
-    
+    AuthService.login(login)
   } 
 
 
   const [login, setLogin] = React.useState<Login>({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -46,7 +45,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
             p={2}
             placeholder={'Digite aqui...'}
             onChangeText={(value: any) => {
-              setLogin({ ...login, username: value });
+              setLogin({ ...login, email: value });
             }}
           ></Input>
 
