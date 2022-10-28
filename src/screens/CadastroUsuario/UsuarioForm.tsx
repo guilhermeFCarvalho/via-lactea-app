@@ -50,7 +50,11 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
       setErros({ ...erros, sobrenome: 'Informe sobrenome' });
       return false;
     }
-    if (usuario.telefone === undefined || usuario.telefone === '') {
+    if (
+      usuario.telefone === undefined ||
+      usuario.telefone === '' ||
+      usuario.telefone.length > 11
+    ) {
       setErros({ ...erros, telefone: 'Informe um telefone' });
       return false;
     }
@@ -62,7 +66,11 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
       setErros({ ...erros, senha: 'senha inválida' });
       return false;
     }
-    if (usuario.cpf === undefined || usuario.cpf === '') {
+    if (
+      usuario.cpf === undefined ||
+      usuario.cpf === '' ||
+      usuario.cpf.length != 11
+    ) {
       setErros({ ...erros, cpf: 'cpf inválido' });
       return false;
     }

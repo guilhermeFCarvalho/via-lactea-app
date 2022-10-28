@@ -11,26 +11,65 @@ import {
 import { estados } from '../utils/Estados';
 import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
-const validate = () => {
-  //todo
-};
-
 interface Props {
   onSubmit: any;
 }
 
 const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
   const [endereco, setEndereco] = React.useState({});
-  const [cep, setCep] = React.useState('');
+  const [erros, setErros] = React.useState({});
+
+  const validate = () => {
+    if (endereco.rua === undefined || endereco.rua === '') {
+      setErros({ ...erros, rua: 'Informe uma rua' });
+      return false;
+    }
+    if (endereco.bairro === undefined || endereco.bairro === '') {
+      setErros({ ...erros, bairro: 'Informe um bairro' });
+      return false;
+    }
+    if (
+      endereco.cep === undefined ||
+      endereco.cep === '' ||
+      endereco.cep.length != 8
+    ) {
+      setErros({ ...erros, cep: 'Informe um CEP válido (somente números)' });
+      return false;
+    }
+    if (
+      endereco.numero === undefined ||
+      endereco.numero === '' ||
+      endereco.numero.length > 8
+    ) {
+      setErros({ ...erros, numero: 'Informe um numero válido' });
+      return false;
+    }
+    if (endereco.estado === undefined || endereco.estado === '') {
+      setErros({...erros, estado: 'Informe um estado'})
+      return false;
+    }
+    if (endereco.cidade === undefined || endereco.cidade === '') {
+      setErros({ ...erros, cidade: 'Informe uma cidade' });
+      return false;
+    }
+    return true;
+  };
+
+  React.useEffect(() => {
+    setErros({});
+  }, [endereco]);
 
   const handleSubmit = () => {
-    props.onSubmit(endereco);
+    if (validate()) {
+      props.onSubmit(endereco);
+    }
+    props.onSubmit('erro');
   };
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <Center px="8%" justifyContent={'space-between'}>
-        <FormControl isRequired>
+        <FormControl isRequired isInvalid={'rua' in erros}>
           <FormControl.Label>{'Rua/Estrada'}</FormControl.Label>
           <Input
             p={2}
@@ -39,6 +78,9 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
               setEndereco({ ...endereco, rua: value });
             }}
           ></Input>
+          <FormControl.ErrorMessage>{erros.rua}</FormControl.ErrorMessage>
+        </FormControl>
+        <FormControl isRequired isInvalid={'bairro' in erros}>
           <FormControl.Label>{'Bairro'}</FormControl.Label>
           <Input
             p={2}
@@ -47,6 +89,9 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
               setEndereco({ ...endereco, bairro: value });
             }}
           ></Input>
+          <FormControl.ErrorMessage>{erros.bairro}</FormControl.ErrorMessage>
+        </FormControl>
+        <FormControl isRequired isInvalid={'cep' in erros}>
           <FormControl.Label>{'CEP'}</FormControl.Label>
           <Input
             p={2}
@@ -55,9 +100,12 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
               setEndereco({ ...endereco, cep: value });
             }}
           ></Input>
+          <FormControl.ErrorMessage>{erros.cep}</FormControl.ErrorMessage>
+        </FormControl>
 
-          <Stack direction={'row'} justifyContent={'space-between'}>
-            <Stack width={'40%'}>
+        <Stack direction={'row'} justifyContent={'space-between'}>
+          <Stack width={'40%'}>
+            <FormControl isRequired isInvalid={'numero' in erros}>
               <FormControl.Label>{'Número'}</FormControl.Label>
               <Input
                 p={2}
@@ -66,9 +114,14 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
                   setEndereco({ ...endereco, numero: value });
                 }}
               ></Input>
-            </Stack>
+              <FormControl.ErrorMessage>
+                {erros.numero}
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </Stack>
 
-            <Stack width={'40%'}>
+          <Stack width={'40%'}>
+            <FormControl isRequired isInvalid={'estado' in erros}>
               <FormControl.Label>{'Estado'}</FormControl.Label>
               <Select
                 placeholder="AL"
@@ -82,9 +135,13 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
                   );
                 })}
               </Select>
-            </Stack>
+              <FormControl.ErrorMessage>
+                {erros.estado}
+              </FormControl.ErrorMessage>
+            </FormControl>
           </Stack>
-
+        </Stack>
+        <FormControl isRequired isInvalid={'cidade' in erros}>
           <FormControl.Label>{'Cidade'}</FormControl.Label>
           <Input
             p={2}
@@ -93,6 +150,7 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
               setEndereco({ ...endereco, cidade: value });
             }}
           ></Input>
+          <FormControl.ErrorMessage>{erros.cidade}</FormControl.ErrorMessage>
         </FormControl>
       </Center>
       <Button m={'8%'} onPress={handleSubmit}>
