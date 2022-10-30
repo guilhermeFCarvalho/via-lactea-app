@@ -9,7 +9,7 @@ import Home from "./src/screens/home/Home";
 import FazendaForm from "./src/screens/CadastroFazenda/FazendaForm";
 import UsuarioForm from "./src/screens/CadastroUsuario/UsuarioForm";
 import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
-import CompradorForm from './src/screens/CadastroColetor/CompradorForm';
+import CompradorForm from './src/screens/Comprador/CompradorForm';
 
 
 export default function App() {
