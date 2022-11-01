@@ -1,25 +1,40 @@
-import React from "react"
-import UsuarioForm from "../../src/screens/CadastroUsuario/UsuarioForm"
+import React from 'react';
+import { Text } from 'react-native';
 import { render, screen, fireEvent } from '@testing-library/react-native';
+import UsuarioForm from '../UsuarioForm';
+import { NativeBaseProvider } from 'native-base';
 
-// it('passando informações corretas, usuário passa para tela de cadastro de fazenda',()=>{
-//     const { getByPlaceholderText, getAllByText } = render(
-//         <UsuarioForm/>
-//     );
+const inset = {
+  frame: { x: 0, y: 0, width: 0, height: 0 },
+  insets: { top: 0, left: 0, right: 0, bottom: 0 },
+};
 
-//     fireEvent.changeText(
-//         getByPlaceholderText('Jorge'),
-//         'Guilherme'
-//     )
+jest.mock('@react-navigation/native', () => {
+  return {
+    useNavigation: jest.fn(),
+    useRoute: jest.fn().mockReturnValue({ params: { id: 'Novo' } }),
+  };
+});
+it('passando informações corretas, usuário passa para tela de cadastro de fazenda', () => {
+  render(
+    <NativeBaseProvider initialWindowMetrics={inset}>
+      <UsuarioForm />
+    </NativeBaseProvider>,
+  );
+  const input = screen.getByTestId('input_nome', { exact: false })
 
-//     const nomeElements = getAllByText('Guilherme');
-//     expect(nomeElements).toHaveLength(1);
-// });
+  fireEvent.changeText(input, 'Guilherme');
 
 
-
-it('adds 1 + 2 to equal 3', () => {
-  expect(1+1).toBe(2);
+  const nomeElements = screen.getByText('Guilherme', {exact:false});
+  expect(nomeElements).toHaveLength(1);
 });
 
-
+// const ComponentTest = () => {
+//   return <Text>test</Text>;
+// };
+// it('adds 1 + 2 to equal 3', () => {
+//   render(<ComponentTest />);
+//   const result = screen.getByText('test')
+//   expect(result).toBeTruthy()
+// });

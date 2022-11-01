@@ -11,7 +11,6 @@ import {
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 
 import EmailValidator from 'email-validator';
-import StepsComponent from '../../components/StepsComponent';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import PasswordInputComponent from '../../components/PasswordInputComponent';
 
@@ -51,6 +50,14 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
       return false;
     }
     if (
+      usuario.cpf === undefined ||
+      usuario.cpf === '' ||
+      usuario.cpf.length != 11
+    ) {
+      setErros({ ...erros, cpf: 'cpf inválido' });
+      return false;
+    }
+    if (
       usuario.telefone === undefined ||
       usuario.telefone === '' ||
       usuario.telefone.length > 11
@@ -66,14 +73,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
       setErros({ ...erros, senha: 'senha inválida' });
       return false;
     }
-    if (
-      usuario.cpf === undefined ||
-      usuario.cpf === '' ||
-      usuario.cpf.length != 11
-    ) {
-      setErros({ ...erros, cpf: 'cpf inválido' });
-      return false;
-    }
+    
     return true;
   };
   const showProgress = (value) => {
@@ -94,6 +94,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
           <FormControl isRequired isInvalid={'nome' in erros}>
             <FormControl.Label>Nome</FormControl.Label>
             <Input
+              testID="input_nome"
               placeholder="Jorge"
               onChangeText={(value: any) => {
                 setUsuario({ ...usuario, nome: value });
