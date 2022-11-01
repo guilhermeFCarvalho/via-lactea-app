@@ -1,6 +1,6 @@
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Login } from "../../types/Login";
-import { ReciboDeVenda } from "../../types/ReciboDeVenda";
 import api from "../api";
 
 const AuthService = {
@@ -8,9 +8,8 @@ const AuthService = {
   login : function(login:Login) {
       api.post(`/api/auth/signin`, login)
       .then((response:any) => {
-        localStorage.setItem('token', response.data.token)
+        AsyncStorage.setItem('Token', response.data.token)
       })
-        
   },
 
 

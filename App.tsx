@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -12,11 +12,18 @@ import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro
 import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
 import LoginPage from './src/screens/Login/LoginPage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function App() {
+
+  useEffect(() => {
+    AsyncStorage.clear()
+  }, []) 
+  
+
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="Home" component={Home} />
