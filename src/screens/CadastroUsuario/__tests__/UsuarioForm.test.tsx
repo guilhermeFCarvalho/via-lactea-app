@@ -21,13 +21,23 @@ it('passando informações corretas, usuário passa para tela de cadastro de faz
       <UsuarioForm />
     </NativeBaseProvider>,
   );
-  const input = screen.getByTestId('input_nome', { exact: false })
+  const input = screen.getByTestId('input_nome', { exact: false });
+
+  const setStateMock = jest.fn();
+  jest.mock('React', () => {
+    return {
+      useEffect: jest.fn()
+    }
+  })
+  const useStateMock: any = (useState: any) => [useState, setStateMock];
+  jest.spyOn(React, 'useState').mockImplementation(useStateMock);
 
   fireEvent.changeText(input, 'Guilherme');
 
+  expect(setStateMock).toHaveBeenCalledWith('Guilherme');
 
-  const nomeElements = screen.getByText('Guilherme', {exact:false});
-  expect(nomeElements).toHaveLength(1);
+  // const nomeElements = screen.getByText('Guilherme', {exact:false});
+  // expect(nomeElements).toHaveLength(1);
 });
 
 // const ComponentTest = () => {
