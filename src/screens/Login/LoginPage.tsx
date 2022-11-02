@@ -26,6 +26,10 @@ const LoginPage: FunctionComponent<Props> = (props) => {
 
   function handleLogin() {
     AuthService.login(login)
+
+    navigation.navigate("Home")
+
+
   } 
 
 

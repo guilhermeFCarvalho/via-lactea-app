@@ -3,6 +3,10 @@ import React, { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import PessoaService from '../../service/PessoaService/PessoaService';
+import axios from 'axios';
+import UsuarioService from '../../service/UsuarioService/UsuarioService';
+import UsuarioUtils from '../../utils/UsuarioUtils';
 
 interface Props {}
 
@@ -15,6 +19,11 @@ export type RootStackParamList = {
 const Home: FunctionComponent<Props> = (props) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+
+  const meuTeste = () => { 
+      PessoaService.getPrincipaisInformacoesDoUsuario();
+  }
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
@@ -71,6 +80,18 @@ const Home: FunctionComponent<Props> = (props) => {
         Login Page{' '}
       </Button>
       
+      <Button
+        m="5"
+        bg={'viaLacteaSecondary.blue'}
+        onPress={() =>
+          meuTeste()
+        }
+      >
+        {' '}
+        botao teste will{' '}
+      </Button>
+      
+
     </NativeBaseProvider>
   );
 };
