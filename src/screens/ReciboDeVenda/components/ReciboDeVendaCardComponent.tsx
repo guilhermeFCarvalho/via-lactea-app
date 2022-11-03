@@ -9,9 +9,10 @@ import {
   Input,
   Checkbox,
 } from 'native-base';
+import React from 'react';
 import { FunctionComponent } from 'react';
-import React = require('react');
-import { format } from "date-fns";
+
+
 
 
 import { ReciboDeVenda } from '../../../types/ReciboDeVenda';
@@ -46,7 +47,7 @@ const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
           Coleta #{props.recibo.id}
         </Text>
         <Text fontWeight={'medium'} fontSize={'xl'}>
-          {format(props.recibo.dataDaVenda, 'YYYYDDMM')}
+         {props.recibo.dataDaVenda}
         </Text>
       </HStack>
       <Divider />
