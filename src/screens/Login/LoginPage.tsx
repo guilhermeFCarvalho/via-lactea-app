@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/core';
 import { Login } from '../../types/Login';
 import axios from 'axios';
 import AuthService from '../../service/AuthService/AuthService';
+import PessoaService from '../../service/PessoaService/PessoaService';
 
 const validate = () => {
   //todo
@@ -24,12 +25,10 @@ const LoginPage: FunctionComponent<Props> = (props) => {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  function handleLogin() {
-    AuthService.login(login)
+  async function handleLogin() {
+    await AuthService.login(login)
 
-    navigation.navigate("Home")
-
-
+    setTimeout(()=> PessoaService.getPrincipaisInformacoesDoUsuario(),1000)
   } 
 
 
