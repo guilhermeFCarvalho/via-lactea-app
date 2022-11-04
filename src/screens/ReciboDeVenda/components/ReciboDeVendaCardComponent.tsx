@@ -12,18 +12,19 @@ import {
 import React from 'react';
 import { FunctionComponent } from 'react';
 
-
-
-
 import { ReciboDeVenda } from '../../../types/ReciboDeVenda';
-
-
-
 
 interface Props {
   recibo: ReciboDeVenda;
 }
 
+const formatDate = (date: Date | string) => {
+  const splitDate: string[] = date.toString().split(',').reverse();
+  if (splitDate[0].length == 1) {
+    splitDate[0] = '0'.concat(splitDate[0]);
+  }
+  return splitDate.join('/');
+};
 const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
   const mostrarObservacoes = () => {
     if (props.recibo.observacoes) {
@@ -47,7 +48,7 @@ const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
           Coleta #{props.recibo.id}
         </Text>
         <Text fontWeight={'medium'} fontSize={'xl'}>
-         {props.recibo.dataDaVenda}
+          {formatDate(props.recibo.dataDaVenda)}
         </Text>
       </HStack>
       <Divider />
