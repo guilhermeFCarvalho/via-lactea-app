@@ -63,9 +63,6 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
     }
   };
 
-  useEffect(() => {
-    console.log(route.params);
-  }, []);
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>

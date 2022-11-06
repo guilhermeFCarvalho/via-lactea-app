@@ -26,29 +26,29 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
   const navigation =  useNavigation();
   const route = useRoute();
 
-  const salvarUsuario = (userData: object) => {
+  const salvarUsuario = () => {
     UsuarioService.salvar({
       propriedades: [
         {
-          car: userData.fazenda.car,
-          telefone: userData.fazenda.telefone,
+          car: route.params.fazenda.car,
+          telefone: route.params.fazenda.telefone,
           fazenda: {
-            nomeDaFazenda: userData.fazenda.nome,
+            nomeDaFazenda: route.params.fazenda.nome,
             endereco: {
-              endereco: userData.endereco.estado,
-              rua: userData.endereco.rua,
-              numero: userData.endereco.numero,
-              bairro: userData.endereco.bairro,
-              cidade: userData.endereco.cidade,
-              cep: userData.endereco.cep,
+              endereco: route.params.endereco.estado,
+              rua: route.params.endereco.rua,
+              numero: route.params.endereco.numero,
+              bairro: route.params.endereco.bairro,
+              cidade: route.params.endereco.cidade,
+              cep: route.params.endereco.cep,
             },
           },
         },
       ],
-      telefone: userData.usuario.telefone,
-      nome: userData.usuario.nome,
-      sobrenome: userData.usuario.sobrenome,
-      cpf: userData.usuario.cpf,
+      telefone: route.params.usuario.telefone,
+      nome: route.params.usuario.nome,
+      sobrenome: route.params.usuario.sobrenome,
+      cpf: route.params.usuario.cpf,
     });
   };
 
@@ -72,7 +72,7 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
           ></CardButtonComponent>
           <Button
             onPress={() => {
-              salvarUsuario(route.params);
+              salvarUsuario();
             }}
           >
             Finalizar 

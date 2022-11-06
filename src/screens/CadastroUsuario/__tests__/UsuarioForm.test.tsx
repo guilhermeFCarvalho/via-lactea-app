@@ -40,11 +40,4 @@ it('passando informações corretas, usuário passa para tela de cadastro de faz
   // expect(nomeElements).toHaveLength(1);
 });
 
-// const ComponentTest = () => {
-//   return <Text>test</Text>;
-// };
-// it('adds 1 + 2 to equal 3', () => {
-//   render(<ComponentTest />);
-//   const result = screen.getByText('test')
-//   expect(result).toBeTruthy()
-// });
+
