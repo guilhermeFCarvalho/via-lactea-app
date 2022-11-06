@@ -11,7 +11,7 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import EnderecoFormComponent from '../../components/EnderecoFormComponent';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-//Utilizar API ViaCep
+
 
 interface Props {}
 
