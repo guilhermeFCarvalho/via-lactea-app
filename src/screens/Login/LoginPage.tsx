@@ -9,7 +9,6 @@ import {
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/core';
 import { Login } from '../../types/Login';
-import axios from 'axios';
 import AuthService from '../../service/AuthService/AuthService';
 import PessoaService from '../../service/PessoaService/PessoaService';
 
@@ -26,9 +25,13 @@ const LoginPage: FunctionComponent<Props> = (props) => {
   const handleClick = () => setShow(!show);
 
   async function handleLogin() {
-    await AuthService.login(login)
-
-    setTimeout(()=> PessoaService.getPrincipaisInformacoesDoUsuario(),1000)
+    try{
+      await AuthService.login(login)
+      setTimeout(()=> PessoaService.getPrincipaisInformacoesDoUsuario(),1000)
+    } catch(error) {
+      console.log(error)
+   }
+  
   } 
 
 
