@@ -12,19 +12,34 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 
 import EmailValidator from 'email-validator';
 import StepsComponent from '../../components/StepsComponent';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import PasswordInputComponent from '../../components/PasswordInputComponent';
 
-interface Props {
-  navigation: any;
-}
+interface Props {}
 
 const UsuarioForm: FunctionComponent<Props> = (props) => {
   const [usuario, setUsuario] = React.useState({});
   const [senha, setSenha] = React.useState('');
   const [erros, setErros] = React.useState({});
 
-  React.useEffect(() => {
-    setErros({});
-  }, [usuario]);
+  const navigation = useNavigation();
+  const route = useRoute();
+
+  const isNew = () => {
+    return route.params.id === 'Novo';
+  };
+
+  const goToFazendaForm = () => {
+    validate() && isNew()
+      ? navigation.navigate('FazendaForm', usuario)
+      : console.log(erros);
+  };
+
+  const validatePassword = (value) => {
+    value == senha
+      ? setUsuario({ ...usuario, senha: value })
+      : setErros({ ...erros, senha: 'senha não bate' });
+  };
 
   const validate = () => {
     if (usuario.nome === undefined || usuario.nome === '') {
@@ -53,13 +68,20 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
     }
     return true;
   };
+  const showProgress = (value) => {
+    if (route.params.id === 'Novo') {
+      return <Progress value={value}></Progress>;
+    }
+  };
+
+  React.useEffect(() => {
+    setErros({});
+  }, [usuario]);
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <Center w={'100%'} h={"10%"}>
-        <Progress value={33} maxW={'80%'} />
-      </Center>
       <ScrollView>
+        {showProgress(1)}
         <Center px="8%" pt="2%" justifyContent={'space-between'}>
           <FormControl isRequired isInvalid={'nome' in erros}>
             <FormControl.Label>Nome</FormControl.Label>
@@ -119,30 +141,27 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
           </FormControl>
 
           <FormControl isRequired isInvalid={'senha' in erros}>
-            <FormControl.Label>Senha</FormControl.Label>
-            <Input
+            <PasswordInputComponent
               onChangeText={(value: any) => {
                 setSenha(value);
               }}
-            ></Input>
+              label={'Senha'}
+            ></PasswordInputComponent>
             <FormControl.ErrorMessage>{erros.senha}</FormControl.ErrorMessage>
-            <FormControl.Label>Confirmar senha</FormControl.Label>
-            <Input
+
+            <PasswordInputComponent
               onChangeText={(value: any) => {
-                value == senha
-                  ? setUsuario({ ...usuario, senha: value })
-                  : setErros({ ...erros, senha: 'senha não bate' });
+                validatePassword(value);
               }}
-            ></Input>
+              label={'Confirmar Senha'}
+            ></PasswordInputComponent>
             <FormControl.ErrorMessage>{erros.senha}</FormControl.ErrorMessage>
           </FormControl>
         </Center>
         <Button
           m="8%"
           onPress={() => {
-            validate()
-              ? props.navigation.navigate('FazendaForm', usuario)
-              : console.log(erros);
+            goToFazendaForm();
           }}
         >
           Próximo
