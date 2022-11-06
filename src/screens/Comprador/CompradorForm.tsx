@@ -12,11 +12,7 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import CompradorService from '../../service/CompradorService/CompradorService';
 
 interface Props {}
-// "telefone": "string",
-//   "razaoSocial": "string",
-//   "inscricaoEstadual": "string",
-//   "cnpj": "string"
-// }
+
 
 const CompradorForm: FunctionComponent<Props> = () => {
   const [comprador, setComprador] = useState({});
