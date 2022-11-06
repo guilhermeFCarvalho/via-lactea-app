@@ -10,9 +10,9 @@ export type RootStackParamList = {
   UsuarioForm: { id: string };
   FazendaForm: { id: string };
   FinalizarCadastro: { id: string };
-  ReciboDeVendaForm: {id: string};
-  ReciboDeVendaList: {id: string}
-  CompradorForm: { id: string };
+  ColetorForm: { id: string };
+  ReciboDeVendaList:{ id: string};
+  CompradorForm: {id: string};
 };
 
 const Home: FunctionComponent<Props> = (props) => {
@@ -22,6 +22,48 @@ const Home: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
+          }
+        >
+          {' '}
+          Formulario Usuario{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FazendaForm', { id: 'FazendaForm' })
+          }
+        >
+          {' '}
+          Formulario Fazenda{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FinalizarCadastro', {
+              id: 'FinalizarCadastro',
+            })
+          }
+        >
+          {' '}
+          Finalizar Cadastro{' '}
+        </Button>
+
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('ReciboDeVendaList', {})}
+        >
+          {' '}
+          Recibo de Venda{' '}
+        </Button>
+
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
@@ -49,22 +91,6 @@ const Home: FunctionComponent<Props> = (props) => {
         >
           {' '}
           Finalizar Cadastro{' '}
-        </Button>
-        <Button
-          m="5"
-          bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('ReciboDeVendaForm', { id: 'Novo' })}
-        >
-          {' '}
-          Recibo Venda Form{' '}
-        </Button>
-        <Button
-          m="5"
-          bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('ReciboDeVendaList', { id: 'Novo' })}
-        >
-          {' '}
-          Recibo Venda List{' '}
         </Button>
         <Button
           m="5"
