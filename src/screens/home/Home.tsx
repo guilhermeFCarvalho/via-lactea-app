@@ -11,6 +11,8 @@ export type RootStackParamList = {
   FazendaForm: { id: string };
   FinalizarCadastro: { id: string };
   ColetorForm: { id: string };
+  ReciboDeVendaList:{ id: string};
+  CompradorForm: {id: string};
 };
 
 const Home: FunctionComponent<Props> = (props) => {
@@ -20,6 +22,48 @@ const Home: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
+          }
+        >
+          {' '}
+          Formulario Usuario{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FazendaForm', { id: 'FazendaForm' })
+          }
+        >
+          {' '}
+          Formulario Fazenda{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FinalizarCadastro', {
+              id: 'FinalizarCadastro',
+            })
+          }
+        >
+          {' '}
+          Finalizar Cadastro{' '}
+        </Button>
+
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('ReciboDeVendaList', {})}
+        >
+          {' '}
+          Recibo de Venda{' '}
+        </Button>
+
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
@@ -54,7 +98,7 @@ const Home: FunctionComponent<Props> = (props) => {
           onPress={() => navigation.navigate('CompradorForm', { id: 'Novo' })}
         >
           {' '}
-           Cadastrar Comprador{' '}
+          Cadastrar Comprador{' '}
         </Button>
       </ScrollView>
     </NativeBaseProvider>
