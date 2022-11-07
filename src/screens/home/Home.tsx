@@ -1,4 +1,4 @@
-import { NativeBaseProvider, Button } from 'native-base';
+import { NativeBaseProvider, Button, ScrollView } from 'native-base';
 import React, { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +13,10 @@ interface Props {}
 export type RootStackParamList = {
   UsuarioForm: { id: string };
   FazendaForm: { id: string };
-  FinalizarCadastro:{id: string}
+  FinalizarCadastro: { id: string };
+  ColetorForm: { id: string };
+  ReciboDeVendaList:{ id: string};
+  CompradorForm: {id: string};
 };
 
 const Home: FunctionComponent<Props> = (props) => {
@@ -27,49 +30,87 @@ const Home: FunctionComponent<Props> = (props) => {
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <Button
-        m="5"
-        bg={'viaLacteaSecondary.blue'}
-        onPress={() =>
-          navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
-        }
-      >
-        {' '}
-        Formulario Usuario{' '}
-      </Button>
-      <Button
-        m="5"
-        bg={'viaLacteaSecondary.blue'}
-        onPress={() =>
-          navigation.navigate('FazendaForm', { id: 'FazendaForm' })
-        }
-      >
-        {' '}
-        Formulario Fazenda{' '}
-      </Button>
-      <Button
-        m="5"
-        bg={'viaLacteaSecondary.blue'}
-        onPress={() =>
-          navigation.navigate('FinalizarCadastro', { id: 'FinalizarCadastro' })
-        }
-      >
-        {' '}
-        Finalizar Cadastro{' '}
-      </Button>
+      <ScrollView>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
+          }
+        >
+          {' '}
+          Formulario Usuario{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FazendaForm', { id: 'FazendaForm' })
+          }
+        >
+          {' '}
+          Formulario Fazenda{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FinalizarCadastro', {
+              id: 'FinalizarCadastro',
+            })
+          }
+        >
+          {' '}
+          Finalizar Cadastro{' '}
+        </Button>
 
-      <Button
-        m="5"
-        bg={'viaLacteaSecondary.blue'}
-        onPress={() =>
-          navigation.navigate('ReciboDeVendaList', { })
-        }
-      >
-        {' '}
-        Recibo de Venda{' '}
-      </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('ReciboDeVendaList', {})}
+        >
+          {' '}
+          Recibo de Venda{' '}
+        </Button>
 
-      <Button
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('UsuarioForm', { id: 'Novo' })}
+        >
+          {' '}
+          Formulario Usuario{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('FazendaForm', { id: 'Novo' })}
+        >
+          {' '}
+          Formulario Fazenda{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FinalizarCadastro', {
+              id: 'FinalizarCadastro',
+            })
+          }
+        >
+          {' '}
+          Finalizar Cadastro{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('CompradorForm', { id: 'Novo' })}
+        >
+          {' '}
+          Cadastrar Comprador{' '}
+        </Button>
+
+        <Button
         m="5"
         bg={'viaLacteaSecondary.blue'}
         onPress={() =>
@@ -79,19 +120,7 @@ const Home: FunctionComponent<Props> = (props) => {
         {' '}
         Login Page{' '}
       </Button>
-      
-      <Button
-        m="5"
-        bg={'viaLacteaSecondary.blue'}
-        onPress={() =>
-          meuTeste()
-        }
-      >
-        {' '}
-        botao teste will{' '}
-      </Button>
-      
-
+      </ScrollView>
     </NativeBaseProvider>
   );
 };

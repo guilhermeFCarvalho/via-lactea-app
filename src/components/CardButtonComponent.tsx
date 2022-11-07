@@ -1,19 +1,23 @@
-import { AddIcon, Center, HStack, Pressable, Text, VStack } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
+import { AddIcon, Center, getColor, HStack, Pressable, Text, VStack } from 'native-base';
 import React from 'react';
 import { FunctionComponent } from 'react';
 
 interface Props {
   title: string;
   subtitle: string;
-  
+  screen?: any;
 }
 
 const CardButtonComponent: FunctionComponent<Props> = (props) => {
+  const navigation = useNavigation();
+
+  
   return (
     <Pressable
-      onPress={() => {
-        //TODO: levar para página de cadastro da entidade selecionada
-      }}
+      onPress={
+        () => {navigation.navigate(props.screen, {id: 'Editar'})}
+      }
     >
       {({ isHovered, isPressed }) => {
         return (

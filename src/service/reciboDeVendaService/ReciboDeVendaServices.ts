@@ -9,7 +9,7 @@ const ReciboDeVendaService = {
   },
 
   buscar : function(data:any) {
-    return api.get('/api/recibo-de-venda',data)
+    return api.get('/api/recibo-de-venda?page=0&size=30&sort=dataDaVenda,asc&sort=id,asc')
   }
 
 
