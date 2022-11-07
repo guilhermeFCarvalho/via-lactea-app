@@ -7,6 +7,8 @@ import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVen
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
+
+
 const validate = () => {
   //todo
 };
@@ -31,6 +33,8 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
   }, [refreshList]);
 
   const navigation = useNavigation();
+
+
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
