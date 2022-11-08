@@ -11,8 +11,8 @@ export type RootStackParamList = {
   FazendaForm: { id: string };
   FinalizarCadastro: { id: string };
   ColetorForm: { id: string };
-  ReciboDeVendaList:{ id: string};
-  CompradorForm: {id: string};
+  ReciboDeVendaList: { id: string };
+  CompradorForm: { id: string };
 };
 
 const Home: FunctionComponent<Props> = (props) => {

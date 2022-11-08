@@ -26,9 +26,9 @@ it('passando informações corretas, usuário passa para tela de cadastro de faz
   const setStateMock = jest.fn();
   jest.mock('React', () => {
     return {
-      useEffect: jest.fn()
-    }
-  })
+      useEffect: jest.fn(),
+    };
+  });
   const useStateMock: any = (useState: any) => [useState, setStateMock];
   jest.spyOn(React, 'useState').mockImplementation(useStateMock);
 
@@ -39,5 +39,3 @@ it('passando informações corretas, usuário passa para tela de cadastro de faz
   // const nomeElements = screen.getByText('Guilherme', {exact:false});
   // expect(nomeElements).toHaveLength(1);
 });
-
-

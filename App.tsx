@@ -5,15 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-import Home from "./src/screens/home/Home";
-import FazendaForm from "./src/screens/CadastroFazenda/FazendaForm";
-import UsuarioForm from "./src/screens/CadastroUsuario/UsuarioForm";
+import Home from './src/screens/home/Home';
+import FazendaForm from './src/screens/CadastroFazenda/FazendaForm';
+import UsuarioForm from './src/screens/CadastroUsuario/UsuarioForm';
 import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
 import CompradorForm from './src/screens/Comprador/CompradorForm';
 import CompradorList from './src/screens/Comprador/CompradorList';
 import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
-
 
 export default function App() {
   return (
