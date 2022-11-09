@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1667953733956" clover="3.2.0">
-  <project timestamp="1667953733956" name="All files">
+<coverage generated="1668035292577" clover="3.2.0">
+  <project timestamp="1668035292577" name="All files">
     <metrics statements="12" coveredstatements="8" conditionals="10" coveredconditionals="5" methods="7" coveredmethods="3" elements="29" coveredelements="16" complexity="0" loc="12" ncloc="12" packages="1" files="2" classes="2"/>
     <file name="CardButtonComponent.tsx" path="C:\1escolaDeTI\via-lactea-app\src\components\CardButtonComponent.tsx">
       <metrics statements="5" coveredstatements="4" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="2"/>
       <line num="21" count="1" type="stmt"/>
       <line num="22" count="1" type="stmt"/>
       <line num="24" count="1" type="stmt"/>
-      <line num="28" count="0" type="stmt"/>
-      <line num="32" count="1" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
     </file>
     <file name="PasswordInputComponent.tsx" path="C:\1escolaDeTI\via-lactea-app\src\components\PasswordInputComponent.tsx">
       <metrics statements="7" coveredstatements="4" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="1"/>

@@ -139,9 +139,7 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,7 +163,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -218,14 +215,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useNavigation } from '@react-navigation/native';
 import {
   AddIcon,
   Center,
-  getColor,
+ 
   HStack,
-  NativeBaseProvider,
+  
   Pressable,
   Text,
   VStack,
@@ -243,56 +239,54 @@ const CardButtonComponent: FunctionComponent&lt;Props&gt; = (props) =&gt; {
   const navigation = useNavigation();
 &nbsp;
   return (
-   
-      &lt;Pressable
-        onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >          navigation.navigate(props.screen, { id: 'Editar' });</span>
-        }}
-      &gt;
-        {({ isHovered, isPressed }) =&gt; {
-          return (
-            &lt;HStack
-              borderColor={'primary.400'}
-              borderWidth={'2'}
-              rounded="lg"
-              justifyContent={'space-between'}
-              p={'6%'}
-              h={'132'}
-              bg={
-                isPressed
-                  ? <span class="branch-0 cbranch-no" title="branch not covered" >'coolGray.200'</span>
-                  : isHovered
-                  ? <span class="branch-0 cbranch-no" title="branch not covered" >'coolGray.200'</span>
-                  : 'coolGray.100'
-              }
-              style={{
-                transform: [
-                  {
-                    scale: isPressed ? <span class="branch-0 cbranch-no" title="branch not covered" >0.96 </span>: 1,
-                  },
-                ],
-              }}
-            &gt;
-              &lt;VStack maxWidth={'70%'}&gt;
-                &lt;Text fontWeight={'medium'} fontSize={'xl'}&gt;
-                  {props.title}
-                &lt;/Text&gt;
-                &lt;Text
-                  color={'coolGray.400'}
-                  fontWeight={'regular'}
-                  fontSize={'sm'}
-                &gt;
-                  {props.subtitle}
-                &lt;/Text&gt;
-              &lt;/VStack&gt;
-              &lt;Center&gt;
-                &lt;AddIcon color={'primary.400'} size="8" /&gt;
-              &lt;/Center&gt;
-            &lt;/HStack&gt;
-          );
-        }}
-      &lt;/Pressable&gt;
-    
+    &lt;Pressable
+      onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >        navigation.navigate(props.screen, { id: 'Editar' });</span>
+      }}
+    &gt;
+      {({ isHovered, isPressed }) =&gt; {
+        return (
+          &lt;HStack
+            borderColor={'primary.400'}
+            borderWidth={'2'}
+            rounded="lg"
+            justifyContent={'space-between'}
+            p={'6%'}
+            h={'132'}
+            bg={
+              isPressed
+                ? <span class="branch-0 cbranch-no" title="branch not covered" >'coolGray.200'</span>
+                : isHovered
+                ? <span class="branch-0 cbranch-no" title="branch not covered" >'coolGray.200'</span>
+                : 'coolGray.100'
+            }
+            style={{
+              transform: [
+                {
+                  scale: isPressed ? <span class="branch-0 cbranch-no" title="branch not covered" >0.96 </span>: 1,
+                },
+              ],
+            }}
+          &gt;
+            &lt;VStack maxWidth={'70%'}&gt;
+              &lt;Text fontWeight={'medium'} fontSize={'xl'}&gt;
+                {props.title}
+              &lt;/Text&gt;
+              &lt;Text
+                color={'coolGray.400'}
+                fontWeight={'regular'}
+                fontSize={'sm'}
+              &gt;
+                {props.subtitle}
+              &lt;/Text&gt;
+            &lt;/VStack&gt;
+            &lt;Center&gt;
+              &lt;AddIcon color={'primary.400'} size="8" /&gt;
+            &lt;/Center&gt;
+          &lt;/HStack&gt;
+        );
+      }}
+    &lt;/Pressable&gt;
   );
 };
 &nbsp;
@@ -304,7 +298,7 @@ export default CardButtonComponent;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-09T00:28:53.939Z
+                at 2022-11-09T23:08:12.560Z
             </div>
         <script src="prettify.js"></script>
         <script>
