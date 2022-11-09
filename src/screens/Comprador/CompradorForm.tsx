@@ -13,7 +13,6 @@ import CompradorService from '../../service/CompradorService/CompradorService';
 
 interface Props {}
 
-
 const CompradorForm: FunctionComponent<Props> = () => {
   const [comprador, setComprador] = useState({});
   const [erros, setErros] = useState({});
@@ -39,7 +38,8 @@ const CompradorForm: FunctionComponent<Props> = () => {
     ) {
       setErros({
         ...erros,
-        inscricaoEstadual: 'Informe uma inscrição estadual válida (somente números)',
+        inscricaoEstadual:
+          'Informe uma inscrição estadual válida (somente números)',
       });
       return false;
     }
@@ -56,7 +56,10 @@ const CompradorForm: FunctionComponent<Props> = () => {
       comprador.telefone === '' ||
       comprador.telefone.length > 11
     ) {
-      setErros({ ...erros, telefone: 'Informe um telefone válido (somente números)' });
+      setErros({
+        ...erros,
+        telefone: 'Informe um telefone válido (somente números)',
+      });
       return false;
     }
     return true;

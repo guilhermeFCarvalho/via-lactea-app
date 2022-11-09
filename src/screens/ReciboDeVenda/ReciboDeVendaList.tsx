@@ -20,11 +20,9 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
   const [refreshList, setRefreshList] = useState(true);
 
   const buscar = () => {
-    
     ReciboDeVendaService.buscar({}).then((response) =>
       setReciboLista(response.data.content),
     );
-    
   };
 
   useEffect(() => {

@@ -73,7 +73,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
       setErros({ ...erros, senha: 'senha inválida' });
       return false;
     }
-    
+
     return true;
   };
   const showProgress = (value) => {
