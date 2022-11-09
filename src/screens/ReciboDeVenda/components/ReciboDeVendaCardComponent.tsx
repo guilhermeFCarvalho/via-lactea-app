@@ -1,12 +1,9 @@
 import {
-  Container,
   Text,
-  Heading,
   Box,
   HStack,
   VStack,
   Divider,
-  Input,
   Checkbox,
 } from 'native-base';
 import React from 'react';

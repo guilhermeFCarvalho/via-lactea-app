@@ -24,12 +24,8 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const isNew = () => {
-    return route.params.id === 'Novo';
-  };
-
   const goToFazendaForm = () => {
-    validate() && isNew()
+    validate()
       ? navigation.navigate('FazendaForm', usuario)
       : console.log(erros);
   };
@@ -73,13 +69,11 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
       setErros({ ...erros, senha: 'senha inválida' });
       return false;
     }
-    
+
     return true;
   };
   const showProgress = (value) => {
-    if (route.params.id === 'Novo') {
-      return <Progress value={value}></Progress>;
-    }
+    return <Progress value={value}></Progress>;
   };
 
   React.useEffect(() => {
