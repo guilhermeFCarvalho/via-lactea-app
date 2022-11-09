@@ -25,12 +25,13 @@ const LoginPage: FunctionComponent<Props> = (props) => {
   const handleClick = () => setShow(!show);
 
   async function handleLogin() {
-    try{
+    // try{
       await AuthService.login(login)
       setTimeout(()=> PessoaService.getPrincipaisInformacoesDoUsuario(),1000)
-    } catch(error) {
-      console.log(error)
-   }
+      
+      // } catch(error) {
+        
+      // }
   
   } 
 

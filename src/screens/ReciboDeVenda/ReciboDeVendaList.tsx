@@ -46,7 +46,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       <ScrollView p={'2%'}>
         <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
-            return <ReciboDeVendaCard recibo={item}> </ReciboDeVendaCard>;
+            return <ReciboDeVendaCard key={item.id} recibo={item}> </ReciboDeVendaCard>;
           })}
         </VStack>
       </ScrollView>
