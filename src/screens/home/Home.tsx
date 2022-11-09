@@ -12,7 +12,7 @@ export type RootStackParamList = {
   FinalizarCadastro: { id: string };
   ColetorForm: { id: string };
   ReciboDeVendaList: { id: string };
-  CompradorForm: { id: string };
+  CompradorList: { id: string };
 };
 
 const Home: FunctionComponent<Props> = (props) => {
@@ -25,9 +25,7 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() =>
-            navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
-          }
+          onPress={() => navigation.navigate('UsuarioForm', { id: 'Novo' })}
         >
           {' '}
           Formulario Usuario{' '}
@@ -35,9 +33,7 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() =>
-            navigation.navigate('FazendaForm', { id: 'FazendaForm' })
-          }
+          onPress={() => navigation.navigate('FazendaForm', { id: 'Novo' })}
         >
           {' '}
           Formulario Fazenda{' '}
@@ -95,10 +91,10 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('CompradorForm', { id: 'Novo' })}
+          onPress={() => navigation.navigate('CompradorList', { id: 'Novo' })}
         >
           {' '}
-          Cadastrar Comprador{' '}
+          Comprador{' '}
         </Button>
       </ScrollView>
     </NativeBaseProvider>
