@@ -22,8 +22,7 @@ interface Props {
 }
 
 const FinalizarCadastro: FunctionComponent<Props> = (props) => {
-
-  const navigation =  useNavigation();
+  const navigation = useNavigation();
   const route = useRoute();
 
   const salvarUsuario = () => {
@@ -60,11 +59,11 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
           <CardButtonComponent
             title="Cadastrar coletor"
             subtitle="Cadastre os coletores que irão comprar leite da sua fazenda"
-            ></CardButtonComponent>
+          ></CardButtonComponent>
           <CardButtonComponent
             title="Cadastrar animais"
             subtitle="Cadastre os animais que você possui em sua fazenda"
-            ></CardButtonComponent>
+          ></CardButtonComponent>
           <CardButtonComponent
             title="Cadastrar fazenda"
             subtitle="Cadastre outras fazendas que deseja gerenciar no sistema"
@@ -75,8 +74,7 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
               salvarUsuario();
             }}
           >
-            Finalizar 
-            
+            Finalizar
           </Button>
         </VStack>
       </ScrollView>

@@ -11,8 +11,6 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import EnderecoFormComponent from '../../components/EnderecoFormComponent';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-
-
 interface Props {}
 
 const FazendaForm: FunctionComponent<Props> = (props) => {
@@ -62,7 +60,6 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
       return <Progress value={value}></Progress>;
     }
   };
-
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>

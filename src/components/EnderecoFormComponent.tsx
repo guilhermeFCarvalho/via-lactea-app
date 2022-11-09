@@ -44,7 +44,7 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
       return false;
     }
     if (endereco.estado === undefined || endereco.estado === '') {
-      setErros({...erros, estado: 'Informe um estado'})
+      setErros({ ...erros, estado: 'Informe um estado' });
       return false;
     }
     if (endereco.cidade === undefined || endereco.cidade === '') {

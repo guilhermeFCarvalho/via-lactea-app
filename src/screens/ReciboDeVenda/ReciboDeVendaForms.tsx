@@ -35,7 +35,10 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   }, [leiteVendido]);
 
   const validate = () => {
-    if (!leiteVendido.quantidadeLeiteVendida || !/^[0-9]+$/.test(leiteVendido.quantidadeLeiteVendida)) {
+    if (
+      !leiteVendido.quantidadeLeiteVendida ||
+      !/^[0-9]+$/.test(leiteVendido.quantidadeLeiteVendida)
+    ) {
       setErros({
         ...erros,
         quantidadeDeLeiteVendida: 'Insira uma quantidade válida',
@@ -88,7 +91,6 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
           <Button
             m={5}
             onPress={() => {
-             
               if (validate()) {
                 salvarNovoRecibo();
               }
