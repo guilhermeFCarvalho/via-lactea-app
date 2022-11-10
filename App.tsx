@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
+import OldHome from './src/screens/home/OldHome';
 import Home from './src/screens/home/Home';
 import FazendaForm from './src/screens/CadastroFazenda/FazendaForm';
 import UsuarioForm from './src/screens/CadastroUsuario/UsuarioForm';
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="OldHome" component={OldHome} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="FazendaForm" component={FazendaForm} />
         <Stack.Screen name="UsuarioForm" component={UsuarioForm} />

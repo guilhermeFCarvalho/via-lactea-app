@@ -47,7 +47,6 @@ const Home: FunctionComponent<Props> = (props) => {
               onPress = {() => navigation.navigate('ReciboDeVendaList', { id: 'ReciboDeVendaList' })}  
             </ReciboDeVendaCard>;
           })}
-          
         </VStack>
       </ScrollView>
     </NativeBaseProvider>
@@ -55,3 +54,4 @@ const Home: FunctionComponent<Props> = (props) => {
 };
 
 export default Home;
+
