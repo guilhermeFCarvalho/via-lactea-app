@@ -3,13 +3,12 @@ import {
   Center,
   FormControl,
   Input,
-  NativeBaseProvider,
   Stack,
   Button,
   Select,
+  NativeBaseProvider,
 } from 'native-base';
 import { estados } from '../utils/Estados';
-import { viaLacteaTheme } from '../config/theme/ColorTheme';
 
 interface Props {
   onSubmit: any;
@@ -67,7 +66,7 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <NativeBaseProvider theme={viaLacteaTheme}>
+    <NativeBaseProvider>
       <Center px="8%" justifyContent={'space-between'}>
         <FormControl isRequired isInvalid={'rua' in erros}>
           <FormControl.Label>{'Rua/Estrada'}</FormControl.Label>
