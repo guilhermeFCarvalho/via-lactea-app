@@ -12,11 +12,13 @@ import { ReciboDeVenda } from '../../types/ReciboDeVenda';
 
 import { useNavigation } from '@react-navigation/core';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
+import { useRoute } from '@react-navigation/native';
 
 interface Props {}
 
 const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
+  const route = useRoute();
   const [erros, setErros] = useState({});
   const [leiteVendido, setLeiteVendido] = React.useState<ReciboDeVenda>({
     quantidadeLeiteVendida: 0,
@@ -25,19 +27,20 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   });
 
   const salvarNovoRecibo = () => {
-    ReciboDeVendaService.salvar(leiteVendido).finally(() => {
+    ReciboDeVendaService.salvar(leiteVendido).then(() => {
       navigation.navigate('ReciboDeVendaList');
-    });
+    }).catch((error) => console.log(error));
   };
 
   useEffect(() => {
+    
     setErros({});
   }, [leiteVendido]);
 
   const validate = () => {
     if (
       !leiteVendido.quantidadeLeiteVendida ||
-      !/^[0-9]+$/.test(leiteVendido.quantidadeLeiteVendida)
+      !/^[0-9.]+$/.test(leiteVendido.quantidadeLeiteVendida)
     ) {
       setErros({
         ...erros,
