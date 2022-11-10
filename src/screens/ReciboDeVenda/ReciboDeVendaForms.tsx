@@ -29,7 +29,7 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const salvarNovoRecibo = () => {
     ReciboDeVendaService.salvar(leiteVendido).then(() => {
       navigation.navigate('ReciboDeVendaList');
-    });
+    }).catch((error) => console.log(error));
   };
 
   useEffect(() => {

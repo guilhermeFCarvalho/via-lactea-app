@@ -13,11 +13,17 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
   const [listaRecibo, setReciboLista] = useState<Array<any>>([]);
   const navigation = useNavigation();
 
-
   const buscar = () => {
-    ReciboDeVendaService.buscar({}).then((response) => {
-      setReciboLista(response.data.content);
-    });
+    const sortParams = new URLSearchParams();
+    sortParams.append('page', '0');
+    sortParams.append('size', '30');
+    sortParams.append('sort', 'dataDaVenda,desc');
+    sortParams.append('sort', 'id');
+    ReciboDeVendaService.buscar(sortParams)
+      .then((response) => {
+        setReciboLista(response.data.content);
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {

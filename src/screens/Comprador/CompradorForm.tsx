@@ -25,9 +25,9 @@ const CompradorForm: FunctionComponent<Props> = () => {
       razaoSocial: comprador.razaoSocial,
       inscricaoEstadual: comprador.inscricaoEstadual,
       cnpj: comprador.cnpj,
-    }).then(
-      navigation.navigate('CompradorList')
-    );
+    })
+      .then(navigation.navigate('CompradorList'))
+      .catch((error) => console.log(error));
   };
 
   const validate = () => {

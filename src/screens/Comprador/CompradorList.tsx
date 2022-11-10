@@ -25,7 +25,7 @@ const CompradorList: FunctionComponent<Props> = () => {
   const getCompradores = () => {
     return CompradorService.listar().then((response) =>
       setCompradorList(response.data.content),
-    );
+    ).catch((error) => console.log(error));
   };
 
   useEffect(() => {
