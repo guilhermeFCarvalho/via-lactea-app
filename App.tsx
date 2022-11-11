@@ -13,14 +13,16 @@ import CompradorForm from './src/screens/Comprador/CompradorForm';
 import CompradorList from './src/screens/Comprador/CompradorList';
 import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
+import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="AnimalForm">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="FazendaForm" component={FazendaForm} />
         <Stack.Screen name="UsuarioForm" component={UsuarioForm} />
+        <Stack.Screen name="AnimalForm" component={AnimalForm} />
         <Stack.Screen name="FinalizarCadastro" component={FinalizarCadastro} />
         <Stack.Screen name="CompradorForm" component={CompradorForm} />
         <Stack.Screen name="CompradorList" component={CompradorList} />

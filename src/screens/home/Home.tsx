@@ -13,6 +13,7 @@ export type RootStackParamList = {
   ColetorForm: { id: string };
   ReciboDeVendaList: { id: string };
   CompradorList: { id: string };
+  AnimalForm: { id: string };
 };
 
 const Home: FunctionComponent<Props> = (props) => {
@@ -22,6 +23,14 @@ const Home: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('AnimalForm', { id: 'Novo' })}
+        >
+          {' '}
+          Cadastro Animal{' '}
+        </Button>
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
