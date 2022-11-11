@@ -4,7 +4,7 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { ReciboDeVenda } from '../../types/ReciboDeVenda';
 import ReciboDeVendaCard from './components/ReciboDeVendaCardComponent';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
 interface Props {}

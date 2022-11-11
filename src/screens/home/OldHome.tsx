@@ -1,4 +1,3 @@
-
 import { NativeBaseProvider, Button, ScrollView } from 'native-base';
 import React, { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
@@ -26,9 +25,7 @@ const OldHome: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() =>
-            navigation.navigate('UsuarioForm', { id: 'Novo' })
-          }
+          onPress={() => navigation.navigate('UsuarioForm', { id: 'Novo' })}
         >
           {' '}
           Formulario Usuario{' '}
@@ -36,9 +33,7 @@ const OldHome: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() =>
-            navigation.navigate('FazendaForm', { id: 'Novo' })
-          }
+          onPress={() => navigation.navigate('FazendaForm', { id: 'Novo' })}
         >
           {' '}
           Formulario Fazenda{' '}

@@ -23,9 +23,9 @@ const CompradorList: FunctionComponent<Props> = () => {
   const [compradorList, setCompradorList] = useState([]);
   const navigation = useNavigation();
   const getCompradores = () => {
-    return CompradorService.listar().then((response) =>
-      setCompradorList(response.data.content),
-    ).catch((error) => console.log(error));
+    return CompradorService.listar()
+      .then((response) => setCompradorList(response.data.content))
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {

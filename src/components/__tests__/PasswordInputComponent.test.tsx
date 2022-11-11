@@ -3,7 +3,6 @@ import { NativeBaseProvider } from 'native-base';
 import renderer from 'react-test-renderer';
 import PasswordInputComponent from '../PasswordInputComponent';
 
-
 test('renders correctly', () => {
   const cardButtonComponent = renderer
     .create(

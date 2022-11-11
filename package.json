@@ -17,7 +17,7 @@
     "web": "expo start --web",
     "format": "prettier --write \"src/**/*.tsx\" \"test/**/*.tsx\"",
     "eject": "expo eject",
-    "prettier:write": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}",
+    "prettier": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}",
     "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx ./",
     "test": "jest",
     "test-coverage": "jest --coverage"

@@ -1,11 +1,4 @@
-import {
-  Text,
-  Box,
-  HStack,
-  VStack,
-  Divider,
-  Checkbox,
-} from 'native-base';
+import { Text, Box, HStack, VStack, Divider, Checkbox } from 'native-base';
 import React from 'react';
 import { FunctionComponent } from 'react';
 
