@@ -10,12 +10,14 @@ import React, { useState } from 'react';
 import { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import CompradorService from '../../service/CompradorService/CompradorService';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {}
 
 const CompradorForm: FunctionComponent<Props> = () => {
   const [comprador, setComprador] = useState({});
   const [erros, setErros] = useState({});
+  const navigation = useNavigation();
 
   const saveComprador = () => {
     CompradorService.salvar({
@@ -23,7 +25,9 @@ const CompradorForm: FunctionComponent<Props> = () => {
       razaoSocial: comprador.razaoSocial,
       inscricaoEstadual: comprador.inscricaoEstadual,
       cnpj: comprador.cnpj,
-    });
+    })
+      .then(navigation.navigate('CompradorList'))
+      .catch((error) => console.log(error));
   };
 
   const validate = () => {
