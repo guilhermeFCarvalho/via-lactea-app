@@ -10,16 +10,12 @@ import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVen
 interface Props {}
 
 export type RootStackParamList = {
-//   UsuarioForm: { id: string };
-//   FazendaForm: { id: string };
-//   FinalizarCadastro: { id: string };
-//   ColetorForm: { id: string };
+  //   UsuarioForm: { id: string };
+  //   FazendaForm: { id: string };
+  //   FinalizarCadastro: { id: string };
+  //   ColetorForm: { id: string };
   ReciboDeVendaList: { id: string };
-<<<<<<< HEAD
-//   CompradorForm: { id: string };
-=======
   CompradorList: { id: string };
->>>>>>> a9f9c250feaaf9fafa6ac7fc7d24401a4f90825e
 };
 
 const Home: FunctionComponent<Props> = (props) => {
@@ -43,13 +39,18 @@ const Home: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
-      <VStack space={4}>
+        <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
-            return <ReciboDeVendaCard recibo={
-              item[listaRecibo.length-1]
-            }>
-              onPress = {() => navigation.navigate('ReciboDeVendaList', { id: 'ReciboDeVendaList' })}  
-            </ReciboDeVendaCard>;
+            return (
+              <ReciboDeVendaCard recibo={item[listaRecibo.length - 1]}>
+                onPress ={' '}
+                {() =>
+                  navigation.navigate('ReciboDeVendaList', {
+                    id: 'ReciboDeVendaList',
+                  })
+                }
+              </ReciboDeVendaCard>
+            );
           })}
         </VStack>
       </ScrollView>
@@ -58,4 +59,3 @@ const Home: FunctionComponent<Props> = (props) => {
 };
 
 export default Home;
-
