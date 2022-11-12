@@ -7,6 +7,8 @@ import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVen
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
+
+
 const validate = () => {
   //todo
 };
@@ -30,6 +32,8 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
 
   const navigation = useNavigation();
 
+
+
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <Fab
@@ -40,7 +44,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       <ScrollView p={'2%'}>
         <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
-            return <ReciboDeVendaCard recibo={item}> </ReciboDeVendaCard>;
+            return <ReciboDeVendaCard key={item.id} recibo={item}> </ReciboDeVendaCard>;
           })}
         </VStack>
       </ScrollView>
