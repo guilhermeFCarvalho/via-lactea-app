@@ -18,7 +18,7 @@ import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AnimalForm">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="FazendaForm" component={FazendaForm} />
         <Stack.Screen name="UsuarioForm" component={UsuarioForm} />
