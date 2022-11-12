@@ -4,13 +4,17 @@ import {
   Button,
   FormControl,
   Input,
-  Container,
+  Pressable,
+  Icon,
+  VStack,
+  useToast,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/core';
 import { Login } from '../../types/Login';
 import AuthService from '../../service/AuthService/AuthService';
 import PessoaService from '../../service/PessoaService/PessoaService';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const validate = () => {
   //todo
@@ -20,21 +24,27 @@ interface Props {}
 
 const LoginPage: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
+  const toast = useToast();
 
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
   async function handleLogin() {
-    // try{
-      await AuthService.login(login)
-      setTimeout(()=> PessoaService.getPrincipaisInformacoesDoUsuario(),1000)
-      
-      // } catch(error) {
-        
-      // }
-  
-  } 
-
+    try{
+    await AuthService.login(login);
+    setTimeout(() => {
+      PessoaService.getPrincipaisInformacoesDoUsuario()
+      navigation.navigate("Home")
+    }, 1000);
+  } catch(error) {
+    console.log(error);
+    
+      // toast.show({
+      //   title: "Hello world",
+      //   placement: "bottom"
+      // })
+    }
+  }
 
   const [login, setLogin] = React.useState<Login>({
     email: '',
@@ -43,9 +53,9 @@ const LoginPage: FunctionComponent<Props> = (props) => {
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <Container mr="auto" ml="auto" mt="5">
-        <FormControl isRequired>
+      <VStack mr="auto" ml="auto" mt="10">
 
+        <FormControl isRequired>
           <FormControl.Label>{'Email'}</FormControl.Label>
           <Input
             w="64"
@@ -55,41 +65,46 @@ const LoginPage: FunctionComponent<Props> = (props) => {
               setLogin({ ...login, email: value });
             }}
           ></Input>
+        </FormControl>
 
+        <FormControl>
           <FormControl.Label>{'Senha'}</FormControl.Label>
           <Input
             type={show ? 'text' : 'password'}
-
             w="64"
             p={2}
             InputRightElement={
-              <Button
-                size="xs"
-                rounded="none"
-                w="1/6"
-                h="full"
-                onPress={handleClick}
-              >
-                {show ? 'Esconder' : 'Mostrar'}
-              </Button>
+              <Pressable onPress={() => setShow(!show)}>
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? 'visibility' : 'visibility-off'}
+                    />
+                  }
+                  size={5}
+                  mr="2"
+                  color="muted.400"
+                />
+              </Pressable>
             }
             placeholder={'Digite aqui...'}
             onChangeText={(value: any) => {
               setLogin({ ...login, password: value });
             }}
           ></Input>
-          
+        </FormControl>
+
 
           <Button
-            m={5}
+            mt={10}
+            p={4}
             onPress={() => {
-              handleLogin()
+              handleLogin();
             }}
-          >
+            >
             Entrar
           </Button>
-        </FormControl>
-      </Container>
+        </VStack>
     </NativeBaseProvider>
   );
 };
