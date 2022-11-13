@@ -21,7 +21,6 @@ export default function App() {
   useEffect(() => {
     AsyncStorage.clear()
   }, []) 
-  
 
   return (
     <NavigationContainer >

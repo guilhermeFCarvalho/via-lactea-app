@@ -23,11 +23,6 @@ const Home: FunctionComponent<Props> = (props) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-
-  const meuTeste = () => { 
-      PessoaService.getPrincipaisInformacoesDoUsuario();
-  }
-
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
