@@ -1,9 +1,10 @@
-import React from 'react';
+import 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 import Home from './src/screens/home/Home';
 import FazendaForm from './src/screens/CadastroFazenda/FazendaForm';
@@ -13,22 +14,125 @@ import CompradorForm from './src/screens/Comprador/CompradorForm';
 import CompradorList from './src/screens/Comprador/CompradorList';
 import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
-import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
+import LoginPage from './src/screens/Login/LoginPage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
+  useEffect(() => {
+    AsyncStorage.clear();
+  }, []);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="FazendaForm" component={FazendaForm} />
-        <Stack.Screen name="UsuarioForm" component={UsuarioForm} />
-        <Stack.Screen name="AnimalForm" component={AnimalForm} />
-        <Stack.Screen name="FinalizarCadastro" component={FinalizarCadastro} />
-        <Stack.Screen name="CompradorForm" component={CompradorForm} />
-        <Stack.Screen name="CompradorList" component={CompradorList} />
-        <Stack.Screen name="ReciboDeVendaList" component={ReciboDeVendaList} />
-        <Stack.Screen name="ReciboDeVendaForm" component={ReciboDeVendaForm} />
-      </Stack.Navigator>
+      <Drawer.Navigator
+        initialRouteName="LoginPage"
+        screenOptions={{
+          drawerType: 'front',
+        }}
+      >
+        <Drawer.Screen
+          name="Home"
+          component={Home}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Tela principal',
+          }}
+        />
+
+        <Drawer.Screen
+          name="FazendaForm"
+          component={FazendaForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Cadastro da Fazenda',
+            drawerLabel: 'Fazenda',
+          }}
+        />
+
+        <Drawer.Screen
+          name="CompradorList"
+          component={CompradorList}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Lista de Compradores',
+            drawerLabel: 'Compradores',
+          }}
+        />
+        <Drawer.Screen
+          name="ReciboDeVendaList"
+          component={ReciboDeVendaList}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Listagem de Recibos',
+            drawerLabel: 'Recibos de venda',
+          }}
+        />
+
+        <Drawer.Screen
+          name="LoginPage"
+          component={LoginPage}
+          options={{
+            swipeEnabled: false,
+            headerShown: false,
+            headerTitleAlign: 'center',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+
+        <Drawer.Screen
+          name="UsuarioForm"
+          component={UsuarioForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: false,
+            headerTitleAlign: 'center',
+            headerTitle: 'Cadastro',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+        <Drawer.Screen
+          name="FinalizarCadastro"
+          component={FinalizarCadastro}
+          options={{
+            swipeEnabled: false,
+            headerShown: false,
+            headerTitleAlign: 'center',
+            headerTitle: 'Tela principal',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+        <Drawer.Screen
+          name="CompradorForm"
+          component={CompradorForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Cadastro de Compradores',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+
+        <Drawer.Screen
+          name="ReciboDeVendaForm"
+          component={ReciboDeVendaForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Novo Recibo',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
