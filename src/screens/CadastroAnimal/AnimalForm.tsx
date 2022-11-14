@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   FormControl,
@@ -6,9 +6,11 @@ import {
   Input,
   Button,
   Center,
+  Select,
 } from 'native-base';
 
 import InputMask from '../../components/InputMask'
+import { sexoDoAnimal } from '../../utils/SexoDoAnimal'
 
 interface Props {
   navigation: any;
@@ -16,22 +18,39 @@ interface Props {
 }
 
 const AnimalForm = () => {
-  const [animal, setAnimal] = React.useState({});
-  const [peso, setPeso] = React.useState('')
-  const [dataVeterinario, setDataVeterinario] = React.useState('');
-  const [dataNascimento, setDataNascimento] = React.useState('');
-  const [erros, setErros] = React.useState({});
+  const [animal, setAnimal] = useState({});
+  const [peso, setPeso] = useState('');
+  const [dataVet, setDataVeterinario] = useState('');
+  const [dataNascimento, setDataNascimento] = useState('');
+  const [erros, setErros] = useState({});
 
   const navigation = useNavigation();
 
+  // useEffect(() => {
+  //   setErros({});
+  // }, [animal]);
+
+  async function setValoresAnimal() {
+  await setAnimal({ ...animal, peso: peso });
+  await setAnimal({ ...animal, dataVeterinario: dataVet });
+  await setAnimal({ ...animal, dataNascimento: dataNascimento });
+  return console.log(animal);
+  }
+
   const voltarHome = () => {
-    validate()
-      ? navigation.navigate('Home', {})
-      : console.log(erros);
+    console.log('Antes de definir:');
+    console.log(animal);
+    console.log('Após definir:');
+    setValoresAnimal().then(() => {
+      validate()
+        ? navigation.navigate('Home', {})
+        : console.log(erros);
+    })    
   };
 
   const validate = () => {
     if (
+      //verificar depois !animal.peso
       animal.peso === undefined ||
       !animal.peso.match('[0-9]+')
     ) {
@@ -71,7 +90,7 @@ const AnimalForm = () => {
         <FormControl isRequired>  
           <FormControl.Label>Última Visita ao Veterinário</FormControl.Label>
             <InputMask 
-              value={dataVeterinario}
+              value={dataVet}
               placeholder={'25/11/2022'}
               maxLength={10}
               mask="data" 
@@ -98,6 +117,18 @@ const AnimalForm = () => {
             >
             </InputMask>
           <FormControl.Label>Sexo</FormControl.Label>
+            <Select
+              placeholder="Seleicone um Valor"
+              onValueChange={(value: string) => {
+                setAnimal({ ...animal, sexo: value });
+              }}
+            >
+              {sexoDoAnimal.map((e) => {
+                return (
+                  <Select.Item label={e.sexo} value={e.sexo} />
+                );
+              })}
+            </Select>
         </FormControl>
       </Center>
       <Button
