@@ -95,7 +95,7 @@ export default function App() {
             headerShown: true,
             headerTitleAlign: 'center',
             headerTitle: 'Cadastro',
-            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          
           }}
         />
         <Drawer.Screen
