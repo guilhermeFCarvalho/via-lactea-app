@@ -24,7 +24,7 @@ const InputMask: React.FC<InputProps> = ({ mask, inputMaskChange, ... rest }) =>
   return (
     <Input
       onChangeText={text => pegarAlteracao(text)}
-      { ...rest }
+        { ...rest }
     >
     </Input>
   )
