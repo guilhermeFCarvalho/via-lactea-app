@@ -16,6 +16,7 @@ import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
 import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 
 export default function App() {
   useEffect(() => {
@@ -25,11 +26,22 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="LoginPage"
+        initialRouteName="Home"
         screenOptions={{
           drawerType: 'front',
         }}
       >
+        <Drawer.Screen
+          name="AnimalForm"
+          component={AnimalForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Cadastro de Animal',
+            drawerLabel: 'AnimalForm',
+          }}
+        />
         <Drawer.Screen
           name="Home"
           component={Home}

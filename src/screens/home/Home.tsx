@@ -3,10 +3,6 @@ import React, { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import PessoaService from '../../service/PessoaService/PessoaService';
-import axios from 'axios';
-import UsuarioService from '../../service/UsuarioService/UsuarioService';
-import UsuarioUtils from '../../utils/UsuarioUtils';
 
 interface Props {}
 
@@ -30,7 +26,7 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('AnimalForm', { id: 'Novo' })}
+          onPress={() => navigation.navigate('AnimalForm', { id: 'AnimalForm' })}
         >
           {' '}
           Cadastro Animal{' '}
