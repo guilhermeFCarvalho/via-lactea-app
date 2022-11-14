@@ -21,19 +21,13 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const buscaFazenda = async () => {
-    const prop: any = await AsyncStorage.getItem('PropriedadeId');
-    setFazenda(JSON.parse(prop));
-  };
-
+  
   useEffect(() => {
     
     setErros({});
   }, [fazenda]);
 
-  useEffect(()=>{
-    buscaFazenda();
-  },[])
+ 
   const validate = () => {
     if (fazenda.nome === undefined || fazenda.nome === '') {
       setErros({ ...erros, nome: 'Informe um nome' });
