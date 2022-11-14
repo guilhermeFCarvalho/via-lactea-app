@@ -56,7 +56,7 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
   };
 
   const showProgress = (value) => {
-    if (route.params.id === 'Novo') {
+    if (route.params) {
       return <Progress value={value}></Progress>;
     }
   };

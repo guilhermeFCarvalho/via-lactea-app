@@ -92,7 +92,7 @@ export default function App() {
           component={UsuarioForm}
           options={{
             swipeEnabled: false,
-            headerShown: true,
+            headerShown: false,
             headerTitleAlign: 'center',
             headerTitle: 'Cadastro',
             drawerItemStyle: { height: 0, padding: 0, margin: 0 },

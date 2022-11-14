@@ -10,6 +10,7 @@ import {
   useToast,
   View,
   Toast,
+  Link,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/core';
@@ -37,7 +38,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
         navigation.navigate('Home');
         Toast.show({
           description: 'Login realizado com sucesso',
-        });      
+        });
       }, 1000);
     } catch (error) {
       console.log(error);
@@ -104,6 +105,16 @@ const LoginPage: FunctionComponent<Props> = (props) => {
           >
             Entrar
           </Button>
+
+          <Link mt={8}
+            _text={{
+              color: 'primary.600',
+            }}
+            isUnderlined
+            onPress={() => navigation.navigate('UsuarioForm', { id: 'Novo' })}
+          >
+            Ainda não tem uma conta? Cadastre-se.
+          </Link>
         </VStack>
       </View>
     </NativeBaseProvider>
