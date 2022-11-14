@@ -24,12 +24,12 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const isNew = () => {
-    return route.params.id === 'Novo';
-  };
+  // const isNew = () => {
+  //   return route.params.id === 'Novo';
+  // };
 
   const goToFazendaForm = () => {
-    validate() && isNew()
+    validate() 
       ? navigation.navigate('FazendaForm', usuario)
       : console.log(erros);
   };
