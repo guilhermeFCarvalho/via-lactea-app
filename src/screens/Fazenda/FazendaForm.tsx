@@ -10,6 +10,7 @@ import {
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import EnderecoFormComponent from '../../components/EnderecoFormComponent';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {}
 
@@ -20,10 +21,19 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
 
+  const buscaFazenda = async () => {
+    const prop: any = await AsyncStorage.getItem('PropriedadeId');
+    setFazenda(JSON.parse(prop));
+  };
+
   useEffect(() => {
+    
     setErros({});
   }, [fazenda]);
 
+  useEffect(()=>{
+    buscaFazenda();
+  },[])
   const validate = () => {
     if (fazenda.nome === undefined || fazenda.nome === '') {
       setErros({ ...erros, nome: 'Informe um nome' });
@@ -48,18 +58,26 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
   };
 
   const goToCheckout = (endereco) => {
-    navigation.navigate('FinalizarCadastro', {
-      usuario: route.params,
-      fazenda,
-      endereco,
-    });
+    if (validate() && isNew() && endereco != 'erro') {
+      navigation.navigate('FinalizarCadastro', {
+        usuario: route.params,
+        fazenda,
+        endereco,
+      });
+    }
   };
 
+  const isNew = () => {
+    console.log();
+    return route.params != undefined;
+  };
   const showProgress = (value) => {
-    if (route.params) {
+    if (isNew()) {
       return <Progress value={value}></Progress>;
     }
   };
+
+  
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
@@ -73,7 +91,9 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
               onChangeText={(value: any) => {
                 setFazenda({ ...fazenda, nome: value });
               }}
-            ></Input>
+            >
+              
+            </Input>
             <FormControl.ErrorMessage>{erros.nome}</FormControl.ErrorMessage>
           </FormControl>
           <FormControl isRequired isInvalid={'telefone' in erros}>
@@ -104,9 +124,7 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
 
         <EnderecoFormComponent
           onSubmit={(endereco: any) => {
-            if (validate() && endereco != 'erro') {
-              goToCheckout(endereco);
-            }
+            goToCheckout(endereco);
           }}
         ></EnderecoFormComponent>
       </ScrollView>
