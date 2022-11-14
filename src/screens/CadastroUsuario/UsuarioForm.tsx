@@ -25,7 +25,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   const route = useRoute();
 
   const isNew = () => {
-    return route.params.id === 'Novo';
+    return route.params === undefined;
   };
 
   const goToFazendaForm = () => {
@@ -77,7 +77,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
     return true;
   };
   const showProgress = (value) => {
-    if (route.params.id === 'Novo') {
+    if (route.params) {
       return <Progress value={value}></Progress>;
     }
   };

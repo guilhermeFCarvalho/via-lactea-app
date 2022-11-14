@@ -8,7 +8,6 @@ import {
   Icon,
   VStack,
   useToast,
-  Center,
   View,
   Toast,
 } from 'native-base';
@@ -41,6 +40,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
         });      
       }, 1000);
     } catch (error) {
+      console.log(error);
       Toast.show({
         description: 'Erro ao autenticar usuário',
       });

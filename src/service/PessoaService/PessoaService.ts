@@ -5,9 +5,6 @@ import api from "../api";
 
 const PessoaService = {
 
-
-  
-
   getPrincipaisInformacoesDoUsuario : async function() {
     const usuarioId =  await UsuarioUtils.getIdUsuarioDoToken()
     api.get(`/api/pessoas-fisicas/usuario/${usuarioId}`)
