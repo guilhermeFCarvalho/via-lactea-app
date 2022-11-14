@@ -24,12 +24,12 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  // const isNew = () => {
-  //   return route.params.id === 'Novo';
-  // };
+  const isNew = () => {
+    return route.params === undefined;
+  };
 
   const goToFazendaForm = () => {
-    validate() 
+    validate() && isNew()
       ? navigation.navigate('FazendaForm', usuario)
       : console.log(erros);
   };
@@ -77,7 +77,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
     return true;
   };
   const showProgress = (value) => {
-    if (route.params.id === 'Novo') {
+    if (route.params) {
       return <Progress value={value}></Progress>;
     }
   };
