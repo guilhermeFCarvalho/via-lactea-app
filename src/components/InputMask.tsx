@@ -5,7 +5,7 @@ import { TextInputProps } from "react-native";
 import { mascaraData, mascaraPeso } from "../utils/Mascaras";
 
 interface InputProps extends TextInputProps {
-  mask: "data" | "peso",
+  mask: "data" | "number",
   inputMaskChange: any;
 }
 
@@ -15,7 +15,7 @@ const InputMask: React.FC<InputProps> = ({ mask, inputMaskChange, ... rest }) =>
     if(mask === 'data') {
       const textoFormatado = mascaraData(texto);
       inputMaskChange(textoFormatado)
-    } if (mask === 'peso') {
+    } if (mask === 'number') {
       const textoFormatado = mascaraPeso(texto)
       inputMaskChange(textoFormatado)
     }
