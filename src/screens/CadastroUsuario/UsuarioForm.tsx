@@ -7,6 +7,9 @@ import {
   Button,
   ScrollView,
   Progress,
+  StatusBar,
+  Text,
+  Heading,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 
@@ -25,11 +28,11 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   const route = useRoute();
 
   const isNew = () => {
-    return route.params === undefined;
+    return route.params != undefined;
   };
 
   const goToFazendaForm = () => {
-    validate() && isNew()
+    validate() && !isNew()
       ? navigation.navigate('FazendaForm', usuario)
       : console.log(erros);
   };
@@ -77,7 +80,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
     return true;
   };
   const showProgress = (value) => {
-    if (route.params) {
+    if (isNew()) {
       return <Progress value={value}></Progress>;
     }
   };
@@ -89,6 +92,9 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
+        <Center p={"4%"} >
+          <Heading>Cadastro</Heading>
+        </Center>
         {showProgress(1)}
         <Center px="8%" pt="2%" justifyContent={'space-between'}>
           <FormControl isRequired isInvalid={'nome' in erros}>
