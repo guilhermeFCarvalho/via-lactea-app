@@ -20,46 +20,33 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const [erros, setErros] = useState({});
 
-  const [propriedade, setPropriedade] = useState({});
-  
-
-  const buscaPropriedade = async () => {
-    const prop:any = await AsyncStorage.getItem("PropriedadeId")
-    setPropriedade(prop)
-  }
-
-
   const [leiteVendido, setLeiteVendido] = React.useState<ReciboDeVenda>({
     quantidadeLeiteVendida: 0,
     observacoes: '',
     pago: false,
-    propriedade: propriedade
   });
 
   const salvarNovoRecibo = async () => {
-    console.log(propriedade);
-    
-    await setLeiteVendido({...leiteVendido, propriedade: propriedade })
-    await salvar()
-    // setTimeout(() => {
-    // },1000)
+    salvar()
   };
 
   const salvar = async () => {
-    console.log(leiteVendido);
-    
-    // ReciboDeVendaService.salvar(leiteVendido).then(() => {
-    //   navigation.navigate('ReciboDeVendaList');
-    // });
+    ReciboDeVendaService.salvar(leiteVendido).then(() => {
+      navigation.navigate('ReciboDeVendaList');
+    });
   }
 
   useEffect(() => {
     setErros({});
   }, [leiteVendido]);
 
-
-  useEffect(() => {
-    buscaPropriedade() 
+  useEffect( () => {
+    AsyncStorage.getItem('PropriedadeId').then((res) => 
+    setLeiteVendido({
+      ...leiteVendido,
+      propriedade: {id:res},
+    })
+    )
   }, []);
 
   const validate = () => {
