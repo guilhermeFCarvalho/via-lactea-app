@@ -1,5 +1,3 @@
-// Remover os console.log() após terminar a tarefa
-
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -45,9 +43,10 @@ const AnimalForm = () => {
     dataGestacao,
   ]);
 
+  // PARENTESCO e ANIMAL QUE CRUZOU está impedido por conta da listagem
   const salvarAnimal = () => {
     AnimalService.salvar({
-      parentescoAnimal: {},
+      parentescoAnimal: null,
       especie: animal.especie,
       peso: animal.peso,
       raca: animal.raca,
@@ -56,14 +55,12 @@ const AnimalForm = () => {
       dataUltimaGestacao: animal.dataGestacao,
       tipoAlimentacao: animal.alimentacao,
       identificacao: animal.identificacao,
-      animalQueCruzou: {},
+      animalQueCruzou: null,
       sexo: animal.sexo,
     });
-    //navigation.navigate('Home', {})
   };
 
   function setValoresAnimal() {
-    console.log('Após definir:');
     setAnimal({
       ...animal,
       peso: parseInt(pesoDoAnimal),
