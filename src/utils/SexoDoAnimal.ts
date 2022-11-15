@@ -1,7 +1,4 @@
-export const sexoDoAnimal: Sexo[] = [
-  { sexo: 'Masculino' },
-  { sexo: 'Feminino' },
-];
+export const sexoDoAnimal: Sexo[] = [{ sexo: 'MACHO' }, { sexo: 'FEMEA' }];
 
 interface Sexo {
   sexo: string;

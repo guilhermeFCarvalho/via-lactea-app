@@ -1,3 +1,5 @@
+// Remover os console.log() após terminar a tarefa
+
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -9,9 +11,9 @@ import {
   Select,
   ScrollView,
 } from 'native-base';
-
 import InputMask from '../../components/InputMask';
 import { sexoDoAnimal } from '../../utils/SexoDoAnimal';
+import AnimalService from '../../service/AnimalService/AnimalService';
 
 interface Props {
   navigation: any;
@@ -24,7 +26,7 @@ const AnimalForm = () => {
   const [dataVeterinario, setDataVeterinario] = useState('');
   const [dataGestacao, setDataGestacao] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
-  const [quantidadeCrias, setQuantidadeCrias] = useState('');
+  const [quantidaDeCrias, setQuantidadeCrias] = useState('');
   const [erros, setErros] = useState({});
 
   const navigation = useNavigation();
@@ -39,9 +41,26 @@ const AnimalForm = () => {
     pesoDoAnimal,
     dataVeterinario,
     dataNascimento,
-    quantidadeCrias,
+    quantidaDeCrias,
     dataGestacao,
   ]);
+
+  const salvarAnimal = () => {
+    AnimalService.salvar({
+      parentescoAnimal: {},
+      especie: animal.especie,
+      peso: animal.peso,
+      raca: animal.raca,
+      quantidaDeCrias: animal.quantidaDeCrias,
+      dataDeNascimento: animal.dataNascimento,
+      dataUltimaGestacao: animal.dataGestacao,
+      tipoAlimentacao: animal.alimentacao,
+      identificacao: animal.identificacao,
+      animalQueCruzou: {},
+      sexo: animal.sexo,
+    });
+    //navigation.navigate('Home', {})
+  };
 
   function setValoresAnimal() {
     console.log('Após definir:');
@@ -50,21 +69,13 @@ const AnimalForm = () => {
       peso: parseInt(pesoDoAnimal),
       dataVeterinario: dataVeterinario,
       dataNascimento: dataNascimento,
-      quantidadeCrias: parseInt(quantidadeCrias)
-        ? parseInt(quantidadeCrias)
+      quantidaDeCrias: parseInt(quantidaDeCrias)
+        ? parseInt(quantidaDeCrias)
         : 0,
       dataGestacao: dataGestacao,
     });
     return console.log(animal);
   }
-
-  const voltarHome = () => {
-    console.log('Antes de definir:');
-    console.log(animal);
-
-    validate() ? navigation.navigate('Home', {}) : console.log(erros);
-    animal;
-  };
 
   const validate = () => {
     if (!animal.especie) {
@@ -107,6 +118,7 @@ const AnimalForm = () => {
             <FormControl.Label>Identificação do Animal</FormControl.Label>
             <Input
               placeholder="9QC2B82"
+              maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, identificacao: value });
               }}
@@ -117,6 +129,7 @@ const AnimalForm = () => {
             <FormControl.Label>Espécie</FormControl.Label>
             <Input
               placeholder="Espécie do Animal"
+              maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, especie: value });
               }}
@@ -128,6 +141,7 @@ const AnimalForm = () => {
             <FormControl.Label>Tipo de Alimetação</FormControl.Label>
             <Input
               placeholder="Espécie do Animal"
+              maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, alimentacao: value });
               }}
@@ -138,6 +152,7 @@ const AnimalForm = () => {
             <FormControl.Label>Raça</FormControl.Label>
             <Input
               placeholder={' Holandesa'}
+              maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, raca: value });
               }}
@@ -206,7 +221,7 @@ const AnimalForm = () => {
           <FormControl>
             <FormControl.Label>Quantidade de Crias</FormControl.Label>
             <InputMask
-              value={quantidadeCrias}
+              value={quantidaDeCrias}
               placeholder="(Opicional)"
               mask="number"
               maxLength={5}
@@ -233,7 +248,9 @@ const AnimalForm = () => {
             <Button
               m={'8%'}
               onPress={() => {
-                voltarHome();
+                if (validate()) {
+                  salvarAnimal();
+                }
               }}
             >
               Salvar
