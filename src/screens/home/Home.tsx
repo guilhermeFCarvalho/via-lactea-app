@@ -26,7 +26,9 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('AnimalForm', { id: 'AnimalForm' })}
+          onPress={() =>
+            navigation.navigate('AnimalForm', { id: 'AnimalForm' })
+          }
         >
           {' '}
           Cadastro Animal{' '}
@@ -107,15 +109,15 @@ const Home: FunctionComponent<Props> = (props) => {
         </Button>
 
         <Button
-        m="5"
-        bg={'viaLacteaSecondary.blue'}
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
         onPress={() =>
           navigation.navigate('LoginPage', { })
         }
-      >
-        {' '}
-        Login Page{' '}
-      </Button>
+        >
+          {' '}
+          Login Page{' '}
+        </Button>
       </ScrollView>
     </NativeBaseProvider>
   );

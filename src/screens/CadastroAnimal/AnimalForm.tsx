@@ -22,6 +22,7 @@ const AnimalForm = () => {
   const [animal, setAnimal] = useState({});
   const [pesoDoAnimal, setPesoDoAnimal] = useState('');
   const [dataVeterinario, setDataVeterinario] = useState('');
+  const [dataGestacao, setDataGestacao] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [quantidadeCrias, setQuantidadeCrias] = useState('');
   const [erros, setErros] = useState({});
@@ -34,7 +35,13 @@ const AnimalForm = () => {
 
   useEffect(() => {
     setValoresAnimal();
-  }, [pesoDoAnimal, dataVeterinario, dataNascimento, quantidadeCrias]);
+  }, [
+    pesoDoAnimal,
+    dataVeterinario,
+    dataNascimento,
+    quantidadeCrias,
+    dataGestacao,
+  ]);
 
   function setValoresAnimal() {
     console.log('Após definir:');
@@ -43,7 +50,10 @@ const AnimalForm = () => {
       peso: parseInt(pesoDoAnimal),
       dataVeterinario: dataVeterinario,
       dataNascimento: dataNascimento,
-      quantidadeCrias: quantidadeCrias,
+      quantidadeCrias: parseInt(quantidadeCrias)
+        ? parseInt(quantidadeCrias)
+        : 0,
+      dataGestacao: dataGestacao,
     });
     return console.log(animal);
   }
@@ -61,12 +71,12 @@ const AnimalForm = () => {
       setErros({ ...erros, especie: 'Informe a Espécie do Animal' });
       return false;
     }
-    if (!animal.peso) {
-      setErros({ ...erros, peso: 'Informe o Peso do Animal' });
-      return false;
-    }
     if (!animal.raca) {
       setErros({ ...erros, raca: 'Informe a Raca do Animal' });
+      return false;
+    }
+    if (!animal.peso) {
+      setErros({ ...erros, peso: 'Informe o Peso do Animal' });
       return false;
     }
     if (!animal.dataNascimento) {
@@ -87,6 +97,22 @@ const AnimalForm = () => {
     <NativeBaseProvider>
       <ScrollView>
         <Center px="8%" pt="2%" justifyContent={'space-between'}>
+          <FormControl mb={10}>
+            <FormControl.Label>
+              Inputs faltantes: Parentesco, Animal Da Cruza
+            </FormControl.Label>
+          </FormControl>
+
+          <FormControl>
+            <FormControl.Label>Identificação do Animal</FormControl.Label>
+            <Input
+              placeholder="9QC2B82"
+              onChangeText={(value: any) => {
+                setAnimal({ ...animal, identificacao: value });
+              }}
+            ></Input>
+          </FormControl>
+
           <FormControl isRequired isInvalid={'especie' in erros}>
             <FormControl.Label>Espécie</FormControl.Label>
             <Input
@@ -97,6 +123,28 @@ const AnimalForm = () => {
             ></Input>
             <FormControl.ErrorMessage>{erros.especie}</FormControl.ErrorMessage>
           </FormControl>
+
+          <FormControl>
+            <FormControl.Label>Tipo de Alimetação</FormControl.Label>
+            <Input
+              placeholder="Espécie do Animal"
+              onChangeText={(value: any) => {
+                setAnimal({ ...animal, alimentacao: value });
+              }}
+            ></Input>
+          </FormControl>
+
+          <FormControl isRequired isInvalid={'raca' in erros}>
+            <FormControl.Label>Raça</FormControl.Label>
+            <Input
+              placeholder={' Holandesa'}
+              onChangeText={(value: any) => {
+                setAnimal({ ...animal, raca: value });
+              }}
+            ></Input>
+            <FormControl.ErrorMessage>{erros.raca}</FormControl.ErrorMessage>
+          </FormControl>
+
           <FormControl isRequired isInvalid={'peso' in erros}>
             <FormControl.Label>Peso (em @)</FormControl.Label>
             <InputMask
@@ -111,33 +159,12 @@ const AnimalForm = () => {
               {erros.pesoDoAnimal}
             </FormControl.ErrorMessage>
           </FormControl>
-          <FormControl isRequired isInvalid={'dataVet' in erros}>
-            <FormControl.Label>Última Visita ao Veterinário</FormControl.Label>
-            <InputMask
-              value={dataVeterinario}
-              placeholder={'25/11/2022'}
-              maxLength={10}
-              mask="data"
-              inputMaskChange={(value: string) => setDataVeterinario(value)}
-              keyboardType="numeric"
-            ></InputMask>
-            <FormControl.ErrorMessage>{erros.dataVet}</FormControl.ErrorMessage>
-          </FormControl>
-          <FormControl isRequired isInvalid={'raca' in erros}>
-            <FormControl.Label>Raça</FormControl.Label>
-            <Input
-              placeholder={' Holandesa'}
-              onChangeText={(value: any) => {
-                setAnimal({ ...animal, raca: value });
-              }}
-            ></Input>
-            <FormControl.ErrorMessage>{erros.raca}</FormControl.ErrorMessage>
-          </FormControl>
-          <FormControl isRequired isInvalid={'dataNasc' in erros}>
+
+          <FormControl isRequired isInvalid={'dataNascimento' in erros}>
             <FormControl.Label>Data de Nascimento</FormControl.Label>
             <InputMask
               value={dataNascimento}
-              placeholder={'25/11/2022'}
+              placeholder={'11/11/1111'}
               maxLength={10}
               mask="data"
               inputMaskChange={(value: string) => setDataNascimento(value)}
@@ -147,6 +174,20 @@ const AnimalForm = () => {
               {erros.dataNascimento}
             </FormControl.ErrorMessage>
           </FormControl>
+
+          <FormControl isInvalid={'dataVeterinario' in erros}>
+            <FormControl.Label>Última Visita ao Veterinário</FormControl.Label>
+            <InputMask
+              value={dataVeterinario}
+              placeholder={'11/11/1111'}
+              maxLength={10}
+              mask="data"
+              inputMaskChange={(value: string) => setDataVeterinario(value)}
+              keyboardType="numeric"
+            ></InputMask>
+            <FormControl.ErrorMessage>{erros.dataVet}</FormControl.ErrorMessage>
+          </FormControl>
+
           <FormControl isRequired isInvalid={'sexo' in erros}>
             <FormControl.Label>Sexo</FormControl.Label>
             <Select
@@ -162,14 +203,42 @@ const AnimalForm = () => {
             <FormControl.ErrorMessage>{erros.sexo}</FormControl.ErrorMessage>
           </FormControl>
 
-          <Button
-            m={'8%'}
-            onPress={() => {
-              voltarHome();
-            }}
-          >
-            Salvar
-          </Button>
+          <FormControl>
+            <FormControl.Label>Quantidade de Crias</FormControl.Label>
+            <InputMask
+              value={quantidadeCrias}
+              placeholder="(Opicional)"
+              mask="number"
+              maxLength={5}
+              inputMaskChange={(value: string) => {
+                setQuantidadeCrias(value);
+              }}
+            ></InputMask>
+          </FormControl>
+
+          <FormControl isInvalid={'dataGestacao' in erros}>
+            <FormControl.Label>Data de Nascimento</FormControl.Label>
+            <InputMask
+              value={dataGestacao}
+              placeholder={'11/11/1111'}
+              maxLength={10}
+              mask="data"
+              inputMaskChange={(value: string) => setDataGestacao(value)}
+              keyboardType="numeric"
+            ></InputMask>
+            <FormControl.ErrorMessage>
+              {erros.dataGestacao}
+            </FormControl.ErrorMessage>
+
+            <Button
+              m={'8%'}
+              onPress={() => {
+                voltarHome();
+              }}
+            >
+              Salvar
+            </Button>
+          </FormControl>
         </Center>
       </ScrollView>
     </NativeBaseProvider>

@@ -4,9 +4,9 @@ function mascaraData(data: string) {
   return data;
 }
 
-function mascaraPeso(peso: string) {
-  peso = peso.replace(/\D/g, '');
-  return peso;
+function mascaraNumero(numero: string) {
+  numero = numero.replace(/\D/g, '');
+  return numero;
 }
 
-export { mascaraData, mascaraPeso };
+export { mascaraData, mascaraNumero };
