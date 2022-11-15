@@ -62,7 +62,6 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
   };
 
   const isNew = () => {
-    console.log();
     return route.params != undefined;
   };
   const showProgress = (value) => {
