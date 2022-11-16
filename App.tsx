@@ -27,7 +27,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Home"
+        initialRouteName="LoginPage"
         screenOptions={{
           drawerType: 'front',
         }}

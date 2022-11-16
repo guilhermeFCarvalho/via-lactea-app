@@ -19,7 +19,6 @@ interface Props {}
 
 const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
-  const route = useRoute();
   const [erros, setErros] = useState({});
 
   const [leiteVendido, setLeiteVendido] = React.useState<ReciboDeVenda>({
@@ -40,7 +39,6 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   }
 
   useEffect(() => {
-    
     setErros({});
   }, [leiteVendido]);
 
@@ -58,7 +56,7 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const validate = () => {
     if (
       !leiteVendido.quantidadeLeiteVendida ||
-      !/^[0-9.]+$/.test(leiteVendido.quantidadeLeiteVendida)
+      !/^[0-9]+$/.test(leiteVendido.quantidadeLeiteVendida)
     ) {
       setErros({
         ...erros,

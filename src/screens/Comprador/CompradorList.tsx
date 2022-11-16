@@ -6,49 +6,42 @@ import {
   HStack,
   IconButton,
   Box,
-  Fab,
-  Icon,
 } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { MaterialIcons } from '@expo/vector-icons';
 import CompradorService from '../../service/CompradorService/CompradorService';
-import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
 
 interface Props {}
 
 const CompradorList: FunctionComponent<Props> = () => {
   const [compradorList, setCompradorList] = useState([]);
-  const navigation = useNavigation();
+
   const getCompradores = () => {
     return CompradorService.listar().then((response) =>
       setCompradorList(response.data.content),
-    ).catch((error) => console.log(error));
+    );
   };
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', async () => {
-      getCompradores();
-    });
-
-    return unsubscribe;
-  }, [navigation]);
+    getCompradores();
+  }, []);
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView padding={'6%'}>
-        <Fab
-          placement="bottom-right"
-          icon={<Icon color="white" as={<AntDesign name="plus" />} size={4} />}
-          onPress={() => navigation.navigate('CompradorForm')}
-        />
         <VStack space={6}>
           {compradorList.map((element) => {
             return (
               <Box>
-                <VStack shadow={5} rounded="lg" padding={'2%'} space={1}>
+                <VStack
+                  borderColor={'primary.400'}
+                  borderWidth={'2'}
+                  rounded="lg"
+                  padding={'2%'}
+                  space={1}
+                >
                   <Text fontWeight={'medium'} fontSize={'xl'}>
                     {element.razaoSocial}
                   </Text>

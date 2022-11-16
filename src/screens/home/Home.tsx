@@ -12,7 +12,7 @@ export type RootStackParamList = {
   FinalizarCadastro: { id: string };
   ColetorForm: { id: string };
   ReciboDeVendaList: { id: string };
-  CompradorList: { id: string };
+  CompradorForm: { id: string };
   AnimalForm: { id: string };
 };
 
@@ -23,7 +23,7 @@ const Home: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
-        <Button
+      <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
           onPress={() =>
@@ -36,7 +36,9 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('UsuarioForm', { id: 'Novo' })}
+          onPress={() =>
+            navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
+          }
         >
           {' '}
           Formulario Usuario{' '}
@@ -44,7 +46,9 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('FazendaForm', { id: 'Novo' })}
+          onPress={() =>
+            navigation.navigate('FazendaForm', { id: 'FazendaForm' })
+          }
         >
           {' '}
           Formulario Fazenda{' '}
@@ -102,22 +106,22 @@ const Home: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('CompradorList', { id: 'Novo' })}
+          onPress={() => navigation.navigate('CompradorForm', { id: 'Novo' })}
         >
           {' '}
-          Comprador{' '}
+          Cadastrar Comprador{' '}
         </Button>
 
         <Button
-          m="5"
-          bg={'viaLacteaSecondary.blue'}
+        m="5"
+        bg={'viaLacteaSecondary.blue'}
         onPress={() =>
           navigation.navigate('LoginPage', { })
         }
-        >
-          {' '}
-          Login Page{' '}
-        </Button>
+      >
+        {' '}
+        Login Page{' '}
+      </Button>
       </ScrollView>
     </NativeBaseProvider>
   );

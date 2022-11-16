@@ -4,7 +4,7 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { ReciboDeVenda } from '../../types/ReciboDeVenda';
 import ReciboDeVendaCard from './components/ReciboDeVendaCardComponent';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
 
@@ -17,28 +17,20 @@ interface Props {}
 
 const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
   const [listaRecibo, setReciboLista] = useState<Array<any>>([]);
-  const navigation = useNavigation();
+  const [refreshList, setRefreshList] = useState(true);
 
   const buscar = () => {
-    const sortParams = new URLSearchParams();
-    sortParams.append('page', '0');
-    sortParams.append('size', '30');
-    sortParams.append('sort', 'dataDaVenda,desc');
-    sortParams.append('sort', 'id');
-    ReciboDeVendaService.buscar(sortParams)
-      .then((response) => {
-        setReciboLista(response.data.content);
-      })
-      .catch((error) => console.log(error));
+    ReciboDeVendaService.buscar({}).then((response) =>
+      setReciboLista(response.data.content),
+    );
   };
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', async () => {
-      buscar();
-    });
+    buscar();
+    setRefreshList(false);
+  }, [refreshList]);
 
-    return unsubscribe;
-  }, [navigation]);
+  const navigation = useNavigation();
 
 
 
@@ -47,7 +39,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       <Fab
         placement="bottom-right"
         icon={<Icon color="white" as={<AntDesign name="plus" />} size={4} />}
-        onPress={() => navigation.navigate('ReciboDeVendaForm')}
+        onPress={() => navigation.navigate('ReciboDeVendaForm', {})}
       />
       <ScrollView p={'2%'}>
         <VStack space={4}>
