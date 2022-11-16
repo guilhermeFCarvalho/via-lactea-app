@@ -13,6 +13,7 @@ export type RootStackParamList = {
   ColetorForm: { id: string };
   ReciboDeVendaList: { id: string };
   CompradorForm: { id: string };
+  Home: { id: string };
 };
 
 const OldHome: FunctionComponent<Props> = (props) => {
@@ -25,10 +26,10 @@ const OldHome: FunctionComponent<Props> = (props) => {
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
-          onPress={() => navigation.navigate('UsuarioForm', { id: 'Novo' })}
+          onPress={() => navigation.navigate('Home', { id: 'Home' })}
         >
           {' '}
-          Formulario Usuario{' '}
+          New Home{' '}
         </Button>
         <Button
           m="5"

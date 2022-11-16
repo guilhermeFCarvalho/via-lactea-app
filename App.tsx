@@ -17,6 +17,7 @@ import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
 import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FazendaList from './src/screens/Fazenda/FazendaList';
+import OldHome from './src/screens/home/OldHome';
 
 export default function App() {
   useEffect(() => {
@@ -26,11 +27,22 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="LoginPage"
+        initialRouteName="OldHome"
         screenOptions={{
           drawerType: 'front',
         }}
       >
+        <Drawer.Screen
+          name="OldHome"
+          component={OldHome}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Old Home',
+            drawerLabel: 'OldHome',
+          }}
+        />
         <Drawer.Screen
           name="Home"
           component={Home}
