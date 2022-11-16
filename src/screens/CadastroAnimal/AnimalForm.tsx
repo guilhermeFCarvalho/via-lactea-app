@@ -11,6 +11,7 @@ import {
 } from 'native-base';
 import InputMask from '../../components/InputMask';
 import { sexoDoAnimal } from '../../utils/SexoDoAnimal';
+import { validarData } from '../../utils/ValidarData';
 import AnimalService from '../../service/AnimalService/AnimalService';
 
 interface Props {
@@ -58,6 +59,7 @@ const AnimalForm = () => {
       animalQueCruzou: null,
       sexo: animal.sexo,
     });
+    return navigation.navigate('Home');
   };
 
   function setValoresAnimal() {
@@ -73,30 +75,56 @@ const AnimalForm = () => {
     });
     return console.log(animal);
   }
+  
 
   const validate = () => {
     if (!animal.especie) {
-      setErros({ ...erros, especie: 'Informe a Espécie do Animal' });
+      setErros({ ...erros, especie: 'Informe a Espécie do Animal!' });
       return false;
     }
     if (!animal.raca) {
-      setErros({ ...erros, raca: 'Informe a Raca do Animal' });
+      setErros({ ...erros, raca: 'Informe a Raca do Animal!' });
       return false;
     }
     if (!animal.peso) {
-      setErros({ ...erros, peso: 'Informe o Peso do Animal' });
+      setErros({ ...erros, peso: 'Informe o Peso do Animal!' });
       return false;
     }
     if (!animal.dataNascimento) {
       setErros({
         ...erros,
-        dataNascimento: 'Informe a Data de Nascimento do Animal',
+        dataNascimento: 'Informe a Data de Nascimento do Animal!',
       });
       return false;
     }
     if (!animal.sexo) {
-      setErros({ ...erros, sexo: 'Informe o Sexo do Animal' });
+      setErros({ ...erros, sexo: 'Informe o Sexo do Animal!' });
       return false;
+    }
+    if (!validarData(animal.dataNascimento)) {
+      setErros({
+        ...erros,
+        dataNascimento: 'Data inválida!',
+      });
+      return false;
+    }
+    if (animal.dataVeterinario) {
+      if (!validarData(animal.dataVeterinario)) {
+        setErros({
+          ...erros,
+          dataVeterinario: 'Data inválida!',
+        });
+        return false
+      }
+    }
+    if (animal.dataGestacao) {
+      if (!validarData(animal.dataGestacao)) {
+        setErros({
+          ...erros,
+          dataGestacao: 'Data inválida!',
+        });
+        return false
+      }
     }
     return true;
   };
@@ -197,7 +225,7 @@ const AnimalForm = () => {
               inputMaskChange={(value: string) => setDataVeterinario(value)}
               keyboardType="numeric"
             ></InputMask>
-            <FormControl.ErrorMessage>{erros.dataVet}</FormControl.ErrorMessage>
+            <FormControl.ErrorMessage>{erros.dataVeterinario}</FormControl.ErrorMessage>
           </FormControl>
 
           <FormControl isRequired isInvalid={'sexo' in erros}>
@@ -229,7 +257,7 @@ const AnimalForm = () => {
           </FormControl>
 
           <FormControl isInvalid={'dataGestacao' in erros}>
-            <FormControl.Label>Data de Nascimento</FormControl.Label>
+            <FormControl.Label>Data da Última Gestação</FormControl.Label>
             <InputMask
               value={dataGestacao}
               placeholder={'11/11/1111'}
