@@ -12,27 +12,43 @@ import { ReciboDeVenda } from '../../types/ReciboDeVenda';
 
 import { useNavigation } from '@react-navigation/core';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {}
 
 const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const [erros, setErros] = useState({});
+
   const [leiteVendido, setLeiteVendido] = React.useState<ReciboDeVenda>({
     quantidadeLeiteVendida: 0,
     observacoes: '',
     pago: false,
   });
 
-  const salvarNovoRecibo = () => {
-    ReciboDeVendaService.salvar(leiteVendido).finally(() => {
+  const salvarNovoRecibo = async () => {
+    salvar()
+  };
+
+  const salvar = async () => {
+    ReciboDeVendaService.salvar(leiteVendido).then(() => {
       navigation.navigate('ReciboDeVendaList');
     });
-  };
+  }
 
   useEffect(() => {
     setErros({});
   }, [leiteVendido]);
+
+  useEffect( () => {
+    AsyncStorage.getItem('PropriedadeId').then((res:any) => {
+      const response = JSON.parse(res) 
+      setLeiteVendido({
+        ...leiteVendido,
+        propriedade: {id:response.id},
+      })
+    })
+  }, []);
 
   const validate = () => {
     if (
