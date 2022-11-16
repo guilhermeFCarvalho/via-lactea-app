@@ -7,7 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
 import Home from './src/screens/home/Home';
-import FazendaForm from './src/screens/CadastroFazenda/FazendaForm';
+import FazendaForm from './src/screens/Fazenda/FazendaForm';
 import UsuarioForm from './src/screens/CadastroUsuario/UsuarioForm';
 import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
 import CompradorForm from './src/screens/Comprador/CompradorForm';
@@ -17,6 +17,7 @@ import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
 import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
+import FazendaList from './src/screens/Fazenda/FazendaList';
 
 export default function App() {
   useEffect(() => {
@@ -60,8 +61,20 @@ export default function App() {
             swipeEnabled: false,
             headerShown: true,
             headerTitleAlign: 'center',
-            headerTitle: 'Cadastro da Fazenda',
-            drawerLabel: 'Fazenda',
+            headerTitle: 'Cadastrar Fazenda',
+            drawerLabel: 'Cadastrar Fazenda',
+          }}
+        />
+
+        <Drawer.Screen
+          name="FazendaList"
+          component={FazendaList}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Minha Fazenda',
+            drawerLabel: 'Minha Fazenda',
           }}
         />
 

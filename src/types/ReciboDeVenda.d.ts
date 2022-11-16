@@ -4,4 +4,5 @@ export type ReciboDeVenda = {
   observacoes: string;
   pago: boolean;
   dataDaVenda?: Date;
+  propriedade?:any
 };
