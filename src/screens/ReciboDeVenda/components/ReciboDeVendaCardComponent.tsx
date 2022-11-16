@@ -1,23 +1,21 @@
 import {
-  Container,
   Text,
-  Heading,
   Box,
   HStack,
   VStack,
   Divider,
-  Input,
-  Checkbox,
   Badge,
   View,
 } from 'native-base';
 import React from 'react';
 import { FunctionComponent } from 'react';
+import { Pressable } from 'react-native';
 
 import { ReciboDeVenda } from '../../../types/ReciboDeVenda';
 
 interface Props {
   recibo: ReciboDeVenda;
+  alterarStatusPagamento(id:number):void; 
 }
 
 const formatDate = (date: Date | string) => {
@@ -61,14 +59,15 @@ const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
         <Divider />
         <HStack justifyContent={'space-between'}>
           {mostrarObservacoes()}
-
-          <VStack>
-            {props.recibo.pago ? (
-              <Badge colorScheme="success">PAGO</Badge>
-            ) : (
-              <Badge colorScheme="danger">NÃO PAGO</Badge>
-            )}
-          </VStack>
+          <Pressable onPress={() => props.alterarStatusPagamento(props.recibo.id)}>
+            <VStack>
+              {props.recibo.pago ? (
+                <Badge colorScheme="success">PAGO</Badge>
+                ) : (
+                  <Badge colorScheme="danger">NÃO PAGO</Badge>
+                  )}
+            </VStack>
+          </Pressable>
         </HStack>
       </VStack>
     </View>

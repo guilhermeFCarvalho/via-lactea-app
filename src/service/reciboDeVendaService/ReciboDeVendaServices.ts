@@ -9,6 +9,12 @@ const ReciboDeVendaService = {
   buscarPorPropriedade: function (id: any, data: any) {
     return api.get(`/api/recibo-de-venda/propriedade/${id}`, { params: data })
   },
+
+  alterarStatusPagamento: function (id: any) {
+    return api.put(`/api/recibo-de-venda/${id}/alterar-status-pagamento`)
+  },
+
+
 };
 
 export default ReciboDeVendaService;
