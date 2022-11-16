@@ -6,8 +6,8 @@ const ReciboDeVendaService = {
     return api.post('/api/recibo-de-venda', data);
   },
 
-  buscar: function (data: any) {
-    return api.get('/api/recibo-de-venda', { params: data });
+  buscarPorPropriedade: function (id: any, data: any) {
+    return api.get(`/api/recibo-de-venda/propriedade/${id}`, { params: data })
   },
 };
 

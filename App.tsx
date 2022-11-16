@@ -16,6 +16,7 @@ import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
 import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 import FazendaList from './src/screens/Fazenda/FazendaList';
 import OldHome from './src/screens/home/OldHome';
 
@@ -32,6 +33,18 @@ export default function App() {
           drawerType: 'front',
         }}
       >
+        
+        <Drawer.Screen
+          name="AnimalForm"
+          component={AnimalForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Animal Form',
+            drawerLabel: 'AnimalForm',
+          }}
+        />
         <Drawer.Screen
           name="OldHome"
           component={OldHome}

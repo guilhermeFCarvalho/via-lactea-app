@@ -13,13 +13,11 @@ import { ReciboDeVenda } from '../../types/ReciboDeVenda';
 import { useNavigation } from '@react-navigation/core';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { log } from 'react-native-reanimated';
 
 interface Props {}
 
 const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
-  const route = useRoute();
   const [erros, setErros] = useState({});
 
   const [leiteVendido, setLeiteVendido] = React.useState<ReciboDeVenda>({
@@ -34,7 +32,6 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
 
   const salvar = async () => {
     ReciboDeVendaService.salvar(leiteVendido).then(() => {
-      log
       navigation.navigate('ReciboDeVendaList');
     });
   }
@@ -44,9 +41,8 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   }, [leiteVendido]);
 
   useEffect( () => {
-    let response
     AsyncStorage.getItem('PropriedadeId').then((res:any) => {
-      response = JSON.parse(res) 
+      const response = JSON.parse(res) 
       setLeiteVendido({
         ...leiteVendido,
         propriedade: {id:response.id},
@@ -57,7 +53,7 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   const validate = () => {
     if (
       !leiteVendido.quantidadeLeiteVendida ||
-      !/^[0-9.]+$/.test(leiteVendido.quantidadeLeiteVendida)
+      !/^[0-9]+$/.test(leiteVendido.quantidadeLeiteVendida)
     ) {
       setErros({
         ...erros,

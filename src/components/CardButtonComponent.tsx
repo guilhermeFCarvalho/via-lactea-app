@@ -1,5 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
-import { AddIcon, Center, HStack, Pressable, Text, VStack } from 'native-base';
+import {
+  AddIcon,
+  Center,
+  getColor,
+  HStack,
+  Pressable,
+  Text,
+  VStack,
+} from 'native-base';
 import React from 'react';
 import { FunctionComponent } from 'react';
 
