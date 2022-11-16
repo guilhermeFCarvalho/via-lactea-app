@@ -17,28 +17,18 @@ interface Props {}
 const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
   const [listaRecibo, setListaRecibo] = useState<Array<any>>([]);
 
-  const [refreshList, setRefreshList] = useState(true);  
   const [page, setPage ] = useState(0)
+  const [firstPage, setFirstPage] = useState(true)
+  const [LastPage, setLastPage] = useState(false)
+  const [totalPage,setTotalPage] = useState(1)
 
   const navigation = useNavigation();
 
-  const buscar = async (propriedade: any) => {
-    const sortParams = new URLSearchParams();
-    sortParams.append('page', page);
-    sortParams.append('size', '2');
-    sortParams.append('sort', 'id,desc');
-    sortParams.append('sort', 'dataDaVenda,desc');
-    
-    ReciboDeVendaService.buscarPorPropriedade(propriedade, sortParams).then((response) => {
-      setListaRecibo(response.data.content)
-    })  
-  };
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', async () => {
       AsyncStorage.getItem('PropriedadeId').then((res: any) => {
         const response = JSON.parse(res) 
-        
         buscar(response.id);
       });
     });
@@ -46,15 +36,40 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
     return unsubscribe;
   }, [navigation]);
 
-
   useEffect(() => {
       AsyncStorage.getItem('PropriedadeId').then((res: any) => {
         const response = JSON.parse(res) 
-        
         buscar(response.id);
       });
 
   }, [page]);
+
+  const buscar = async (propriedade: any) => {
+
+    const params = {
+      page:page,
+      size: 10, 
+      sort: "id,desc" 
+    }
+
+    ReciboDeVendaService.buscarPorPropriedade(propriedade, params).then((response: any) => {
+      setTotalPage(response.data.totalPages)
+      setListaRecibo(response.data.content)
+      setFirstPage(response.data.first)
+      setLastPage(response.data.last)
+    })  
+  };
+
+  const mostarBotoesDaPaginacao  = () => {
+    if(totalPage > 1 ) {
+      return ( 
+        <HStack justifyContent={'space-evenly'} mt={10}  >
+          <Button title='Voltar' isDisabled={firstPage} onPress={()=> setPage(page-1)}>Anterior</Button>
+          <Button title='Avancar' isDisabled={LastPage} onPress={()=> setPage(page+1)}>Proxima</Button>
+        </HStack>
+      )
+    }
+  }
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
@@ -74,11 +89,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
           })}
         </VStack>
 
-        <HStack justifyContent={'center'}>
-          <Button title='Teste 1' onPress={()=> setPage(page-1)}>Pagina anterior</Button>
-          <Button title='Teste 2' onPress={()=> setPage(page+1)}>Proxima pagina</Button>
-
-        </HStack>
+        {mostarBotoesDaPaginacao()}
       </ScrollView>
     </NativeBaseProvider>
   );
