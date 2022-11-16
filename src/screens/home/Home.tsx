@@ -1,11 +1,8 @@
-import { NativeBaseProvider, Button, ScrollView, VStack } from 'native-base';
+import { NativeBaseProvider, Button, ScrollView } from 'native-base';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { ReciboDeVenda } from '../../types/ReciboDeVenda';
-import ReciboDeVendaCard from '../ReciboDeVenda/components/ReciboDeVendaCardComponent';
-import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
 
 interface Props {}
 
@@ -39,20 +36,95 @@ const Home: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
-        <VStack space={4}>
-          {listaRecibo.map((item: ReciboDeVenda) => {
-            return (
-              <ReciboDeVendaCard recibo={item[listaRecibo.length - 1]}>
-                onPress ={' '}
-                {() =>
-                  navigation.navigate('ReciboDeVendaList', {
-                    id: 'ReciboDeVendaList',
-                  })
-                }
-              </ReciboDeVendaCard>
-            );
-          })}
-        </VStack>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('UsuarioForm', { id: 'UsuarioForm' })
+          }
+        >
+          {' '}
+          Formulario Usuario{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FazendaForm', { id: 'FazendaForm' })
+          }
+        >
+          {' '}
+          Formulario Fazenda{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FinalizarCadastro', {
+              id: 'FinalizarCadastro',
+            })
+          }
+        >
+          {' '}
+          Finalizar Cadastro{' '}
+        </Button>
+
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('ReciboDeVendaList', {})}
+        >
+          {' '}
+          Recibo de Venda{' '}
+        </Button>
+
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('UsuarioForm', { id: 'Novo' })}
+        >
+          {' '}
+          Formulario Usuario{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('FazendaForm', { id: 'Novo' })}
+        >
+          {' '}
+          Formulario Fazenda{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() =>
+            navigation.navigate('FinalizarCadastro', {
+              id: 'FinalizarCadastro',
+            })
+          }
+        >
+          {' '}
+          Finalizar Cadastro{' '}
+        </Button>
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('CompradorForm', { id: 'Novo' })}
+        >
+          {' '}
+          Cadastrar Comprador{' '}
+        </Button>
+
+        <Button
+        m="5"
+        bg={'viaLacteaSecondary.blue'}
+        onPress={() =>
+          navigation.navigate('LoginPage', { })
+        }
+      >
+        {' '}
+        Login Page{' '}
+      </Button>
       </ScrollView>
     </NativeBaseProvider>
   );

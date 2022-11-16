@@ -119,7 +119,7 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
             </FormControl>
           </Stack>
 
-          <Stack width={'40%'}>
+          <Stack width={'60%'}>
             <FormControl isRequired isInvalid={'estado' in erros}>
               <FormControl.Label>{'Estado'}</FormControl.Label>
               <Select

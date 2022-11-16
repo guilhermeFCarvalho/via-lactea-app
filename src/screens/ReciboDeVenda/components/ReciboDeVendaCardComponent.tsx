@@ -1,4 +1,16 @@
-import { Text, Box, HStack, VStack, Divider, Checkbox } from 'native-base';
+import {
+  Container,
+  Text,
+  Heading,
+  Box,
+  HStack,
+  VStack,
+  Divider,
+  Input,
+  Checkbox,
+  Badge,
+  View,
+} from 'native-base';
 import React from 'react';
 import { FunctionComponent } from 'react';
 
@@ -32,26 +44,34 @@ const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <VStack shadow={5} justifyContent={'space-between'} p={'3%'} space={2}>
-      <HStack justifyContent={'space-between'} p={'2%'}>
-        <Text fontWeight={'medium'} fontSize={'xl'}>
-          Coleta #{props.recibo.id}
-        </Text>
-        <Text fontWeight={'medium'} fontSize={'xl'}>
-          {formatDate(props.recibo.dataDaVenda)}
-        </Text>
-      </HStack>
-      <Divider />
-      <HStack justifyContent={'space-between'}>
-        {mostrarObservacoes()}
+    <View borderColor={'gray.500'}
+              borderRadius= {5}
+              borderWidth={1}
+              justifyContent={'space-between'}
+              >
+      <VStack shadow={5} justifyContent={'space-between'} p={'3%'} space={2}>
+        <HStack justifyContent={'space-between'} p={'2%'}>
+          <Text fontWeight={'medium'} fontSize={'xl'}>
+            Coleta #{props.recibo.id}
+          </Text>
+          <Text fontWeight={'medium'} fontSize={'xl'}>
+            {formatDate(props.recibo.dataDaVenda)}
+          </Text>
+        </HStack>
+        <Divider />
+        <HStack justifyContent={'space-between'}>
+          {mostrarObservacoes()}
 
-        <VStack>
-          <Checkbox value={'checkbox'} isChecked={props.recibo.pago}>
-            Pago
-          </Checkbox>
-        </VStack>
-      </HStack>
-    </VStack>
+          <VStack>
+            {props.recibo.pago ? (
+              <Badge colorScheme="success">PAGO</Badge>
+            ) : (
+              <Badge colorScheme="danger">NÃO PAGO</Badge>
+            )}
+          </VStack>
+        </HStack>
+      </VStack>
+    </View>
   );
 };
 
