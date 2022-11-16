@@ -25,7 +25,7 @@ const PasswordInputComponent: FunctionComponent<Props> = (props) => {
   }, []);
 
   return (
-   
+    <NativeBaseProvider theme={viaLacteaTheme}>
       <Stack direction="column">
         <FormControl.Label>{props.label}</FormControl.Label>
         <Input
@@ -49,7 +49,7 @@ const PasswordInputComponent: FunctionComponent<Props> = (props) => {
           }
         />
       </Stack>
-  
+    </NativeBaseProvider>
   );
 };
 
