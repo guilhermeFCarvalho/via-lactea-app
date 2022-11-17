@@ -1,4 +1,4 @@
-import { NativeBaseProvider, Button, ScrollView } from 'native-base';
+import { NativeBaseProvider, Button, ScrollView, View, Center, FormControl } from 'native-base';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
@@ -6,73 +6,53 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
 import ReciboDeVendaCard from '../ReciboDeVenda/components/ReciboDeVendaCardComponent';
-import { Pressable } from 'react-native';
+import PessoaService from '../../service/PessoaService/PessoaService';
+import { Pressable, Text } from 'react-native';
 
 
 interface Props {}
 
-export type RootStackParamList = {
-  UsuarioForm: { id: string };
-  FazendaForm: { id: string };
-  FinalizarCadastro: { id: string };
-  ColetorForm: { id: string };
-  ReciboDeVendaList: { id: string };
-  CompradorForm: { id: string };
-  AnimalForm: { id: string };
-  OldHome: { id: string};
-};
 
 const Home: FunctionComponent<Props> = (props) => {
 
-  const [venda, setVenda] = useState({});
+  const [venda, setVenda] = useState();
   
 
   const navigation = useNavigation();
-
+  
+  const pegarDadosDoUsuario = async() => {
+    const dadosPessoa = await PessoaService.getPrincipaisInformacoesDoUsuario();
+    console.log(dadosPessoa.data.propriedades[0].fazenda.id);
+    return dadosPessoa.data.propriedades[0].fazenda.id;
+  }
+  
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', async () => {
-      // AsyncStorage.getItem('PropriedadeId').then((res: any) => {
-      //   const response = JSON.parse(res) 
-      //   buscar(response.id);
-      // });
-      console.log('passou aqui')
-    });
-
-    return unsubscribe;
-  }, [navigation]);
-
-
-  useEffect(() => {
-    // AsyncStorage.getItem('PropriedadeId').then((res: any) => {
-    //   const response = JSON.parse(res) 
-    //   buscarVenda(response.id);
-    // });
+    pegarDadosDoUsuario();
   }, []);
 
-  const goToReciboDeVendaList = () => {
-    navigation.navigate('ReciboDeVendaList');
-  }
-
-  const buscarVenda = async (propriedade: any) => {
-    console.log(propriedade);
-    ReciboDeVendaService.buscarUltimaVendaPorPropriedade(propriedade)
-      .then((response: any) => {
-        console.log(response)
-        setVenda(response.data.content)
-    })
-  };
-
+  const renderizarCard =  () => {
+    if(venda) {
+      return (
+        <Pressable
+        // onPress={() => goToReciboDeVendaList()}
+        >
+        <ReciboDeVendaCard recibo={venda}/> 
+      </Pressable>
+       )
+    } 
+  } 
+  
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <ScrollView>
-        <Pressable
-          onPress={() => goToReciboDeVendaList()}
-        >
-          <ReciboDeVendaCard recibo={venda}>
-            {' '}
-          </ReciboDeVendaCard>
-        </Pressable>
-      </ScrollView>
+      {renderizarCard()}
+      
+      <Center pl={'45%'} pt="2%" justifyContent={'space-between'} >
+        <FormControl mb={10}>
+            <FormControl.Label>
+              cadê o card po 
+            </FormControl.Label>
+          </FormControl>
+      </Center>
     </NativeBaseProvider>
   );
 };
