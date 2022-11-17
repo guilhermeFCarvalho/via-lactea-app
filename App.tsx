@@ -16,8 +16,9 @@ import ReciboDeVendaList from './src/screens/ReciboDeVenda/ReciboDeVendaList';
 import ReciboDeVendaForm from './src/screens/ReciboDeVenda/ReciboDeVendaForms';
 import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
+
 import FazendaList from './src/screens/Fazenda/FazendaList';
+import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 
 export default function App() {
   useEffect(() => {

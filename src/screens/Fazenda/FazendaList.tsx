@@ -9,6 +9,7 @@ import {
   Spinner,
   Button,
   Divider,
+  HStack,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 
@@ -34,15 +35,35 @@ const FazendaList: FunctionComponent<Props> = (props) => {
         <ScrollView p={'2%'}>
           <VStack
             justifyContent={'flex-start'}
-            space={1}
+            space={3}
             borderRadius={5}
             borderWidth={2}
             borderColor={'coolGray.400'}
             p={'4%'}
           >
-            <Text fontWeight={'medium'}>Dados da fazenda:</Text>
-            <Text>Nome da fazenda: {propriedade.fazenda.nomeDaFazenda}</Text>
-            <Text>Telefone: {propriedade.telefone}</Text>
+            <Text fontSize={'2xl'} fontWeight={'medium'}>
+              Dados da fazenda:
+            </Text>
+            <Divider></Divider>
+            <HStack>
+              <Text fontSize={'md'} fontWeight={'medium'}>
+                Nome da Fazenda:{' '}
+              </Text>
+              <Text fontSize={'md'}>{propriedade.fazenda.nomeDaFazenda}</Text>
+            </HStack>
+            <HStack>
+              <Text fontSize={'md'} fontWeight={'medium'}>
+                Telefone:{' '}
+              </Text>
+              <Text fontSize={'md'}>{propriedade.telefone}</Text>
+            </HStack>
+            <HStack>
+              <Text fontSize={'md'} fontWeight={'medium'}>
+                Telefone:{' '}
+              </Text>
+              <Text fontSize={'md'}> {propriedade.telefone}</Text>
+            </HStack>
+
             <Text>CAR: {propriedade.car}</Text>
             <Divider></Divider>
             <Text fontWeight={'medium'}>Endereço:</Text>
