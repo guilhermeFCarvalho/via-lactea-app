@@ -14,6 +14,7 @@ export type RootStackParamList = {
   ReciboDeVendaList: { id: string };
   CompradorForm: { id: string };
   Home: { id: string };
+  LoginPage: { id: string };
 };
 
 const OldHome: FunctionComponent<Props> = (props) => {
@@ -23,6 +24,16 @@ const OldHome: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
+
+        <Button
+          m="5"
+          bg={'viaLacteaSecondary.blue'}
+          onPress={() => navigation.navigate('LoginPage', { id: 'LoginPage' })}
+        >
+          {' '}
+          Tela de Login{' '}
+        </Button>
+
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}
@@ -31,6 +42,7 @@ const OldHome: FunctionComponent<Props> = (props) => {
           {' '}
           New Home{' '}
         </Button>
+
         <Button
           m="5"
           bg={'viaLacteaSecondary.blue'}

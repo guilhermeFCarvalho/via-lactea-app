@@ -7,6 +7,7 @@ import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVen
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Pressable } from 'react-native';
 
 const validate = () => {
   //todo
@@ -52,7 +53,8 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       sort: "id,desc" 
     }
 
-    ReciboDeVendaService.buscarPorPropriedade(propriedade, params).then((response: any) => {
+    ReciboDeVendaService.buscarPorPropriedade(propriedade, params)
+      .then((response: any) => {
       setTotalPage(response.data.totalPages)
       setListaRecibo(response.data.content)
       setFirstPage(response.data.first)
@@ -82,9 +84,13 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
         <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
             return (
-              <ReciboDeVendaCard key={item.id} recibo={item}>
-                {' '}
-              </ReciboDeVendaCard>
+              <Pressable
+                onPress={() => console.log("I'm Pressed")}
+              >
+                <ReciboDeVendaCard key={item.id} recibo={item}>
+                  {' '}
+                </ReciboDeVendaCard>
+              </Pressable>
             );
           })}
         </VStack>

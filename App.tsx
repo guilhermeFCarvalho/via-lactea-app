@@ -28,12 +28,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="OldHome"
+        initialRouteName="LoginPage"
         screenOptions={{
           drawerType: 'front',
         }}
       >
-        
         <Drawer.Screen
           name="AnimalForm"
           component={AnimalForm}
