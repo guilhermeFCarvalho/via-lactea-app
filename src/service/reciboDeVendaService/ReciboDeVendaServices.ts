@@ -11,7 +11,6 @@ const ReciboDeVendaService = {
   },
 
   buscarUltimaVendaPorPropriedade: function (id: any) {
-    console.log(id)
     return api.get(`/api/propriedade/${id}/ultimo-registro`)
   }
 };

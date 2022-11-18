@@ -19,13 +19,23 @@ const Home: FunctionComponent<Props> = (props) => {
   
 
   const navigation = useNavigation();
+
+  const goToReciboDeVendaList = () => {
+    navigation.navigate('ReciboDeVendaList');
+  }
   
   const pegarDadosDoUsuario = async() => {
     const dadosPessoa = await PessoaService.getPrincipaisInformacoesDoUsuario();
-    console.log(dadosPessoa.data.propriedades[0].fazenda.id);
-    return dadosPessoa.data.propriedades[0].fazenda.id;
-  }
-  
+    const propriedadeId = dadosPessoa.data.propriedades[0].id
+    const ultimaVenda = await ReciboDeVendaService.buscarUltimaVendaPorPropriedade(propriedadeId);
+    setVenda(ultimaVenda);
+    //const reciboDeVenda: ReciboDeVenda = dadosPessoa.data.propriedades[0].fazenda.id
+    console.log(dadosPessoa);
+    console.log(dadosPessoa.data);
+    console.log(dadosPessoa.data.propriedades);
+    console.log(dadosPessoa.data.propriedades[0].id);
+  }  
+
   useEffect(() => {
     pegarDadosDoUsuario();
   }, []);
@@ -33,9 +43,9 @@ const Home: FunctionComponent<Props> = (props) => {
   const renderizarCard =  () => {
     if(venda) {
       return (
-        <Pressable
-        // onPress={() => goToReciboDeVendaList()}
-        >
+      <Pressable
+        onPress={() => goToReciboDeVendaList()}
+      >
         <ReciboDeVendaCard recibo={venda}/> 
       </Pressable>
        )

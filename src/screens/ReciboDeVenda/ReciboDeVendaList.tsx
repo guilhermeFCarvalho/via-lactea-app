@@ -57,6 +57,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       .then((response: any) => {
       setTotalPage(response.data.totalPages)
       setListaRecibo(response.data.content)
+      console.log(response.data.content)
       setFirstPage(response.data.first)
       setLastPage(response.data.last)
     })  

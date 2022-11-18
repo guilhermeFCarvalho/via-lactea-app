@@ -34,7 +34,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
     try {
       await AuthService.login(login);
       setTimeout(() => {
-        //PessoaService.getPrincipaisInformacoesDoUsuario();
+        PessoaService.getPrincipaisInformacoesDoUsuario();
         navigation.navigate('Home');
         Toast.show({
           description: 'Login realizado com sucesso',
