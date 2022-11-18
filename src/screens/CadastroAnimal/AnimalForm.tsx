@@ -73,7 +73,7 @@ const AnimalForm = () => {
         : 0,
       dataGestacao: dataGestacao,
     });
-    return console.log(animal);
+    
   }
   
 

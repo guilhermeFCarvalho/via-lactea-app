@@ -19,6 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import FazendaList from './src/screens/Fazenda/FazendaList';
 import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
+import AnimalList from './src/screens/Animal/AnimalList';
 
 export default function App() {
   useEffect(() => {
@@ -99,6 +100,16 @@ export default function App() {
             headerTitleAlign: 'center',
             headerTitle: 'Listagem de Recibos',
             drawerLabel: 'Recibos de venda',
+          }}
+        />
+        <Drawer.Screen
+          name="AnimalList"
+          component={AnimalList}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Animais',
           }}
         />
 
