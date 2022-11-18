@@ -237,7 +237,7 @@ const AnimalForm = () => {
             <FormControl.Label>Quantidade de Crias</FormControl.Label>
             <InputMask
               value={quantidaDeCrias}
-              placeholder="(Opicional)"
+              placeholder="(Opcional)..."
               mask="number"
               maxLength={5}
               keyboardType="numeric"
