@@ -138,22 +138,20 @@ const AnimalForm = () => {
               Inputs faltantes: Parentesco, Animal Da Cruza
             </FormControl.Label>
           </FormControl>
-
           <FormControl>
             <FormControl.Label>Identificação do Animal</FormControl.Label>
             <Input
-              placeholder="9QC2B82"
+              placeholder="9QC2B82..."
               maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, identificacao: value });
               }}
             ></Input>
           </FormControl>
-
           <FormControl isRequired isInvalid={'especie' in erros}>
             <FormControl.Label>Espécie</FormControl.Label>
             <Input
-              placeholder="Espécie do Animal"
+              placeholder="Vaca, Cabra..."
               maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, especie: value });
@@ -161,22 +159,20 @@ const AnimalForm = () => {
             ></Input>
             <FormControl.ErrorMessage>{erros.especie}</FormControl.ErrorMessage>
           </FormControl>
-
           <FormControl>
             <FormControl.Label>Tipo de Alimetação</FormControl.Label>
             <Input
-              placeholder="Espécie do Animal"
+              placeholder="Ração..."
               maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, alimentacao: value });
               }}
             ></Input>
           </FormControl>
-
           <FormControl isRequired isInvalid={'raca' in erros}>
             <FormControl.Label>Raça</FormControl.Label>
             <Input
-              placeholder={' Holandesa'}
+              placeholder={' Holandesa, Canindé... '}
               maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, raca: value });
@@ -184,12 +180,11 @@ const AnimalForm = () => {
             ></Input>
             <FormControl.ErrorMessage>{erros.raca}</FormControl.ErrorMessage>
           </FormControl>
-
           <FormControl isRequired isInvalid={'peso' in erros}>
             <FormControl.Label>Peso (em @)</FormControl.Label>
             <InputMask
               value={pesoDoAnimal}
-              placeholder={'33'}
+              placeholder={'33...'}
               maxLength={7}
               mask="number"
               keyboardType="numeric"
@@ -199,7 +194,6 @@ const AnimalForm = () => {
               {erros.pesoDoAnimal}
             </FormControl.ErrorMessage>
           </FormControl>
-
           <FormControl isRequired isInvalid={'dataNascimento' in erros}>
             <FormControl.Label>Data de Nascimento</FormControl.Label>
             <InputMask
@@ -214,7 +208,6 @@ const AnimalForm = () => {
               {erros.dataNascimento}
             </FormControl.ErrorMessage>
           </FormControl>
-
           <FormControl isInvalid={'dataVeterinario' in erros}>
             <FormControl.Label>Última Visita ao Veterinário</FormControl.Label>
             <InputMask
@@ -227,7 +220,6 @@ const AnimalForm = () => {
             ></InputMask>
             <FormControl.ErrorMessage>{erros.dataVeterinario}</FormControl.ErrorMessage>
           </FormControl>
-
           <FormControl isRequired isInvalid={'sexo' in erros}>
             <FormControl.Label>Sexo</FormControl.Label>
             <Select
@@ -242,7 +234,6 @@ const AnimalForm = () => {
             </Select>
             <FormControl.ErrorMessage>{erros.sexo}</FormControl.ErrorMessage>
           </FormControl>
-
           <FormControl>
             <FormControl.Label>Quantidade de Crias</FormControl.Label>
             <InputMask
@@ -250,12 +241,12 @@ const AnimalForm = () => {
               placeholder="(Opicional)"
               mask="number"
               maxLength={5}
+              keyboardType="numeric"
               inputMaskChange={(value: string) => {
                 setQuantidadeCrias(value);
               }}
             ></InputMask>
           </FormControl>
-
           <FormControl isInvalid={'dataGestacao' in erros}>
             <FormControl.Label>Data da Última Gestação</FormControl.Label>
             <InputMask
@@ -269,7 +260,6 @@ const AnimalForm = () => {
             <FormControl.ErrorMessage>
               {erros.dataGestacao}
             </FormControl.ErrorMessage>
-
             <Button
               m={'8%'}
               onPress={() => {
