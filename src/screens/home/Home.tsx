@@ -1,4 +1,4 @@
-import { NativeBaseProvider, Button, ScrollView, View, Center, FormControl, VStack, Text } from 'native-base';
+import { NativeBaseProvider, Button, ScrollView, View, Center, FormControl, VStack, Text, Container } from 'native-base';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
@@ -48,7 +48,7 @@ const Home: FunctionComponent<Props> = (props) => {
   const renderizarCard =  () => {
     if(venda) {
       return (
-        <ScrollView p={'2%'}>
+        <ScrollView p={'2%'} >
           <VStack space={4}>
             <Pressable
               onPress={() => goToReciboDeVendaList()}
@@ -69,9 +69,25 @@ const Home: FunctionComponent<Props> = (props) => {
        </ScrollView>
        )
     } else {
-    <NativeBaseProvider theme={viaLacteaTheme}>
-      Não tem venda 
-    </NativeBaseProvider>
+      return (
+        <ScrollView p={'2%'}>
+          <VStack space={4}>
+              <Text fontSize="2xl" textAlign={'center'}>
+                Não há recibos de venda no momento
+              </Text>
+          </VStack>
+          <Button
+          mt={5}
+          p={'5%'}
+          onPress={() => {
+            //goToReciboDeVendaForm();
+            console.log('pertô o butão')
+          }}
+          >
+            + Nova Venda
+          </Button>
+        </ScrollView>
+      )        
     }
   } 
   
@@ -83,9 +99,7 @@ const Home: FunctionComponent<Props> = (props) => {
         </Text>
       </VStack>
       {renderizarCard()}
-      <Center px="8%" pt="2%" justifyContent={'space-between'}>
-        
-      </Center>
+      
     </NativeBaseProvider>
   );
 };
