@@ -10,7 +10,9 @@ import {
   useToast,
   View,
   Toast,
+  Image,
   Link,
+  Center,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/core';
@@ -57,6 +59,14 @@ const LoginPage: FunctionComponent<Props> = (props) => {
     <NativeBaseProvider theme={viaLacteaTheme}>
       <View>
         <VStack mr="auto" ml="auto" mt="10">
+          <Center>
+            <Image
+              alt=" "
+
+              size={'56'}
+              source={require('./assets/logo.png')}
+            ></Image>
+          </Center>
           <FormControl isRequired>
             <FormControl.Label>{'Email'}</FormControl.Label>
             <Input
@@ -106,7 +116,8 @@ const LoginPage: FunctionComponent<Props> = (props) => {
             Entrar
           </Button>
 
-          <Link mt={8}
+          <Link
+            mt={8}
             _text={{
               color: 'primary.600',
             }}
