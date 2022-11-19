@@ -60,8 +60,7 @@ const Home: FunctionComponent<Props> = (props) => {
           mt={5}
           p={'5%'}
             onPress={() => {
-              //goToReciboDeVendaForm();
-              console.log('pertô o butão')
+              goToReciboDeVendaForm();
             }}
           >
             + Nova Venda
@@ -70,9 +69,9 @@ const Home: FunctionComponent<Props> = (props) => {
        )
     } else {
       return (
-        <ScrollView p={'2%'}>
-          <VStack space={4}>
-              <Text fontSize="2xl" textAlign={'center'}>
+        <ScrollView p={'2%'} >
+          <VStack space={4} py={'5%'} mb={'2%'}>
+              <Text fontSize="xl" textAlign={'center'}>
                 Não há recibos de venda no momento
               </Text>
           </VStack>
@@ -80,8 +79,7 @@ const Home: FunctionComponent<Props> = (props) => {
           mt={5}
           p={'5%'}
           onPress={() => {
-            //goToReciboDeVendaForm();
-            console.log('pertô o butão')
+            goToReciboDeVendaForm();
           }}
           >
             + Nova Venda
@@ -99,7 +97,6 @@ const Home: FunctionComponent<Props> = (props) => {
         </Text>
       </VStack>
       {renderizarCard()}
-      
     </NativeBaseProvider>
   );
 };
