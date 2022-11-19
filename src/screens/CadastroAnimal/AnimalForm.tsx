@@ -73,8 +73,8 @@ const AnimalForm = () => {
         : 0,
       dataGestacao: dataGestacao,
     });
-  }
-  
+    
+  }  
 
   const validate = () => {
     if (!animal.especie) {

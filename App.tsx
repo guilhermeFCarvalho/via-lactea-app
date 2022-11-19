@@ -6,7 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
 
-import Home from './src/screens/home/Home';
+import Home from './src/screens/Home/Home';
 import FazendaForm from './src/screens/Fazenda/FazendaForm';
 import UsuarioForm from './src/screens/CadastroUsuario/UsuarioForm';
 import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
@@ -18,6 +18,7 @@ import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 import FazendaList from './src/screens/Fazenda/FazendaList';
+import AnimalList from './src/screens/Animal/AnimalList';
 
 export default function App() {
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function App() {
             swipeEnabled: false,
             headerShown: true,
             headerTitleAlign: 'center',
-            headerTitle: 'Cadastro de Animal',
+            headerTitle: 'Animal Form',
             drawerLabel: 'AnimalForm',
           }}
         />
@@ -50,7 +51,7 @@ export default function App() {
             swipeEnabled: false,
             headerShown: true,
             headerTitleAlign: 'center',
-            headerTitle: 'Tela principal',
+            headerTitle: 'Via Láctea',
           }}
         />
 
@@ -100,6 +101,16 @@ export default function App() {
             drawerLabel: 'Recibos de venda',
           }}
         />
+        <Drawer.Screen
+          name="AnimalList"
+          component={AnimalList}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Animais',
+          }}
+        />
 
         <Drawer.Screen
           name="LoginPage"
@@ -108,7 +119,9 @@ export default function App() {
             swipeEnabled: false,
             headerShown: false,
             headerTitleAlign: 'center',
-            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+            headerTitle: 'LoginPage',
+            drawerLabel: 'Sair',
+            //drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
 
@@ -120,17 +133,6 @@ export default function App() {
             headerShown: false,
             headerTitleAlign: 'center',
             headerTitle: 'Cadastro',
-            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
-          }}
-        />
-        <Drawer.Screen
-          name="FinalizarCadastro"
-          component={FinalizarCadastro}
-          options={{
-            swipeEnabled: false,
-            headerShown: false,
-            headerTitleAlign: 'center',
-            headerTitle: 'Tela principal',
             drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
@@ -154,6 +156,18 @@ export default function App() {
             headerShown: true,
             headerTitleAlign: 'center',
             headerTitle: 'Novo Recibo',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+
+        <Drawer.Screen
+          name="FinalizarCadastro"
+          component={FinalizarCadastro}
+          options={{
+            swipeEnabled: false,
+            headerShown: false,
+            headerTitleAlign: 'center',
+            headerTitle: 'Finalizar Cadastro',
             drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
