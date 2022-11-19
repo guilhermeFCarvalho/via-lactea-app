@@ -20,14 +20,16 @@ interface Props {
   recibo: ReciboDeVenda;
 }
 
-const formatDate = (date: Date | string) => {
-  const splitDate: string[] = date.toString().split(',').reverse();
-  if (splitDate[0].length == 1) {
-    splitDate[0] = '0'.concat(splitDate[0]);
-  }
-  return splitDate.join('/');
-};
 const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
+
+  const formatDate = (date: Date | string) => {
+    const splitDate: string[] = date.toString().split(',').reverse();
+    if (splitDate[0].length == 1) {
+      splitDate[0] = '0'.concat(splitDate[0]);
+    }
+    return splitDate.join('/');
+  };
+
   const mostrarObservacoes = () => {
     if (props.recibo.observacoes) {
       return (

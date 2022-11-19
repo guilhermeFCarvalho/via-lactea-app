@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import {
   AddIcon,
   Center,
-  getColor,
   HStack,
   Pressable,
   Text,
