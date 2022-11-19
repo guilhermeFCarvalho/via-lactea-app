@@ -15,13 +15,12 @@ const validate = () => {
 interface Props {}
 
 const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
-  const [listaRecibo, setListaRecibo] = useState<Array<ReciboDeVenda>>([]);
 
+  const [listaRecibo, setListaRecibo] = useState<Array<ReciboDeVenda>>([]);
   const [page, setPage ] = useState(0)
   const [firstPage, setFirstPage] = useState(true)
   const [LastPage, setLastPage] = useState(false)
   const [totalPage,setTotalPage] = useState(1)
-  const [refreshList,setRefreshList] = useState(false)
 
   const navigation = useNavigation();
 
@@ -44,26 +43,13 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       });
 
   }, [page]);
-  
-  useEffect(() => {
-    console.log(`escutando`);
-      AsyncStorage.getItem('PropriedadeId').then((res: any) => {
-        const response = JSON.parse(res) 
-        buscar(response.id);
-      });
-}, [listaRecibo]);
-
 
   const buscar = async (propriedade: any) => {
-    console.log(`entrou ============================`);
-    
     const params = {
       page:page,
       size: 10, 
       sort: "id,desc" 
     }
-    
-    if (refreshList == true ) {
 
       ReciboDeVendaService.buscarPorPropriedade(propriedade, params).then((response: any) => {
         setTotalPage(response.data.totalPages)
@@ -71,9 +57,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
         setFirstPage(response.data.first)
         setLastPage(response.data.last)
       })  
-    }
     
-    setRefreshList(false)
   };
 
   const mostarBotoesDaPaginacao  = () => {
@@ -92,15 +76,11 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       if(response.status == 200){
         const idRecibo = id
         const index = listaRecibo.findIndex((element) => element.id === idRecibo )
-
         let listaAtt:Array<ReciboDeVenda> = listaRecibo
-        
         listaAtt[index] = response.data
-          
-        setListaRecibo(listaAtt)
+        setListaRecibo([...listaAtt])
       }
     })  
-    
   }
 
   return (
@@ -114,7 +94,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
         <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
             return (
-              <ReciboDeVendaCard key={item.id} recibo={item} alterarStatusPagamento={alteratStatusPagamento} />
+              <ReciboDeVendaCard key={`${item.id}-${item.pago}`} recibo={item} alterarStatusPagamento={alteratStatusPagamento} />
             );
           })}
         </VStack>

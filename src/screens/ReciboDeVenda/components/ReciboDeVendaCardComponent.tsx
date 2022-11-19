@@ -25,6 +25,7 @@ const formatDate = (date: Date | string) => {
   }
   return splitDate.join('/');
 };
+
 const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
   const mostrarObservacoes = () => {
     if (props.recibo.observacoes) {
