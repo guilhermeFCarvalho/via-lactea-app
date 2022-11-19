@@ -42,41 +42,51 @@ const Home: FunctionComponent<Props> = (props) => {
     if(venda) {
       return (
         <ScrollView p={'2%'} >
-          <VStack space={4}>
+          <VStack space={20} m={'2%'}>
+            <VStack py={'5%'} alignItems="center" m={'2%'}>
+              <Text fontSize="4xl" >
+                Última Venda:
+              </Text>
+            </VStack>
             <Pressable
               onPress={() => goToReciboDeVendaList()}
-             >
+              >
               <ReciboDeVendaCard recibo={venda}/> 
             </Pressable>
-          </VStack>
-          <Button
-          mt={5}
-          p={'5%'}
+            <Button
+            mt={5}
+            p={'5%'}
             onPress={() => {
               goToReciboDeVendaForm();
             }}
-          >
-            + Nova Venda
-          </Button>
+            >
+              + Nova Venda
+            </Button>
+          </VStack>
        </ScrollView>
        )
     } else {
       return (
         <ScrollView p={'2%'} >
-          <VStack space={4} py={'5%'} mb={'2%'}>
-              <Text fontSize="xl" textAlign={'center'}>
-                Não há recibos de venda no momento
+          <VStack space={20} py={'5%'} m={'2%'}>
+            <VStack py={'5%'} alignItems="center" m={'2%'}>
+              <Text fontSize="4xl">
+                Última Venda:
               </Text>
+            </VStack>
+            <Text fontSize="xl" textAlign={'center'}>
+              Não há recibos de venda no momento
+            </Text>
+            <Button
+            mt={5}
+            p={'5%'}
+            onPress={() => {
+              goToReciboDeVendaForm();
+            }}
+            >
+              + Nova Venda
+            </Button>
           </VStack>
-          <Button
-          mt={5}
-          p={'5%'}
-          onPress={() => {
-            goToReciboDeVendaForm();
-          }}
-          >
-            + Nova Venda
-          </Button>
         </ScrollView>
       )        
     }
@@ -84,11 +94,6 @@ const Home: FunctionComponent<Props> = (props) => {
   
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <VStack alignItems="center" m={'2%'}>
-        <Text fontSize="4xl">
-          Última Venda:
-        </Text>
-      </VStack>
       {renderizarCard()}
     </NativeBaseProvider>
   );

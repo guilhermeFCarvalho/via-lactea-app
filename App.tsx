@@ -51,7 +51,7 @@ export default function App() {
             swipeEnabled: false,
             headerShown: true,
             headerTitleAlign: 'center',
-            headerTitle: 'Tela principal',
+            headerTitle: 'Via Láctea',
           }}
         />
 
@@ -167,7 +167,7 @@ export default function App() {
             swipeEnabled: false,
             headerShown: false,
             headerTitleAlign: 'center',
-            headerTitle: 'Tela principal',
+            headerTitle: 'Finalizar Cadastro',
             drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
