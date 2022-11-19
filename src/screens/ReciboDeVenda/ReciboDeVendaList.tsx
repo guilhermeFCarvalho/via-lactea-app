@@ -57,7 +57,6 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
       .then((response: any) => {
       setTotalPage(response.data.totalPages)
       setListaRecibo(response.data.content)
-      console.log(response.data.content)
       setFirstPage(response.data.first)
       setLastPage(response.data.last)
     })  
@@ -85,13 +84,9 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
         <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
             return (
-              <Pressable
-                onPress={() => console.log("I'm Pressed")}
-              >
                 <ReciboDeVendaCard key={item.id} recibo={item}>
                   {' '}
                 </ReciboDeVendaCard>
-              </Pressable>
             );
           })}
         </VStack>
