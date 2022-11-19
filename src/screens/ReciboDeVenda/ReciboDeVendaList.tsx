@@ -95,7 +95,6 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
             );
           })}
         </VStack>
-
         {mostarBotoesDaPaginacao()}
       </ScrollView>
     </NativeBaseProvider>

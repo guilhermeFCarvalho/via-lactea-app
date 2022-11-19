@@ -1,4 +1,4 @@
-import { NativeBaseProvider, Button, ScrollView, View, Center, FormControl } from 'native-base';
+import { NativeBaseProvider, Button, ScrollView, View, Center, FormControl, VStack, Text } from 'native-base';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
 import ReciboDeVendaCard from '../ReciboDeVenda/components/ReciboDeVendaCardComponent';
 import PessoaService from '../../service/PessoaService/PessoaService';
-import { Pressable, Text } from 'react-native';
+import { Pressable } from 'react-native';
 
 
 interface Props {}
@@ -24,16 +24,21 @@ const Home: FunctionComponent<Props> = (props) => {
     navigation.navigate('ReciboDeVendaList');
   }
   
+  const goToReciboDeVendaForm = () => {
+    navigation.navigate('ReciboDeVendaForm');
+  }
+  
   const pegarDadosDoUsuario = async() => {
     const dadosPessoa = await PessoaService.getPrincipaisInformacoesDoUsuario();
     const propriedadeId = dadosPessoa.data.propriedades[0].id
     const ultimaVenda = await ReciboDeVendaService.buscarUltimaVendaPorPropriedade(propriedadeId);
-    setVenda(ultimaVenda);
+    setVenda(ultimaVenda.data);
     //const reciboDeVenda: ReciboDeVenda = dadosPessoa.data.propriedades[0].fazenda.id
     console.log(dadosPessoa);
     console.log(dadosPessoa.data);
     console.log(dadosPessoa.data.propriedades);
     console.log(dadosPessoa.data.propriedades[0].id);
+    console.log(ultimaVenda.data);
   }  
 
   useEffect(() => {
@@ -43,25 +48,43 @@ const Home: FunctionComponent<Props> = (props) => {
   const renderizarCard =  () => {
     if(venda) {
       return (
-      <Pressable
-        onPress={() => goToReciboDeVendaList()}
-      >
-        <ReciboDeVendaCard recibo={venda}/> 
-      </Pressable>
+        <ScrollView p={'2%'}>
+          <VStack space={4}>
+            <Pressable
+              onPress={() => goToReciboDeVendaList()}
+             >
+              <ReciboDeVendaCard recibo={venda}/> 
+            </Pressable>
+          </VStack>
+          <Button
+          mt={5}
+          p={'5%'}
+            onPress={() => {
+              //goToReciboDeVendaForm();
+              console.log('pertô o butão')
+            }}
+          >
+            + Nova Venda
+          </Button>
+       </ScrollView>
        )
-    } 
+    } else {
+    <NativeBaseProvider theme={viaLacteaTheme}>
+      Não tem venda 
+    </NativeBaseProvider>
+    }
   } 
   
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
+      <VStack alignItems="center" m={'2%'}>
+        <Text fontSize="4xl">
+          Última Coleta:
+        </Text>
+      </VStack>
       {renderizarCard()}
-      
-      <Center pl={'45%'} pt="2%" justifyContent={'space-between'} >
-        <FormControl mb={10}>
-            <FormControl.Label>
-              cadê o card po 
-            </FormControl.Label>
-          </FormControl>
+      <Center px="8%" pt="2%" justifyContent={'space-between'}>
+        
       </Center>
     </NativeBaseProvider>
   );
