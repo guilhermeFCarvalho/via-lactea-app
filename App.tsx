@@ -6,7 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
 
-import Home from './src/screens/home/Home';
+import Home from './src/screens/Home/Home';
 import FazendaForm from './src/screens/Fazenda/FazendaForm';
 import UsuarioForm from './src/screens/CadastroUsuario/UsuarioForm';
 import FinalizarCadastro from './src/screens/FinalizarCadastro/FinalizarCadastro';
@@ -18,11 +18,7 @@ import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 import FazendaList from './src/screens/Fazenda/FazendaList';
-<<<<<<< HEAD
-import OldHome from './src/screens/home/OldHome';
-=======
 import AnimalList from './src/screens/Animal/AnimalList';
->>>>>>> ad4e4a57d56860f2cc9ee599f751345adbcfbc22
 
 export default function App() {
   useEffect(() => {
@@ -46,17 +42,6 @@ export default function App() {
             headerTitleAlign: 'center',
             headerTitle: 'Animal Form',
             drawerLabel: 'AnimalForm',
-          }}
-        />
-        <Drawer.Screen
-          name="OldHome"
-          component={OldHome}
-          options={{
-            swipeEnabled: false,
-            headerShown: true,
-            headerTitleAlign: 'center',
-            headerTitle: 'Old Home',
-            drawerLabel: 'OldHome',
           }}
         />
         <Drawer.Screen
@@ -150,17 +135,6 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="FinalizarCadastro"
-          component={FinalizarCadastro}
-          options={{
-            swipeEnabled: false,
-            headerShown: false,
-            headerTitleAlign: 'center',
-            headerTitle: 'Tela principal',
-            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
-          }}
-        />
-        <Drawer.Screen
           name="CompradorForm"
           component={CompradorForm}
           options={{
@@ -180,6 +154,18 @@ export default function App() {
             headerShown: true,
             headerTitleAlign: 'center',
             headerTitle: 'Novo Recibo',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+
+        <Drawer.Screen
+          name="FinalizarCadastro"
+          component={FinalizarCadastro}
+          options={{
+            swipeEnabled: false,
+            headerShown: false,
+            headerTitleAlign: 'center',
+            headerTitle: 'Tela principal',
             drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />

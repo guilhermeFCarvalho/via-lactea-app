@@ -1,17 +1,13 @@
-import { NativeBaseProvider, Button, ScrollView, View, Center, FormControl, VStack, Text, Container } from 'native-base';
+import { NativeBaseProvider, Button, ScrollView, VStack, Text } from 'native-base';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVendaServices';
 import ReciboDeVendaCard from '../ReciboDeVenda/components/ReciboDeVendaCardComponent';
 import PessoaService from '../../service/PessoaService/PessoaService';
 import { Pressable } from 'react-native';
 
-
 interface Props {}
-
 
 const Home: FunctionComponent<Props> = (props) => {
 
@@ -33,12 +29,6 @@ const Home: FunctionComponent<Props> = (props) => {
     const propriedadeId = dadosPessoa.data.propriedades[0].id
     const ultimaVenda = await ReciboDeVendaService.buscarUltimaVendaPorPropriedade(propriedadeId);
     setVenda(ultimaVenda.data);
-    //const reciboDeVenda: ReciboDeVenda = dadosPessoa.data.propriedades[0].fazenda.id
-    console.log(dadosPessoa);
-    console.log(dadosPessoa.data);
-    console.log(dadosPessoa.data.propriedades);
-    console.log(dadosPessoa.data.propriedades[0].id);
-    console.log(ultimaVenda.data);
   }  
 
   useEffect(() => {
