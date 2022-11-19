@@ -44,7 +44,6 @@ const AnimalForm = () => {
     dataGestacao,
   ]);
 
-  // PARENTESCO e ANIMAL QUE CRUZOU está impedido por conta da listagem
   const salvarAnimal = () => {
     AnimalService.salvar({
       parentescoAnimal: null,
@@ -132,11 +131,6 @@ const AnimalForm = () => {
     <NativeBaseProvider>
       <ScrollView>
         <Center px="8%" pt="2%" justifyContent={'space-between'}>
-          <FormControl mb={10}>
-            <FormControl.Label>
-              Inputs faltantes: Parentesco, Animal Da Cruza
-            </FormControl.Label>
-          </FormControl>
           <FormControl>
             <FormControl.Label>Identificação do Animal</FormControl.Label>
             <Input
