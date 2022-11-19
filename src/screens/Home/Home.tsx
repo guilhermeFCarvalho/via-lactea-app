@@ -32,7 +32,10 @@ const Home: FunctionComponent<Props> = (props) => {
   }  
 
   useEffect(() => {
-    pegarDadosDoUsuario();
+    const unsubscribe = navigation.addListener('focus', async () => {
+      pegarDadosDoUsuario();
+    });
+    return unsubscribe;
   }, []);
 
   const renderizarCard =  () => {
@@ -83,7 +86,7 @@ const Home: FunctionComponent<Props> = (props) => {
     <NativeBaseProvider theme={viaLacteaTheme}>
       <VStack alignItems="center" m={'2%'}>
         <Text fontSize="4xl">
-          Última Coleta:
+          Última Venda:
         </Text>
       </VStack>
       {renderizarCard()}

@@ -28,7 +28,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="LoginPage"
+        initialRouteName="Sair"
         screenOptions={{
           drawerType: 'front',
         }}
@@ -91,7 +91,7 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="ReciboDeVendaList"
+          name="Recibos de Venda"
           component={ReciboDeVendaList}
           options={{
             swipeEnabled: false,
@@ -102,7 +102,7 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="AnimalList"
+          name="Lista de Animais"
           component={AnimalList}
           options={{
             swipeEnabled: false,
@@ -113,13 +113,14 @@ export default function App() {
         />
 
         <Drawer.Screen
-          name="LoginPage"
+          name="Sair"
           component={LoginPage}
           options={{
             swipeEnabled: false,
             headerShown: false,
             headerTitleAlign: 'center',
-            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+            headerTitle: 'Sair'
+           // drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
 
