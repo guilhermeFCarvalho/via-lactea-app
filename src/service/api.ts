@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://10.0.2.2:8080',
+  baseURL: 'https://via-lactea-api.herokuapp.com',
 });
 
 export default api;
