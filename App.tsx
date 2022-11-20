@@ -18,7 +18,7 @@ import LoginPage from './src/screens/Login/LoginPage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import FazendaList from './src/screens/Fazenda/FazendaList';
-import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
+import AnimalForm from './src/screens/Animal/AnimalForm';
 import AnimalList from './src/screens/Animal/AnimalList';
 import ExitPage from './src/screens/Login/ExitPage';
 
