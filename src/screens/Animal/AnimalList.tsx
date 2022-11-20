@@ -41,13 +41,10 @@ const AnimalList: FunctionComponent<Props> = (props) => {
   };
 
   useEffect(() => {
-    buscarFazenda();
-  }, []);
-
-  useEffect(() => {
     const unsubscribe = navigation.addListener('focus', async () => {
       buscarFazenda();
     });
+    return unsubscribe;
   }, []);
 
   const showInfo = (
@@ -120,6 +117,12 @@ const AnimalList: FunctionComponent<Props> = (props) => {
                     element.parentescoAnimal,
                     'md',
                   )}
+                  {showInfo(
+                    'Tipo de alimentação: ',
+                    element.tipoAlimentacao,
+                    'md',
+                  )}
+        
                 </VStack>
               </VStack>
             );

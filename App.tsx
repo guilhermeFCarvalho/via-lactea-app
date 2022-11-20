@@ -60,18 +60,6 @@ export default function App() {
         />
 
         <Drawer.Screen
-          name="AnimalForm"
-          component={AnimalForm}
-          options={{
-            swipeEnabled: false,
-            headerShown: true,
-            headerTitleAlign: 'center',
-            headerTitle: 'Animal Form',
-            drawerLabel: 'AnimalForm',
-          }}
-        />
-
-        <Drawer.Screen
           name="FazendaForm"
           component={FazendaForm}
           options={{
@@ -118,7 +106,7 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="AnimalList"
+          name="Animais"
           component={AnimalList}
           options={{
             swipeEnabled: false,
@@ -138,6 +126,19 @@ export default function App() {
             headerTitle: 'ExitPage',
             drawerLabel: 'Sair',
             //drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+
+        <Drawer.Screen
+          name="AnimalForm"
+          component={AnimalForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Cadastrar Animal',
+            drawerLabel: 'AnimalForm',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
 
