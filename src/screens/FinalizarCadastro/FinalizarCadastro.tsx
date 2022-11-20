@@ -10,7 +10,7 @@ import {
   Button,
   Progress,
 } from 'native-base';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FunctionComponent } from 'react';
 import CardButtonComponent from '../../components/CardButtonComponent';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
@@ -27,55 +27,58 @@ const FinalizarCadastro: FunctionComponent<Props> = (props) => {
 
   const salvarUsuario = () => {
     UsuarioService.salvar({
-      propriedades: [
-        {
-          car: route.params.fazenda.car,
-          telefone: route.params.fazenda.telefone,
-          fazenda: {
-            nomeDaFazenda: route.params.fazenda.nome,
-            endereco: {
-              endereco: route.params.endereco.estado,
-              rua: route.params.endereco.rua,
-              numero: route.params.endereco.numero,
-              bairro: route.params.endereco.bairro,
-              cidade: route.params.endereco.cidade,
-              cep: route.params.endereco.cep,
+      email: route.params.usuario.email,
+      password: route.params.usuario.senha,
+      pessoaFisica: {
+        propriedades: [
+          {
+            car: route.params.fazenda.car,
+            telefone: route.params.fazenda.telefone,
+            fazenda: {
+              nomeDaFazenda: route.params.fazenda.nome,
+              endereco: {
+                endereco: route.params.endereco.estado,
+                rua: route.params.endereco.rua,
+                numero: route.params.endereco.numero,
+                bairro: route.params.endereco.bairro,
+                cidade: route.params.endereco.cidade,
+                cep: route.params.endereco.cep,
+              },
             },
           },
-        },
-      ],
-      telefone: route.params.usuario.telefone,
-      nome: route.params.usuario.nome,
-      sobrenome: route.params.usuario.sobrenome,
-      cpf: route.params.usuario.cpf,
-    });
+        ],
+        telefone: route.params.usuario.telefone,
+        nome: route.params.usuario.nome,
+        sobrenome: route.params.usuario.sobrenome,
+        cpf: route.params.usuario.cpf,
+      },
+    }).then(() => navigation.navigate('LoginPage'));
   };
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
-        <Progress value={60}></Progress>
-        <VStack space={6} p="12%">
-          <CardButtonComponent
-            title="Cadastrar coletor"
-            subtitle="Cadastre os coletores que irão comprar leite da sua fazenda"
-          ></CardButtonComponent>
-          <CardButtonComponent
-            title="Cadastrar animais"
-            subtitle="Cadastre os animais que você possui em sua fazenda"
-          ></CardButtonComponent>
-          <CardButtonComponent
-            title="Cadastrar fazenda"
-            subtitle="Cadastre outras fazendas que deseja gerenciar no sistema"
-            screen={'FazendaForm'}
-          ></CardButtonComponent>
-          <Button
-            onPress={() => {
-              salvarUsuario();
-            }}
-          >
-            Finalizar
-          </Button>
+        <VStack space={6} p="20%">
+          <Text textAlign={'center'} fontSize={'lg'} fontWeight={'medium'}>
+            Deseja finalizar o cadastro?
+          </Text>
+          <HStack justifyContent={'space-around'}>
+            <Button
+              onPress={() => {
+                salvarUsuario();
+              }}
+            >
+              Sim
+            </Button>
+            <Button
+              bg={'danger.500'}
+              onPress={() => {
+                navigation.navigate('LoginPage');
+              }}
+            >
+              Não
+            </Button>
+          </HStack>
         </VStack>
       </ScrollView>
     </NativeBaseProvider>

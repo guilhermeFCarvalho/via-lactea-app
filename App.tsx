@@ -43,6 +43,7 @@ export default function App() {
             headerTitleAlign: 'center',
             headerTitle: 'Animal Form',
             drawerLabel: 'AnimalForm',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
         <Drawer.Screen
@@ -103,7 +104,7 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="AnimalList"
+          name="Animais"
           component={AnimalList}
           options={{
             swipeEnabled: false,
@@ -169,7 +170,7 @@ export default function App() {
             headerShown: false,
             headerTitleAlign: 'center',
             headerTitle: 'Finalizar Cadastro',
-            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+            // drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
       </Drawer.Navigator>
