@@ -80,6 +80,7 @@ const AnimalList: FunctionComponent<Props> = (props) => {
           {animais.map((element) => {
             return (
               <VStack
+                key={element.id}
                 space={4}
                 bg={'coolGray.100'}
                 p={'6%'}
