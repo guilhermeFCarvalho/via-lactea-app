@@ -8,8 +8,12 @@ import {
   Spinner,
   Divider,
   HStack,
+  Icon,
+  Fab,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
+import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { mascaraTelefone } from '../../utils/Mascaras';
@@ -17,6 +21,8 @@ import { mascaraTelefone } from '../../utils/Mascaras';
 interface Props {}
 
 const FazendaList: FunctionComponent<Props> = (props) => {
+  const navigation = useNavigation();
+
   const [propriedade, setPropriedade] = useState({});
 
   const buscaFazenda = async () => {
@@ -30,6 +36,11 @@ const FazendaList: FunctionComponent<Props> = (props) => {
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
+      <Fab
+        placement="bottom-right"
+        icon={<Icon  color="white" as={<AntDesign name="plus" />} size={4} />}
+        onPress={() => navigation.navigate('FazendaForm', {})}
+      />
       {propriedade.fazenda ? (
         <ScrollView p={'2%'}>
           <VStack

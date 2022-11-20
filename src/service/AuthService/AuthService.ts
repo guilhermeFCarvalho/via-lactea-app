@@ -7,7 +7,7 @@ import api from '../api';
 const AuthService = {
   login: function (login: Login) {
     return axios
-      .post(`http://10.0.2.2:8080/api/auth/signin`, login)
+      .post(`https://via-lactea-api.herokuapp.com/api/auth/signin`, login)
       .then((response: any) => {
         AsyncStorage.setItem('Token', response.data.token);
         api.defaults.headers.common[

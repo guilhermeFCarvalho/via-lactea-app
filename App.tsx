@@ -60,18 +60,6 @@ export default function App() {
         />
 
         <Drawer.Screen
-          name="FazendaForm"
-          component={FazendaForm}
-          options={{
-            swipeEnabled: false,
-            headerShown: true,
-            headerTitleAlign: 'center',
-            headerTitle: 'Cadastrar Fazenda',
-            drawerLabel: 'Cadastrar Fazenda',
-          }}
-        />
-
-        <Drawer.Screen
           name="FazendaList"
           component={FazendaList}
           options={{
@@ -125,6 +113,19 @@ export default function App() {
             headerTitleAlign: 'center',
             headerTitle: 'ExitPage',
             drawerLabel: 'Sair',
+          }}
+        />
+
+        <Drawer.Screen
+          name="FazendaForm"
+          component={FazendaForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Cadastrar Fazenda',
+            drawerLabel: 'Cadastrar Fazenda',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
 
