@@ -125,7 +125,6 @@ export default function App() {
             headerTitleAlign: 'center',
             headerTitle: 'ExitPage',
             drawerLabel: 'Sair',
-            //drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
 

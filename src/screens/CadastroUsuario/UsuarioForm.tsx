@@ -7,14 +7,12 @@ import {
   Button,
   ScrollView,
   Progress,
-  StatusBar,
-  Text,
   Heading,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 
 import EmailValidator from 'email-validator';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import PasswordInputComponent from '../../components/PasswordInputComponent';
 
 interface Props {}
@@ -25,7 +23,6 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   const [erros, setErros] = React.useState({});
 
   const navigation = useNavigation();
-  const route = useRoute();
 
   const goToFazendaForm = () => {
     validate()

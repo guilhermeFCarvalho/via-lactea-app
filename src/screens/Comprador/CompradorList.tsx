@@ -4,8 +4,6 @@ import {
   ScrollView,
   VStack,
   HStack,
-  IconButton,
-  Box,
   Fab,
   Icon,
   Divider,
@@ -13,7 +11,6 @@ import {
 import React, { useEffect, useState } from 'react';
 import { FunctionComponent } from 'react';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
-import { MaterialIcons } from '@expo/vector-icons';
 import CompradorService from '../../service/CompradorService/CompradorService';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';

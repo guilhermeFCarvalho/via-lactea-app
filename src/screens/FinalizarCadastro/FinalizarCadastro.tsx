@@ -1,18 +1,14 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import {
-  Box,
-  Center,
   NativeBaseProvider,
   VStack,
   Text,
   HStack,
   ScrollView,
   Button,
-  Progress,
 } from 'native-base';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FunctionComponent } from 'react';
-import CardButtonComponent from '../../components/CardButtonComponent';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import UsuarioService from '../../service/UsuarioService/UsuarioService';
 

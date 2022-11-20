@@ -10,7 +10,6 @@ import {
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import EnderecoFormComponent from '../../components/EnderecoFormComponent';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {}
 

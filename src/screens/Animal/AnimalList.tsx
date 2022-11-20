@@ -4,8 +4,6 @@ import {
   ScrollView,
   VStack,
   Text,
-  Spinner,
-  Button,
   HStack,
   Divider,
   Spacer,
@@ -22,7 +20,6 @@ import { mascaraSexo } from '../../utils/Mascaras';
 interface Props {}
 
 const AnimalList: FunctionComponent<Props> = (props) => {
-  const [propriedade, setPropriedade] = useState({});
   const [animais, setAnimais] = useState([]);
 
   const navigation = useNavigation();
