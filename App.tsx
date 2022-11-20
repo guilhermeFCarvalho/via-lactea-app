@@ -170,7 +170,7 @@ export default function App() {
             headerShown: false,
             headerTitleAlign: 'center',
             headerTitle: 'Finalizar Cadastro',
-            // drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
       </Drawer.Navigator>
