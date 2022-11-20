@@ -13,6 +13,7 @@ import {
   Image,
   Link,
   Center,
+  ScrollView,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/core';
@@ -57,7 +58,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <View>
+      <ScrollView>
         <VStack mr="auto" ml="auto" mt="10">
           <Center>
             <Image
@@ -127,7 +128,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
             Ainda não tem uma conta? Cadastre-se.
           </Link>
         </VStack>
-      </View>
+      </ScrollView>
     </NativeBaseProvider>
   );
 };

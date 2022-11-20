@@ -13,6 +13,7 @@ import InputMask from '../../components/InputMask';
 import { sexoDoAnimal } from '../../utils/SexoDoAnimal';
 import { validarData } from '../../utils/ValidarData';
 import AnimalService from '../../service/AnimalService/AnimalService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {
   navigation: any;
@@ -27,15 +28,17 @@ const AnimalForm = () => {
   const [dataNascimento, setDataNascimento] = useState('');
   const [quantidaDeCrias, setQuantidadeCrias] = useState('');
   const [erros, setErros] = useState({});
+  const [fazenda, setFazenda] = useState({});
 
   const navigation = useNavigation();
 
   useEffect(() => {
     setErros({});
   }, [animal]);
-
+  
   useEffect(() => {
     setValoresAnimal();
+    
   }, [
     pesoDoAnimal,
     dataVeterinario,
@@ -43,6 +46,9 @@ const AnimalForm = () => {
     quantidaDeCrias,
     dataGestacao,
   ]);
+  useEffect(() => {
+    buscarFazenda();
+  }, []);
 
   const salvarAnimal = () => {
     AnimalService.salvar({
@@ -57,8 +63,17 @@ const AnimalForm = () => {
       identificacao: animal.identificacao,
       animalQueCruzou: null,
       sexo: animal.sexo,
+      fazenda: {id: fazenda.id},
     });
-    return navigation.navigate('Home');
+    return navigation.navigate('Animais');
+  };
+
+  const buscarFazenda = async () => {
+    await AsyncStorage.getItem('PropriedadeId')
+      .then((prop) => setFazenda(JSON.parse(prop)))
+      .catch((erro) => {
+        throw new Error(erro);
+      });
   };
 
   function setValoresAnimal() {
@@ -72,8 +87,7 @@ const AnimalForm = () => {
         : 0,
       dataGestacao: dataGestacao,
     });
-    
-  }  
+  }
 
   const validate = () => {
     if (!animal.especie) {
@@ -112,7 +126,7 @@ const AnimalForm = () => {
           ...erros,
           dataVeterinario: 'Data inválida!',
         });
-        return false
+        return false;
       }
     }
     if (animal.dataGestacao) {
@@ -121,7 +135,7 @@ const AnimalForm = () => {
           ...erros,
           dataGestacao: 'Data inválida!',
         });
-        return false
+        return false;
       }
     }
     return true;
@@ -211,7 +225,9 @@ const AnimalForm = () => {
               inputMaskChange={(value: string) => setDataVeterinario(value)}
               keyboardType="numeric"
             ></InputMask>
-            <FormControl.ErrorMessage>{erros.dataVeterinario}</FormControl.ErrorMessage>
+            <FormControl.ErrorMessage>
+              {erros.dataVeterinario}
+            </FormControl.ErrorMessage>
           </FormControl>
           <FormControl isRequired isInvalid={'sexo' in erros}>
             <FormControl.Label>Sexo</FormControl.Label>
