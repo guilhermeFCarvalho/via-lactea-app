@@ -61,7 +61,6 @@ const LoginPage: FunctionComponent<Props> = (props) => {
           <Center>
             <Image
               alt=" "
-
               size={'56'}
               source={require('./assets/logo.png')}
             ></Image>

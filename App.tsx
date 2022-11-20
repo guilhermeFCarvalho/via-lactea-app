@@ -47,7 +47,7 @@ export default function App() {
             drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
-        
+
         <Drawer.Screen
           name="Home"
           component={Home}
@@ -116,7 +116,7 @@ export default function App() {
           }}
         />
 
-      <Drawer.Screen
+        <Drawer.Screen
           name="ExitPage"
           component={ExitPage}
           options={{

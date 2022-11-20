@@ -20,13 +20,10 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  
   useEffect(() => {
-    
     setErros({});
   }, [fazenda]);
 
- 
   const validate = () => {
     if (fazenda.nome === undefined || fazenda.nome === '') {
       setErros({ ...erros, nome: 'Informe um nome' });
@@ -69,8 +66,6 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
     }
   };
 
-  
-
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
@@ -83,9 +78,7 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
               onChangeText={(value: any) => {
                 setFazenda({ ...fazenda, nome: value });
               }}
-            >
-              
-            </Input>
+            ></Input>
             <FormControl.ErrorMessage>{erros.nome}</FormControl.ErrorMessage>
           </FormControl>
           <FormControl isRequired isInvalid={'telefone' in erros}>

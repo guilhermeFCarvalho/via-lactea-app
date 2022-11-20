@@ -14,13 +14,7 @@ import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import CompradorService from '../../service/CompradorService/CompradorService';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import {
-  
-  mascaraCnpj,
-  mascaraIe,
-  
-  mascaraTelefone,
-} from '../../utils/Mascaras';
+import { mascaraCnpj, mascaraIe, mascaraTelefone } from '../../utils/Mascaras';
 
 interface Props {}
 

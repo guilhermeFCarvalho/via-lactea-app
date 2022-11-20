@@ -33,9 +33,16 @@ function mascaraSexo(sexo: string) {
   sexo = sexo.charAt(0) + sexo.slice(1).toLowerCase();
 
   if (sexo === 'Femea') {
-    return ('Fê' + sexo.slice(2));
+    return 'Fê' + sexo.slice(2);
   }
   return sexo;
 }
 
-export { mascaraSexo, mascaraData, mascaraNumero, mascaraCnpj, mascaraIe, mascaraTelefone };
+export {
+  mascaraSexo,
+  mascaraData,
+  mascaraNumero,
+  mascaraCnpj,
+  mascaraIe,
+  mascaraTelefone,
+};

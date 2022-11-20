@@ -119,7 +119,6 @@ const AnimalList: FunctionComponent<Props> = (props) => {
                     element.tipoAlimentacao,
                     'md',
                   )}
-        
                 </VStack>
               </VStack>
             );
