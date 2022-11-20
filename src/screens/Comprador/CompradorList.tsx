@@ -46,7 +46,8 @@ const CompradorList: FunctionComponent<Props> = () => {
         <VStack space={6} mb={20}>
           {compradorList.map((element) => {
             return (
-              <VStack
+              <VStack 
+                key={element.id}
                 space={2}
                 bg={'coolGray.100'}
                 p={'6%'}

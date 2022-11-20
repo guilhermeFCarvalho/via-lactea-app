@@ -131,7 +131,7 @@ const EnderecoFormComponent: FunctionComponent<Props> = (props) => {
               >
                 {estados.map((element) => {
                   return (
-                    <Select.Item label={element.sigla} value={element.sigla} />
+                    <Select.Item key={element.sigla} label={element.sigla} value={element.sigla} />
                   );
                 })}
               </Select>

@@ -36,11 +36,11 @@ const FazendaList: FunctionComponent<Props> = (props) => {
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <Fab
+      {/* <Fab
         placement="bottom-right"
         icon={<Icon  color="white" as={<AntDesign name="plus" />} size={4} />}
         onPress={() => navigation.navigate('FazendaForm', {})}
-      />
+      /> */}
       {propriedade.fazenda ? (
         <ScrollView p={'2%'}>
           <VStack
