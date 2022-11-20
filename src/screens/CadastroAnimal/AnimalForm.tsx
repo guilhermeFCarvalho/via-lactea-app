@@ -35,10 +35,9 @@ const AnimalForm = () => {
   useEffect(() => {
     setErros({});
   }, [animal]);
-  
+
   useEffect(() => {
     setValoresAnimal();
-    
   }, [
     pesoDoAnimal,
     dataVeterinario,
@@ -63,7 +62,7 @@ const AnimalForm = () => {
       identificacao: animal.identificacao,
       animalQueCruzou: null,
       sexo: animal.sexo,
-      fazenda: {id: fazenda.id},
+      fazenda: { id: fazenda.id },
     });
     return navigation.navigate('Animais');
   };

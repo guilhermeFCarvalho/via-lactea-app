@@ -21,7 +21,6 @@ interface Props {
 }
 
 const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
-
   const formatDate = (date: Date | string) => {
     const splitDate: string[] = date.toString().split(',').reverse();
     if (splitDate[0].length == 1) {
@@ -46,11 +45,12 @@ const ReciboDeVendaCard: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <View borderColor={'gray.500'}
-              borderRadius= {5}
-              borderWidth={1}
-              justifyContent={'space-between'}
-              >
+    <View
+      borderColor={'gray.500'}
+      borderRadius={5}
+      borderWidth={1}
+      justifyContent={'space-between'}
+    >
       <VStack shadow={5} justifyContent={'space-between'} p={'3%'} space={2}>
         <HStack justifyContent={'space-between'} p={'2%'}>
           <Text fontWeight={'medium'} fontSize={'xl'}>

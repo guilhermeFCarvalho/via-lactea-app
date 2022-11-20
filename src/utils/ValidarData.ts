@@ -17,4 +17,4 @@ function validarData(data: string) {
   return dataFormatada.toISOString().startsWith(isoFormatacaoData);
 }
 
-export { validarData }
+export { validarData };

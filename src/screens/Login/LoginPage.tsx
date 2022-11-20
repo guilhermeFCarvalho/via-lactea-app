@@ -8,7 +8,6 @@ import {
   Icon,
   VStack,
   useToast,
-  View,
   Toast,
   Image,
   Link,
@@ -31,7 +30,6 @@ interface Props {}
 const LoginPage: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const [show, setShow] = React.useState(false);
-  const toast = useToast();
 
   async function handleLogin() {
     try {
@@ -63,7 +61,6 @@ const LoginPage: FunctionComponent<Props> = (props) => {
           <Center>
             <Image
               alt=" "
-
               size={'56'}
               source={require('./assets/logo.png')}
             ></Image>

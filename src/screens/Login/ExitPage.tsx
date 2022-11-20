@@ -16,13 +16,9 @@ const ExitPage: FunctionComponent<Props> = (props) => {
   useEffect(() => {
     AsyncStorage.clear();
     navigation.navigate('LoginPage');
-  }, [])
+  }, []);
 
-  return (
-    <NativeBaseProvider theme={viaLacteaTheme}>
-      
-    </NativeBaseProvider>
-  );
+  return <NativeBaseProvider theme={viaLacteaTheme}></NativeBaseProvider>;
 };
 
 export default ExitPage;

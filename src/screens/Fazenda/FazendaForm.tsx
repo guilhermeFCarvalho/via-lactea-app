@@ -10,7 +10,6 @@ import {
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import EnderecoFormComponent from '../../components/EnderecoFormComponent';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {}
 
@@ -21,13 +20,10 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  
   useEffect(() => {
-    
     setErros({});
   }, [fazenda]);
 
- 
   const validate = () => {
     if (fazenda.nome === undefined || fazenda.nome === '') {
       setErros({ ...erros, nome: 'Informe um nome' });
@@ -70,8 +66,6 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
     }
   };
 
-  
-
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
@@ -84,9 +78,7 @@ const FazendaForm: FunctionComponent<Props> = (props) => {
               onChangeText={(value: any) => {
                 setFazenda({ ...fazenda, nome: value });
               }}
-            >
-              
-            </Input>
+            ></Input>
             <FormControl.ErrorMessage>{erros.nome}</FormControl.ErrorMessage>
           </FormControl>
           <FormControl isRequired isInvalid={'telefone' in erros}>

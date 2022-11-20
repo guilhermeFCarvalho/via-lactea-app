@@ -3,7 +3,6 @@ import { NativeBaseProvider } from 'native-base';
 import renderer from 'react-test-renderer';
 import CardButtonComponent from '../CardButtonComponent';
 
-
 jest.mock('@react-navigation/native', () => {
   return {
     useNavigation: jest.fn(),

@@ -1,13 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import {
-  Input,
   NativeBaseProvider,
   Text,
   ScrollView,
   VStack,
   Center,
   Spinner,
-  Button,
   Divider,
   HStack,
 } from 'native-base';
