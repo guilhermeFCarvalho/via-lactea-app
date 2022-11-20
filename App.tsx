@@ -20,6 +20,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import FazendaList from './src/screens/Fazenda/FazendaList';
 import AnimalForm from './src/screens/CadastroAnimal/AnimalForm';
 import AnimalList from './src/screens/Animal/AnimalList';
+import ExitPage from './src/screens/Login/ExitPage';
 
 export default function App() {
   useEffect(() => {
@@ -35,17 +36,18 @@ export default function App() {
         }}
       >
         <Drawer.Screen
-          name="AnimalForm"
-          component={AnimalForm}
+          name="LoginPage"
+          component={LoginPage}
           options={{
             swipeEnabled: false,
-            headerShown: true,
+            headerShown: false,
             headerTitleAlign: 'center',
-            headerTitle: 'Animal Form',
-            drawerLabel: 'AnimalForm',
+            headerTitle: 'LoginPage',
+            drawerLabel: 'Login',
             drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
+        
         <Drawer.Screen
           name="Home"
           component={Home}
@@ -114,16 +116,29 @@ export default function App() {
           }}
         />
 
-        <Drawer.Screen
-          name="LoginPage"
-          component={LoginPage}
+      <Drawer.Screen
+          name="ExitPage"
+          component={ExitPage}
           options={{
             swipeEnabled: false,
             headerShown: false,
             headerTitleAlign: 'center',
-            headerTitle: 'LoginPage',
+            headerTitle: 'ExitPage',
             drawerLabel: 'Sair',
             //drawerItemStyle: { height: 0, padding: 0, margin: 0 },
+          }}
+        />
+
+        <Drawer.Screen
+          name="AnimalForm"
+          component={AnimalForm}
+          options={{
+            swipeEnabled: false,
+            headerShown: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Cadastrar Animal',
+            drawerLabel: 'AnimalForm',
+            drawerItemStyle: { height: 0, padding: 0, margin: 0 },
           }}
         />
 

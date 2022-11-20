@@ -158,7 +158,7 @@ const AnimalForm = () => {
           <FormControl isRequired isInvalid={'especie' in erros}>
             <FormControl.Label>Espécie</FormControl.Label>
             <Input
-              placeholder="Vaca, Cabra..."
+              placeholder="Bovino, Caprino..."
               maxLength={250}
               onChangeText={(value: any) => {
                 setAnimal({ ...animal, especie: value });
