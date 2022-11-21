@@ -237,7 +237,7 @@ const AnimalForm = () => {
               }}
             >
               {sexoDoAnimal.map((e) => {
-                return <Select.Item label={e.sexo} value={e.sexo} />;
+                return <Select.Item key={e.sexo} label={e.sexo} value={e.sexo} />;
               })}
             </Select>
             <FormControl.ErrorMessage>{erros.sexo}</FormControl.ErrorMessage>
