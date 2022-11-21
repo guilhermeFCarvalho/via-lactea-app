@@ -30,8 +30,10 @@ interface Props {}
 const LoginPage: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const [show, setShow] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   async function handleLogin() {
+    setLoading(true)
     try {
       await AuthService.login(login);
       setTimeout(() => {
@@ -40,12 +42,14 @@ const LoginPage: FunctionComponent<Props> = (props) => {
         Toast.show({
           description: 'Login realizado com sucesso',
         });
+        setLoading(false)
       }, 1000);
     } catch (error) {
       console.log(error);
       Toast.show({
         description: 'Erro ao autenticar usuário',
       });
+      setLoading(false)
     }
   }
 
@@ -105,6 +109,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
           </FormControl>
 
           <Button
+            isLoading={loading}
             mt={10}
             p={4}
             onPress={() => {
