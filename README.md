@@ -4,7 +4,6 @@ Utilizar [documentação do native base](https://docs.nativebase.io/) como apoio
 
 Para usar o tema do projeto utilize essa tag no TSX -> `<NativeBaseProvider theme={viaLacteaTheme}>`
 
-
 # Como rodar o projeto:
 
 1.   [Faça o clone](http://escoladeti.unicesumar.edu.br:8083/escoladeti2022time03/via-lactea-app)

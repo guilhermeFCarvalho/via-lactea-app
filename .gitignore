@@ -12,3 +12,6 @@ package-lock.json
 
 # macOS
 .DS_Store
+
+#Packege-lock
+packege-lock.json
