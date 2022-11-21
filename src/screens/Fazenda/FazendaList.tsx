@@ -64,7 +64,7 @@ const FazendaList: FunctionComponent<Props> = (props) => {
                     {mascaraTelefone(propriedade.telefone)}
                   </Text>
                 </HStack>
-                <HStack>
+                <HStack pr={'25%'}>
                   <Text fontSize={'md'} fontWeight={'medium'}>
                     CAR:{' '}
                   </Text>
