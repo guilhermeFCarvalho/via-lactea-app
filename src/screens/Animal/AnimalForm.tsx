@@ -63,8 +63,7 @@ const AnimalForm = () => {
       animalQueCruzou: null,
       sexo: animal.sexo,
       fazenda: { id: fazenda.id },
-    });
-    return navigation.navigate('Animais');
+    }).then(() => navigation.navigate('Animais'));
   };
 
   const buscarFazenda = async () => {
@@ -237,7 +236,9 @@ const AnimalForm = () => {
               }}
             >
               {sexoDoAnimal.map((e) => {
-                return <Select.Item key={e.sexo} label={e.sexo} value={e.sexo} />;
+                return (
+                  <Select.Item key={e.sexo} label={e.sexo} value={e.sexo} />
+                );
               })}
             </Select>
             <FormControl.ErrorMessage>{erros.sexo}</FormControl.ErrorMessage>
