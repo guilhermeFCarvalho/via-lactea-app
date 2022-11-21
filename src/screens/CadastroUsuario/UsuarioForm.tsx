@@ -7,14 +7,12 @@ import {
   Button,
   ScrollView,
   Progress,
-  StatusBar,
-  Text,
   Heading,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 
 import EmailValidator from 'email-validator';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import PasswordInputComponent from '../../components/PasswordInputComponent';
 
 interface Props {}
@@ -25,14 +23,9 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   const [erros, setErros] = React.useState({});
 
   const navigation = useNavigation();
-  const route = useRoute();
-
-  const isNew = () => {
-    return route.params != undefined;
-  };
 
   const goToFazendaForm = () => {
-    validate() && !isNew()
+    validate()
       ? navigation.navigate('FazendaForm', usuario)
       : console.log(erros);
   };
@@ -80,9 +73,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
     return true;
   };
   const showProgress = (value) => {
-    if (isNew()) {
-      return <Progress value={value}></Progress>;
-    }
+    return <Progress value={value}></Progress>;
   };
 
   React.useEffect(() => {
@@ -92,7 +83,7 @@ const UsuarioForm: FunctionComponent<Props> = (props) => {
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <ScrollView>
-        <Center p={"4%"} >
+        <Center p={'4%'}>
           <Heading>Cadastro</Heading>
         </Center>
         {showProgress(1)}

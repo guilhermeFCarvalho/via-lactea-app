@@ -1,5 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { NativeBaseProvider, ScrollView, Icon, Fab, VStack, HStack , Button} from 'native-base';
+import {
+  NativeBaseProvider,
+  ScrollView,
+  Icon,
+  Fab,
+  VStack,
+  HStack,
+  Button,
+} from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { ReciboDeVenda } from '../../types/ReciboDeVenda';
 import ReciboDeVendaCard from './components/ReciboDeVendaCardComponent';
@@ -7,6 +15,7 @@ import ReciboDeVendaService from '../../service/reciboDeVendaService/ReciboDeVen
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Pressable } from 'react-native';
 
 const validate = () => {
   //todo
@@ -17,19 +26,17 @@ interface Props {}
 const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
   const [listaRecibo, setListaRecibo] = useState<Array<ReciboDeVenda>>([]);
 
-  const [page, setPage ] = useState(0)
-  const [firstPage, setFirstPage] = useState(true)
-  const [LastPage, setLastPage] = useState(false)
-  const [totalPage,setTotalPage] = useState(1)
-  const [refreshList,setRefreshList] = useState(false)
+  const [page, setPage] = useState(0);
+  const [firstPage, setFirstPage] = useState(true);
+  const [LastPage, setLastPage] = useState(false);
+  const [totalPage, setTotalPage] = useState(1);
 
   const navigation = useNavigation();
-
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', async () => {
       AsyncStorage.getItem('PropriedadeId').then((res: any) => {
-        const response = JSON.parse(res) 
+        const response = JSON.parse(res);
         buscar(response.id);
       });
     });
@@ -38,11 +45,10 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
   }, [navigation]);
 
   useEffect(() => {
-      AsyncStorage.getItem('PropriedadeId').then((res: any) => {
-        const response = JSON.parse(res) 
-        buscar(response.id);
-      });
-
+    AsyncStorage.getItem('PropriedadeId').then((res: any) => {
+      const response = JSON.parse(res);
+      buscar(response.id);
+    });
   }, [page]);
   
   useEffect(() => {
@@ -55,49 +61,54 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
 
 
   const buscar = async (propriedade: any) => {
-    console.log(`entrou ============================`);
-    
     const params = {
-      page:page,
-      size: 10, 
-      sort: "id,desc" 
-    }
-    
-    if (refreshList == true ) {
+      page: page,
+      size: 10,
+      sort: 'id,desc',
+    };
 
-      ReciboDeVendaService.buscarPorPropriedade(propriedade, params).then((response: any) => {
-        setTotalPage(response.data.totalPages)
-        setListaRecibo(response.data.content)
-        setFirstPage(response.data.first)
-        setLastPage(response.data.last)
-      })  
-    }
-    
-    setRefreshList(false)
+    ReciboDeVendaService.buscarPorPropriedade(propriedade, params).then(
+      (response: any) => {
+        setTotalPage(response.data.totalPages);
+        setListaRecibo(response.data.content);
+        setFirstPage(response.data.first);
+        setLastPage(response.data.last);
+      },
+    );
   };
 
-  const mostarBotoesDaPaginacao  = () => {
-    if(totalPage > 1 ) {
-      return ( 
-        <HStack justifyContent={'space-evenly'} mt={10}  >
-          <Button title='Voltar' isDisabled={firstPage} onPress={()=> setPage(page-1)}>Anterior</Button>
-          <Button title='Avancar' isDisabled={LastPage} onPress={()=> setPage(page+1)}>Proxima</Button>
+  const mostarBotoesDaPaginacao = () => {
+    if (totalPage > 1) {
+      return (
+        <HStack justifyContent={'space-evenly'} mt={10}>
+          <Button
+            title="Voltar"
+            isDisabled={firstPage}
+            onPress={() => setPage(page - 1)}
+          >
+            Anterior
+          </Button>
+          <Button
+            title="Avancar"
+            isDisabled={LastPage}
+            onPress={() => setPage(page + 1)}
+          >
+            Proxima
+          </Button>
         </HStack>
-      )
+      );
     }
-  }
+  };
 
   const alteratStatusPagamento = (id: number) => {
     ReciboDeVendaService.alterarStatusPagamento(id).then((response: any) => {
       if(response.status == 200){
         const idRecibo = id
         const index = listaRecibo.findIndex((element) => element.id === idRecibo )
-
         let listaAtt:Array<ReciboDeVenda> = listaRecibo
-        
         listaAtt[index] = response.data
-          
-        setListaRecibo(listaAtt)
+        setListaRecibo([...listaAtt])
+
       }
     })  
     
@@ -114,11 +125,10 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
         <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
             return (
-              <ReciboDeVendaCard key={item.id} recibo={item} alterarStatusPagamento={alteratStatusPagamento} />
+              <ReciboDeVendaCard key={`${item.id}-${item.pago}`} recibo={item} alterarStatusPagamento={alteratStatusPagamento} />
             );
           })}
         </VStack>
-
         {mostarBotoesDaPaginacao()}
       </ScrollView>
     </NativeBaseProvider>

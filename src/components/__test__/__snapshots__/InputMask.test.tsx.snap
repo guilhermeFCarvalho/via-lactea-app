@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    dataSet={{}}
+    isFocused={false}
+    style={
+      {
+        "alignItems": "center",
+        "borderColor": "#d4d4d4",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "overflow": "hidden",
+      }
+    }
+  >
+    <TextInput
+      accessible={true}
+      dataSet={{}}
+      editable={true}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onKeyPress={[Function]}
+      placeholderTextColor="#a3a3a3"
+      secureTextEntry={false}
+      selectionColor="#1f2937"
+      style={
+        {
+          "backgroundColor": "transparent",
+          "color": "#171717",
+          "flex": 1,
+          "fontFamily": undefined,
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "paddingBottom": 8,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 8,
+          "width": "100%",
+        }
+      }
+    />
+  </View>
+</RNCSafeAreaProvider>
+`;

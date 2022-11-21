@@ -27,27 +27,27 @@ const ReciboDeVendaForm: FunctionComponent<Props> = (props) => {
   });
 
   const salvarNovoRecibo = async () => {
-    salvar()
+    salvar();
   };
 
   const salvar = async () => {
     ReciboDeVendaService.salvar(leiteVendido).then(() => {
       navigation.navigate('ReciboDeVendaList');
     });
-  }
+  };
 
   useEffect(() => {
     setErros({});
   }, [leiteVendido]);
 
-  useEffect( () => {
-    AsyncStorage.getItem('PropriedadeId').then((res:any) => {
-      const response = JSON.parse(res) 
+  useEffect(() => {
+    AsyncStorage.getItem('PropriedadeId').then((res: any) => {
+      const response = JSON.parse(res);
       setLeiteVendido({
         ...leiteVendido,
-        propriedade: {id:response.id},
-      })
-    })
+        propriedade: { id: response.id },
+      });
+    });
   }, []);
 
   const validate = () => {

@@ -8,9 +8,11 @@ import {
   Icon,
   VStack,
   useToast,
-  View,
   Toast,
+  Image,
   Link,
+  Center,
+  ScrollView,
 } from 'native-base';
 import { viaLacteaTheme } from '../../config/theme/ColorTheme';
 import { useNavigation } from '@react-navigation/core';
@@ -28,9 +30,10 @@ interface Props {}
 const LoginPage: FunctionComponent<Props> = (props) => {
   const navigation = useNavigation();
   const [show, setShow] = React.useState(false);
-  const toast = useToast();
+  const [loading, setLoading] = React.useState(false);
 
   async function handleLogin() {
+    setLoading(true)
     try {
       await AuthService.login(login);
       setTimeout(() => {
@@ -39,12 +42,14 @@ const LoginPage: FunctionComponent<Props> = (props) => {
         Toast.show({
           description: 'Login realizado com sucesso',
         });
+        setLoading(false)
       }, 1000);
     } catch (error) {
       console.log(error);
       Toast.show({
         description: 'Erro ao autenticar usuário',
       });
+      setLoading(false)
     }
   }
 
@@ -55,8 +60,15 @@ const LoginPage: FunctionComponent<Props> = (props) => {
 
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
-      <View>
+      <ScrollView>
         <VStack mr="auto" ml="auto" mt="10">
+          <Center>
+            <Image
+              alt=" "
+              size={'56'}
+              source={require('./assets/logo.png')}
+            ></Image>
+          </Center>
           <FormControl isRequired>
             <FormControl.Label>{'Email'}</FormControl.Label>
             <Input
@@ -97,6 +109,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
           </FormControl>
 
           <Button
+            isLoading={loading}
             mt={10}
             p={4}
             onPress={() => {
@@ -106,7 +119,8 @@ const LoginPage: FunctionComponent<Props> = (props) => {
             Entrar
           </Button>
 
-          <Link mt={8}
+          <Link
+            mt={8}
             _text={{
               color: 'primary.600',
             }}
@@ -116,7 +130,7 @@ const LoginPage: FunctionComponent<Props> = (props) => {
             Ainda não tem uma conta? Cadastre-se.
           </Link>
         </VStack>
-      </View>
+      </ScrollView>
     </NativeBaseProvider>
   );
 };
