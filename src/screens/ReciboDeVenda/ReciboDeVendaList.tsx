@@ -24,12 +24,12 @@ const validate = () => {
 interface Props {}
 
 const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
-  const [listaRecibo, setListaRecibo] = useState<Array<any>>([]);
 
-  const [page, setPage] = useState(0);
-  const [firstPage, setFirstPage] = useState(true);
-  const [LastPage, setLastPage] = useState(false);
-  const [totalPage, setTotalPage] = useState(1);
+  const [listaRecibo, setListaRecibo] = useState<Array<ReciboDeVenda>>([]);
+  const [page, setPage ] = useState(0)
+  const [firstPage, setFirstPage] = useState(true)
+  const [LastPage, setLastPage] = useState(false)
+  const [totalPage,setTotalPage] = useState(1)
 
   const navigation = useNavigation();
 
@@ -53,19 +53,18 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
 
   const buscar = async (propriedade: any) => {
     const params = {
-      page: page,
-      size: 10,
-      sort: 'id,desc',
-    };
+      page:page,
+      size: 10, 
+      sort: "id,desc" 
+    }
 
-    ReciboDeVendaService.buscarPorPropriedade(propriedade, params).then(
-      (response: any) => {
-        setTotalPage(response.data.totalPages);
-        setListaRecibo(response.data.content);
-        setFirstPage(response.data.first);
-        setLastPage(response.data.last);
-      },
-    );
+      ReciboDeVendaService.buscarPorPropriedade(propriedade, params).then((response: any) => {
+        setTotalPage(response.data.totalPages)
+        setListaRecibo(response.data.content)
+        setFirstPage(response.data.first)
+        setLastPage(response.data.last)
+      })  
+    
   };
 
   const mostarBotoesDaPaginacao = () => {
@@ -91,6 +90,18 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
     }
   };
 
+  const alteratStatusPagamento = (id: number) => {
+    ReciboDeVendaService.alterarStatusPagamento(id).then((response: any) => {
+      if(response.status == 200){
+        const idRecibo = id
+        const index = listaRecibo.findIndex((element) => element.id === idRecibo )
+        let listaAtt:Array<ReciboDeVenda> = listaRecibo
+        listaAtt[index] = response.data
+        setListaRecibo([...listaAtt])
+      }
+    })  
+  }
+
   return (
     <NativeBaseProvider theme={viaLacteaTheme}>
       <Fab
@@ -102,9 +113,7 @@ const ReciboDeVendaList: FunctionComponent<Props> = (props) => {
         <VStack space={4}>
           {listaRecibo.map((item: ReciboDeVenda) => {
             return (
-              <ReciboDeVendaCard key={item.id} recibo={item}>
-                {' '}
-              </ReciboDeVendaCard>
+              <ReciboDeVendaCard key={`${item.id}-${item.pago}`} recibo={item} alterarStatusPagamento={alteratStatusPagamento} />
             );
           })}
         </VStack>

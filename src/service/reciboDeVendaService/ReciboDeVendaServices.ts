@@ -13,6 +13,12 @@ const ReciboDeVendaService = {
   buscarUltimaVendaPorPropriedade: function (id: any) {
     return api.get(`/api/recibo-de-venda/propriedade/${id}/ultimo-registro`);
   },
+
+  alterarStatusPagamento: function (id: any) {
+    return api.put(`/api/recibo-de-venda/${id}/alterar-status-pagamento`)
+  },
+
+
 };
 
 export default ReciboDeVendaService;
